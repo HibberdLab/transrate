@@ -1,17 +1,19 @@
-## The metrics
+---
+layout: page
+title: Metrics
+---
 
-   1. [contig metrics](#contig-metrics)
-   2. [read mapping metrics](#read-mapping-metrics)
-   3. [comparative metrics](#comparative-metrics)
-   4. [total assembly score](#total-assembly-score)
+This page describes the ways Transrate measures an assembly.
 
-### Contig metrics
+## Contig metrics
 
 Contig metrics are measures based entirely on analysing the set of contigs themselves.
 
-These are informative, but are only weakly useful for judging assembly quality. For most of these metrics, we don't know what the optimum is, although we can recognise extremely bad values. For example, an extremely small (\<10,000) or extremely large (\>100,000) number of contigs is biologically implausible for most organisms, and therefore suggests a problem with the assembly.
+These metrics are best used only as a quick, crude way of detecting major problems with the assembly.
 
-These metrics should therefore be used only as a quick, crude way of detecting major problems with the assembly.
+These are informative, but are only weakly useful for judging assembly quality. For most of these metrics, we don't know what the optimum is, although we can recognise extremely bad values. For example, an extremely small (\<10,000) or extremely large (\>100,000) number of contigs is biologically implausible for most organisms, and therefore might suggest a problem with the assembly.
+
+You will need to use your biological knowledge about the species you are investigating to decide what values are acceptable.
 
 Transrate outputs a set of contig metrics that looks like this:
 
@@ -28,11 +30,11 @@ n over 1k                     12804
 n over 10k                        0
 n with orf                    24771
 mean orf percent              64.33
-n90                             276
-n70                             441
-n50                             670
-n30                            1021
-n10                            1878
+N90                             276
+N70                             441
+N50                             670
+N30                            1021
+N10                            1878
 gc                             0.44
 gc skew                        -0.0
 at skew                        0.01
@@ -53,7 +55,7 @@ linguistic complexity           0.1
 | n > 10k | the number of contigs greater than 10,000 bases long |
 | n with orf | the number of contigs that had an open reading frame |
 | mean orf percent | the mean percent of the contig covered by an ORF |
-| nX | the largest contig size at which at least X% of bases are contained in contigs at least this length |
+| NX (e.g. N50) | the largest contig size at which at least X% of bases are contained in contigs at least this length |
 | gc | % of bases that are G or C |
 | gc skew | http://en.wikipedia.org/wiki/GC_skew |
 | at skew | see GC skew |
@@ -62,9 +64,9 @@ linguistic complexity           0.1
 | proportion n | the proportion of bases that are N |
 | linguistic complexity | the total [linguistic complexity](http://en.wikipedia.org/wiki/Linguistic_sequence_complexity) of the assembly |
 
-### Read mapping metrics
+## Read mapping metrics
 
-Read mapping metrics are based on aligning a subset of the reads used in the assembly to the assembled contigs. These are a way of determining how well the assembly is supported by the original experimental evidence, and can be very useful overall quality metrics. However, they should not be considered alone, as read mapping metrics can be high for very fragmented assemblies.
+Read mapping metrics are based on aligning the reads used in the assembly to the assembled contigs. These are a way of determining how well the assembly is supported by the original experimental evidence, and can be very useful overall quality metrics. However, they should not be considered alone, as read mapping metrics can be high for very fragmented assemblies.
 
 These metrics can be useful for optimising your assembly. In particular, we want to maximise the proportion of the read pairs that map to the contigs successfully and in a biologically plausible way.
 
@@ -94,7 +96,7 @@ p lowcovered contigs      0.72
 | name          | explanation  | optimum
 | ------------- |:-------------| :----
 | num pairs | the number of read pairs provided | NA |
-| total mappings | the total number of read pairs mapping | theoretically all of them if all errors, adapters and contamination have been removed |
+| total mappings | the total number of read pairs mapping | theoretically equal to `num pairs` if all errors, adapters and contamination have been removed |
 | percent mapping | the percentage of read pairs mapping | theoretically 100% (see above) |
 | good mappings | the number of read pairs mapping in a way indicative of good assembly | as above |
 | pc good mappings | the percentage of read pairs mapping in a way indicative of a good assembly | as above |
@@ -111,7 +113,7 @@ p lowcovered contigs      0.72
 | p lowcovered contigs | the number of contigs that have a mean per-base read coverage of < 10 | 0.0 |
 
 
-#### Good and bad mappings
+### Good and bad mappings
 
 'Good' mappings are those aligned in a biologically plausible way, i.e.:
 
@@ -122,13 +124,13 @@ p lowcovered contigs      0.72
 
 Conversely, 'bad' pairs are those where one of the conditions for being 'good' are not met.
 
-#### Bridges
+### Bridges
 
-Additionally, Transrate calculates whether the read mappings contain any evidence that different contigs originate from the same transcript. These theoretical links are called bridges, and the number of bridges is shown in the **supported bridges** metric. A low count of supported bridges could be good or bad depending on the context. If you have a fragmented assembly, a large number of supported bridges means that scaffolding could greatly improve it. On the other hand, a large number of supported bridges in an otherwise seemingly good assembly could be indicative of misassemblies.
+Transrate calculates whether the read mappings contain any evidence that different contigs originate from the same transcript. These theoretical links are called bridges, and the number of bridges is shown in the **supported bridges** metric. A low count of supported bridges could be good or bad depending on the context. If you have a fragmented assembly, a large number of supported bridges means that scaffolding could greatly improve it. On the other hand, a large number of supported bridges in an otherwise seemingly good assembly could be indicative of misassemblies.
 
 The list of supported bridges is output to a file, `supported_bridges.csv`, in case you want to make use of the information. At a later date, transrate will include the ability to scaffold the assembly using this and other information.
 
-### Comparative metrics
+## Comparative metrics
 
 Comparative metrics involve comparing the assembly to a related reference species. These metrics are very powerful because they are an external validation of the experimental results.
 
@@ -172,7 +174,7 @@ p cov95                   0.07
 | ortholog hit ratio | the mean ratio of alignment length to reference sequence length. A low score on this metric indicates the assembly contains full-length transcripts. |  Close to 1
 | collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place.
 
-### Total assembly score
+## Total assembly score
 
 A total assembly score can calculated by combining the other metrics. It takes into account:
 

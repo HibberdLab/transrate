@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Getting Started"
+title: "Options"
 description: ""
 ---
 {% include JB/setup %}
