@@ -42,7 +42,9 @@
         <h3>
 <a name="transrate-helps-you-understand-your-transcriptome-assembly" class="anchor" href="#transrate-helps-you-understand-your-transcriptome-assembly"><span class="octicon octicon-link"></span></a>Transrate helps you understand your transcriptome assembly</h3>
 
-<p>Transcriptome assembly is hard. The algorithms are complex, the data is messy, and it's often not clear how to determine whether an assembly is suitable for answering a biological question. Transrate tries to help by examining your assembly in detail and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, and helps you decide when to stop trying to improve the assembly.</p>
+<p>Transcriptome assembly is hard. The algorithms are complex, the data is messy, and it's often not clear how to determine whether an assembly is suitable for answering a biological question.</p>
+
+<p>Transrate tries to help by examining your assembly in detail and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, and helps you decide when to stop trying to improve the assembly.</p>
 
 <h3>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
@@ -53,20 +55,20 @@
 <li>by inspecting the contigs themselves</li>
 <li>by mapping reads to the contigs and inspecting the alignments</li>
 <li>by aligning the contigs against proteins from a related species and inspecting the alignments</li>
-</ul><p>The individual metrics will eventually be explained here.</p>
+</ul><p>You can read about these in detail on the <a href="metrics.html">transcriptome assembly metrics</a> page.</p>
 
 <h3>
 <a name="the-command-line-interface" class="anchor" href="#the-command-line-interface"><span class="octicon octicon-link"></span></a>The command-line interface</h3>
 
-<div class="highlight highlight-bash"><pre>  Transrate v0.1.0 by Richard Smith &lt;rds45@cam.ac.uk&gt;
+<pre><code>  Transrate v0.2.0 by Richard Smith-Unna &lt;rds45@cam.ac.uk&gt;
 
   DESCRIPTION:
   Analyse a de-novo transcriptome
   assembly using three kinds of metrics:
 
   1. contig-based
-  2. <span class="nb">read</span>-mapping <span class="o">(</span><span class="k">if</span> --left and --right are provided<span class="o">)</span>
-  3. reference-based <span class="o">(</span><span class="k">if</span> --reference is provided<span class="o">)</span>
+  2. read-mapping (if --left and --right are provided)
+  3. reference-based (if --reference is provided)
 
   Bug reports and feature requests at:
   http://github.com/blahah/transrate
@@ -78,31 +80,38 @@
   transrate --assembly contigs.fa --reference Athaliana_protein.fa --threads 8
 
   OPTIONS:
-    --assembly, -a &lt;s&gt;:   assembly file<span class="o">(</span>s<span class="o">)</span> in FASTA format, comma-separated
+    --assembly, -a &lt;s&gt;:   assembly file(s) in FASTA format, comma-separated
    --reference, -r &lt;s&gt;:   reference proteome file in FASTA format
         --left, -l &lt;s&gt;:   left reads file in FASTQ format
        --right, -i &lt;s&gt;:   right reads file in FASTQ format
-  --insertsize, -n &lt;i&gt;:   mean insert size <span class="o">(</span>default: 200<span class="o">)</span>
-    --insertsd, -s &lt;i&gt;:   insert size standard deviation <span class="o">(</span>default: 50<span class="o">)</span>
-     --threads, -t &lt;i&gt;:   number of threads to use <span class="o">(</span>default: 8<span class="o">)</span>
-     --outfile, -o &lt;s&gt;:   filename to use <span class="k">for</span> CSV output <span class="o">(</span>default: transate_results.csv<span class="o">)</span>
-           --quiet, -q:   don<span class="err">'</span>t print results - only save to file
+  --insertsize, -n &lt;i&gt;:   mean insert size (default: 200)
+    --insertsd, -s &lt;i&gt;:   insert size standard deviation (default: 50)
+     --threads, -t &lt;i&gt;:   number of threads to use (default: 8)
+     --outfile, -o &lt;s&gt;:   filename to use for CSV output (default: transate_results.csv)
+    --loglevel, -g &lt;s&gt;:   the amount of information to print. one of [error, info, warn, debug] (default: info)
+    --install-deps, -d:   install any missing dependencies
          --profile, -p:   debug option: profile the code as it runs
-         --version, -v:   Print version and <span class="nb">exit</span>
+         --version, -v:   Print version and exit
             --help, -h:   Show this message
-</pre></div>
+</code></pre>
+
+<p>See the <a href="getting_started.html">getting started guide</a> for more instructions, and see the <a href="cl_options.html">command-line options</a> part of the manual for details.</p>
 
 <h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>Transrate was conceived and led by Richard Smith-Unna (RSU) and written by RSU and Chris Boursnell under the guidance of Professor Julian Hibberd at the University of Cambridge. Steve Kelly (Oxford) and Matt MacManes (University of New Hampshire) helped conceive and refine metrics.</p>
+<p>Transrate was conceived and led by Richard Smith-Unna (RSU) and written by RSU and Chris Boursnell under the guidance of <a href="http://hibberdlab.com">Professor Julian Hibberd</a> at the University of Cambridge. <a href="http://www.stevekellylab.com/">Steve Kelly</a> (Oxford) and <a href="http://genomebio.org/">Matt MacManes</a> (University of New Hampshire) helped conceive and refine metrics.</p>
 
-<p>We welcome collaboration - if you'd like help with your transcriptome project please send an email: <a href="mailto:rds45@cam.ac.uk">rds45@cam.ac.uk</a>. We also welcome contributions to the code base - please see the <a href="https://github.com/Blahah/transrate">README in the Github repo</a>.</p>
+<p>We welcome collaboration - if you'd like help with your transcriptome project please send an email to <a href="mailto:rds45@cam.ac.uk">rds45@cam.ac.uk</a>.</p>
+
+<p>We also welcome contributions to the code base - please see the <a href="https://github.com/Blahah/transrate">README in the Github repo</a>.</p>
 
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-<p>If you're having trouble with transrate, please first consult the documentation. If you can't find the answer to your question, you can search the <a href="https://groups.google.com/forum/#!forum/transrate-users">user forum</a>. If you still can't find the answer, please post details of your question to the user forum. If you're sure the problem you're encountering is a bug, please post it to the <a href="https://github.com/Blahah/transrate/issues?state=open">issue tracker</a> and we'll fix it.</p>
+<p>If you're having trouble with transrate, please first consult the documentation.</p>
+
+<p>If you can't find the answer to your question, you can search the <a href="https://groups.google.com/forum/#!forum/transrate-users">user forum</a>. If you still can't find the answer, please post details of your question to the user forum. If you're sure the problem you're encountering is a bug, please post it to the <a href="https://github.com/Blahah/transrate/issues?state=open">issue tracker</a> and we'll fix it.</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/HibberdLab">HibberdLab</a></p>
