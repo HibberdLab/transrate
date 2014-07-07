@@ -1,9 +1,8 @@
-
-http://hibberdlab.com/transrate/cl_options.html
-http://hibberdlab.com/transrate/getting_started.html
-http://hibberdlab.com/transrate/index.html
-http://hibberdlab.com/transrate/metrics.html
-http://hibberdlab.com/transrate/options.html
-http://hibberdlab.com/transrate/sitemap.txt
-
-http://hibberdlab.com/transrate/lessons/2011/12/29/jekyll-introduction
+---
+# Remember to set production_url in your _config.yml file!
+title : Sitemap
+---
+{% for page in site.pages %}
+{{site.production_url}}{{ page.url }}{% endfor %}
+{% for post in site.posts %}
+{{site.production_url}}{{ post.url }}{% endfor %}
