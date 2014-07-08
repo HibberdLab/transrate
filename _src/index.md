@@ -19,7 +19,7 @@ Transrate analyses an assembly in three key ways:
 2. by mapping reads to the contigs and inspecting the alignments
 3. by aligning the contigs against proteins from a related species and inspecting the alignments
 
-You can read about these in detail on the [transcriptome assembly metrics](metrics.html) page.
+You can read about these analyses in detail on the [transcriptome assembly metrics](metrics.html) page.
 
 ## Installation
 
@@ -29,7 +29,7 @@ If you've got Ruby v2.0.0 or later, simply install Transrate with the command:
 gem install transrate
 ```
 
-Transrate depends on some external tools that can't be installed by the transrate installer, including BLAST+ and Bowtie2. However, Transrate is able to detect any missing tools and install them itself. You should let it do this before trying to use Transrate. Just run the command:
+Transrate depends on some external tools that can't be installed by the transrate installer, including BLAST+ and Bowtie2. You can install these dependencies yourself, or you can let Transrate do it for you by running the command:
 
 ```
 transrate --install-deps
