@@ -169,20 +169,24 @@ p cov95                   0.07
 
 | name          | explanation  | optimum
 | ------------- |:-------------|:----
-| CRBB hits | the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled. | As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference.
-| contig hit rate | the proportion of contigs having a reciprocal best hit | As high as possible (see above)
-| reference hit rate | the proportion of reference sequences having a reciprocal best hit | As high as possible (see above)
-| ortholog hit ratio | the mean ratio of alignment length to reference sequence length. A low score on this metric indicates the assembly contains full-length transcripts. |  Close to 1
-| collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place.
+| CRBB hits | the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled. | As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference. |
+| p contigs with CRBB | the proportion of contigs with a CRB-BLAST hit | 1 |
+| n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
+| p contigs with CRBB | the proportion of contigs with a CRB-BLAST hit | 1 |
+| n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
+| reference coverage | the proportion of reference bases covered by a CRB-BLAST hit | As high as possible (see above) |
+| collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
+| covX | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | All of them |
+| p covX | proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | 1 |
 
 ## Total assembly score
 
 A total assembly score can calculated by combining the other metrics. It takes into account:
 
-- the **proportion of the read pairs that map in a biologically plausible way** ('good')
+- the **proportion of the read pairs that map in a biologically plausible way** ('pc good mappings')
 - the **proportion of the reference sequences having reciprocal best hits** ('rhr')
 - the **mean ratio of alignment length to references sequence length** ('ohr')
 
 The score is produced by taking the euclidean distance from the point [0, 0] of the assembly score described by the formula:
 
- (**good**, **rhr** \* **ohr**)
+ (**good mappings**, )
