@@ -35,14 +35,15 @@ Transrate depends on some external tools that can't be installed by the transrat
 transrate --install-deps
 ```
 
-If you don't have Ruby installed, you should install the latest version using the Ruby Version Manager: [RVM.io](http://rvm.io), then install transrate as above.
+If you don't have at least v2.0 of Ruby installed, you should install the latest version using the Ruby Version Manager: [RVM.io](http://rvm.io), then install transrate as above.
 
 ## The command-line interface
 
 Running `transrate --help` will show you the command-line interface:
 
 ```
-  Transrate v0.2.0 by Richard Smith-Unna <rds45@cam.ac.uk> and Chris Boursnell.
+  Transrate v0.2.0 by Richard Smith-Unna <rds45@cam.ac.uk>
+                  and Chris Boursnell.
 
   DESCRIPTION:
   Analyse a de-novo transcriptome
@@ -69,8 +70,10 @@ Running `transrate --help` will show you the command-line interface:
   --insertsize, -n <i>:   mean insert size (default: 200)
     --insertsd, -s <i>:   insert size standard deviation (default: 50)
      --threads, -t <i>:   number of threads to use (default: 8)
-     --outfile, -o <s>:   filename to use for CSV output (default: transate_results.csv)
-    --loglevel, -g <s>:   the amount of information to print. one of [error, info, warn, debug] (default: info)
+     --outfile, -o <s>:   filename to use for CSV output
+                          (default: transate_results.csv)
+    --loglevel, -g <s>:   the amount of information to print.
+                          one of [error, info, warn, debug] (default: info)
     --install-deps, -d:   install any missing dependencies
          --profile, -p:   debug option: profile the code as it runs
          --version, -v:   Print version and exit
