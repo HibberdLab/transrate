@@ -29,13 +29,13 @@ You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA
 
 For example if you have the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
 
-```
+```bash
 $ transrate --assembly assembly.fa --left left.fq --right right.fq
 ```
 
 Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
 
-```
+```bash
 $ transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
 ```
 
@@ -63,13 +63,13 @@ You can compare your assembly to a reference set of proteins from a related spec
 
 For example if you have the assembly in the file `assembly.fa` and the reference in the file `reference.fa`:
 
-```
+```bash
 $ transrate --assembly assembly.fa --reference reference.fa
 ```
 
 This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:
 
-```
+```bash
 $ transrate --assembly assembly.fa --reference reference.fa --threads 32
 ```
 

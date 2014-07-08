@@ -25,14 +25,14 @@ You can read about these analyses in detail on the [transcriptome assembly metri
 
 If you've got Ruby v2.0.0 or later, simply install Transrate with the command:
 
-```
-gem install transrate
+```bash
+$ gem install transrate
 ```
 
 Transrate depends on some external tools that can't be installed by the transrate installer, including BLAST+ and Bowtie2. You can install these dependencies yourself, or you can let Transrate do it for you by running the command:
 
-```
-transrate --install-deps
+```bash
+$ transrate --install-deps
 ```
 
 If you don't have at least v2 Ruby installed, you should install the latest version using the Ruby Version Manager: [RVM.io](http://rvm.io), then install transrate as above.
