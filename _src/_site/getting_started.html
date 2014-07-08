@@ -65,10 +65,10 @@
 <p>You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.</p>
 
 <p>For example if you have the assembly in the file <code>assembly.fa</code> and the reads in <code>left.fq</code> and <code>right.fq</code>:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ transrate --assembly assembly.fa --left left.fq --right right.fq
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --left left.fq --right right.fq
 </code></pre></div>
 <p>Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the <code>--threads</code> option. For example if you have 32 cores:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
 </code></pre></div>
 <p>Learn about what the results mean by reading the <a href="http://hibberdlab.com/transrate/metrics.html#read-mapping-metrics">read mapping metrics  documentation</a>.</p>
 
@@ -95,10 +95,10 @@
 <p>You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.</p>
 
 <p>For example if you have the assembly in the file <code>assembly.fa</code> and the reference in the file <code>reference.fa</code>:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ transrate --assembly assembly.fa --reference reference.fa
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --reference reference.fa
 </code></pre></div>
 <p>This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ transrate --assembly assembly.fa --reference reference.fa --threads 32
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --reference reference.fa --threads 32
 </code></pre></div>
 <h3 id="toc_5">Choosing a reference</h3>
 
