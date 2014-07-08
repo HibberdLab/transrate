@@ -178,15 +178,3 @@ p cov95                   0.07
 | collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
 | covX | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | All of them |
 | p covX | proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | 1 |
-
-## Total assembly score
-
-A total assembly score can calculated by combining the other metrics. It takes into account:
-
-- the **proportion of the read pairs that map in a biologically plausible way** ('pc good mappings')
-- the **proportion of the reference sequences having reciprocal best hits** ('rhr')
-- the **mean ratio of alignment length to references sequence length** ('ohr')
-
-The score is produced by taking the euclidean distance from the point [0, 0] of the assembly score described by the formula:
-
- (**good mappings**, )
