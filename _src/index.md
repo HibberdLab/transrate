@@ -35,49 +35,49 @@ Transrate depends on some external tools that can't be installed by the transrat
 transrate --install-deps
 ```
 
-If you don't have at least v2.0 of Ruby installed, you should install the latest version using the Ruby Version Manager: [RVM.io](http://rvm.io), then install transrate as above.
+If you don't have at least v2 Ruby installed, you should install the latest version using the Ruby Version Manager: [RVM.io](http://rvm.io), then install transrate as above.
 
 ## The command-line interface
 
 Running `transrate --help` will show you the command-line interface:
 
 ```
-  Transrate v0.2.0 by Richard Smith-Unna <rds45@cam.ac.uk>
-                  and Chris Boursnell.
+Transrate v0.2.0 by Richard Smith-Unna <rds45@cam.ac.uk>
+                and Chris Boursnell.
 
-  DESCRIPTION:
-  Analyse a de-novo transcriptome
-  assembly using three kinds of metrics:
+DESCRIPTION:
+Analyse a de-novo transcriptome
+assembly using three kinds of metrics:
 
-  1. contig-based
-  2. read-mapping (if --left and --right are provided)
-  3. reference-based (if --reference is provided)
+1. contig-based
+2. read-mapping (if --left and --right are provided)
+3. reference-based (if --reference is provided)
 
-  Bug reports and feature requests at:
-  http://github.com/blahah/transrate
+Bug reports and feature requests at:
+http://github.com/blahah/transrate
 
-  USAGE:
-  transrate <options>
+USAGE:
+transrate <options>
 
-  EXAMPLES:
-  transrate --assembly contigs.fa --reference Athaliana_protein.fa --threads 8
+EXAMPLES:
+transrate --assembly contigs.fa --reference Athaliana_protein.fa --threads 8
 
-  OPTIONS:
-    --assembly, -a <s>:   assembly file(s) in FASTA format, comma-separated
-   --reference, -r <s>:   reference proteome file in FASTA format
-        --left, -l <s>:   left reads file in FASTQ format
-       --right, -i <s>:   right reads file in FASTQ format
-  --insertsize, -n <i>:   mean insert size (default: 200)
-    --insertsd, -s <i>:   insert size standard deviation (default: 50)
-     --threads, -t <i>:   number of threads to use (default: 8)
-     --outfile, -o <s>:   filename to use for CSV output
-                          (default: transate_results.csv)
-    --loglevel, -g <s>:   the amount of information to print.
-                          one of [error, info, warn, debug] (default: info)
-    --install-deps, -d:   install any missing dependencies
-         --profile, -p:   debug option: profile the code as it runs
-         --version, -v:   Print version and exit
-            --help, -h:   Show this message
+OPTIONS:
+  --assembly, -a <s>:   assembly file(s) in FASTA format, comma-separated
+ --reference, -r <s>:   reference proteome file in FASTA format
+      --left, -l <s>:   left reads file in FASTQ format
+     --right, -i <s>:   right reads file in FASTQ format
+--insertsize, -n <i>:   mean insert size (default: 200)
+  --insertsd, -s <i>:   insert size standard deviation (default: 50)
+   --threads, -t <i>:   number of threads to use (default: 8)
+   --outfile, -o <s>:   filename to use for CSV output
+                        (default: transate_results.csv)
+  --loglevel, -g <s>:   the amount of information to print.
+                        one of [error, info, warn, debug] (default: info)
+  --install-deps, -d:   install any missing dependencies
+       --profile, -p:   debug option: profile the code as it runs
+       --version, -v:   Print version and exit
+          --help, -h:   Show this message
 ```
 
 See the [getting started guide](getting_started.html) for more instructions, and see the [command-line options](options.html) part of the manual for details.
