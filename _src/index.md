@@ -7,9 +7,7 @@ title: "Transrate"
 
 Transcriptome assembly is hard. The algorithms are complex, the data are messy, and it's often not clear how to determine whether an assembly is suitable for answering a biological question.
 
-Transrate tries to help by examining your assembly in detail and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, and helps you decide when to stop trying to improve the assembly.
-
-Read the [getting started guide](getting_started.html).
+Transrate helps by examining your assembly in detail and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, and helps you decide when to stop trying to improve the assembly.
 
 ## Overview
 
@@ -80,7 +78,7 @@ OPTIONS:
           --help, -h:   Show this message
 ```
 
-See the [getting started guide](getting_started.html) for more instructions, and see the [command-line options](options.html) part of the manual for details.
+See the [getting started guide](getting_started.html) for more instructions.
 
 ## Authors and Contributors
 
