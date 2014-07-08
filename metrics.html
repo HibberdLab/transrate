@@ -344,24 +344,44 @@ p cov95                   0.07
 <td align="left">As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference.</td>
 </tr>
 <tr>
-<td>contig hit rate</td>
-<td align="left">the proportion of contigs having a reciprocal best hit</td>
-<td align="left">As high as possible (see above)</td>
+<td>p contigs with CRBB</td>
+<td align="left">the proportion of contigs with a CRB-BLAST hit</td>
+<td align="left">1</td>
 </tr>
 <tr>
-<td>reference hit rate</td>
-<td align="left">the proportion of reference sequences having a reciprocal best hit</td>
-<td align="left">As high as possible (see above)</td>
+<td>n contigs with CRBB</td>
+<td align="left">the number of contigs with a CRB-BLAST hit</td>
+<td align="left"><code>n seqs</code></td>
 </tr>
 <tr>
-<td>ortholog hit ratio</td>
-<td align="left">the mean ratio of alignment length to reference sequence length. A low score on this metric indicates the assembly contains full-length transcripts.</td>
-<td align="left">Close to 1</td>
+<td>p contigs with CRBB</td>
+<td align="left">the proportion of contigs with a CRB-BLAST hit</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td>n contigs with CRBB</td>
+<td align="left">the number of contigs with a CRB-BLAST hit</td>
+<td align="left"><code>n seqs</code></td>
+</tr>
+<tr>
+<td>reference coverage</td>
+<td align="left">the proportion of reference bases covered by a CRB-BLAST hit</td>
+<td align="left">As high as possible (see above)</td>
 </tr>
 <tr>
 <td>collapse factor</td>
-<td align="left">the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras.</td>
+<td align="left">the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families.</td>
 <td align="left">Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place.</td>
+</tr>
+<tr>
+<td>covX</td>
+<td align="left">number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit</td>
+<td align="left">All of them</td>
+</tr>
+<tr>
+<td>p covX</td>
+<td align="left">proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit</td>
+<td align="left">1</td>
 </tr>
 </tbody></table>
 
@@ -370,14 +390,14 @@ p cov95                   0.07
 <p>A total assembly score can calculated by combining the other metrics. It takes into account:</p>
 
 <ul>
-<li>the <strong>proportion of the read pairs that map in a biologically plausible way</strong> (&#39;good&#39;)</li>
+<li>the <strong>proportion of the read pairs that map in a biologically plausible way</strong> (&#39;pc good mappings&#39;)</li>
 <li>the <strong>proportion of the reference sequences having reciprocal best hits</strong> (&#39;rhr&#39;)</li>
 <li>the <strong>mean ratio of alignment length to references sequence length</strong> (&#39;ohr&#39;)</li>
 </ul>
 
 <p>The score is produced by taking the euclidean distance from the point [0, 0] of the assembly score described by the formula:</p>
 
-<p>(**good**, <strong>rhr</strong> * <strong>ohr</strong>)</p>
+<p>(**good mappings**, )</p>
 
   </div>
 </div>
