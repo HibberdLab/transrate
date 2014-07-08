@@ -1,6 +1,6 @@
 #! /bin/sh
 jekyll build
-cp -rf site/* ../
+cp -rf _site/* ../
 cd ..
 git add .
 git commit -m 'rebuild'
