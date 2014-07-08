@@ -11,22 +11,26 @@ If you haven't already, follow the [installation instructions](http://hibberdlab
 
 ## Examining your contigs
 
-You can examine your contigs without using the reads or a reference. You only need the assembly in FASTA format. If the assembly is in the file `assembly.fa`:
+You can examine your contigs without using the reads or a reference. All you need is the assembly in FASTA format.
 
-```
+For example if you have the assembly in the file `assembly.fa`:
+
+```bash
 $ transrate --assembly assembly.fa
 ```
 
 This analysis should run relatively fast (a few seconds to a few minutes depending on the size of your assembly and the speed of your computer).
 
-To understand what these metrics mean, read [contig metrics](metrics.html#contig-metrics).
+To understand what these metrics mean, read the [contig metrics documentation](metrics.html#contig-metrics).
 
 ## Using reads
 
-You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads. With the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
+You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.
+
+For example if you have the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
 
 ```
-$ transrate --assembly assembly.fa --reference reference.faa
+$ transrate --assembly assembly.fa --left left.fq --right right.fq
 ```
 
 Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
@@ -34,6 +38,8 @@ Transrate uses Bowtie2 to align the reads, which can take a long time if you hav
 ```
 $ transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
 ```
+
+Learn about what the results mean by reading the [read mapping metrics  documentation](http://hibberdlab.com/transrate/metrics.html#read-mapping-metrics).
 
 ### Choosing the right reads
 
@@ -47,22 +53,24 @@ If you did any of the following you should think about which stage you want to u
 
 If you use the raw reads before any treatment you are likely to get an unclear answer, because low quality reads/bases and sequencing errors can be confused with poor assembly. We therefore do not recommend using raw reads.
 
-If you performed quality and/or adapter trimming and filtering and/or error correction you should use the final output from the entire process. For example if you ran Trimmomatic and then BayesHAMMER, use the output from BayesHAMMER as te input to Transrate. This is because these procedures are trying to reconstruct the true sequences of the reads, and should (theoretically) be producing a more accurate set of experimental evidence for the content of the transcriptome.
+If you performed quality and/or adapter trimming and filtering and/or error correction you should use the final output from this entire process. For example if you ran Trimmomatic and then BayesHAMMER, use the output from BayesHAMMER as the input to Transrate. This is because these procedures are trying to reconstruct the true sequences of the reads, and should (theoretically) be producing a more accurate set of experimental evidence for the content of the transcriptome.
 
 If you performed coverage normalisation at the end of any read processing pipeline, it is up to you whether to use the normalised reads or the processed reads prior to normalisation. We recommend using normalised reads because it makes the analysis much faster and in our experience the results are extremely similar except for the time taken. Bear in mind that coverage will be capped if you use normalised reads, so the mean coverage statistic will be lower. All other statistics should be unaffected.
 
 ## Using a reference
 
-You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format. With the assembly in the file `assembly.fa` and the reference in the file `reference.faa`:
+You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.
+
+For example if you have the assembly in the file `assembly.fa` and the reference in the file `reference.fa`:
 
 ```
-$ transrate --assembly assembly.fa --reference reference.faa
+$ transrate --assembly assembly.fa --reference reference.fa
 ```
 
 This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:
 
 ```
-$ transrate --assembly assembly.fa --reference reference.faa --threads 32
+$ transrate --assembly assembly.fa --reference reference.fa --threads 32
 ```
 
 ### Choosing a reference
@@ -79,4 +87,4 @@ It is sometimes useful to evaluate the quality of a de-novo transcriptome assemb
 
 ## Comparing two or more assemblies
 
-You can easily compare multiple assemblies using Tras
+You can easily compare multiple assemblies using Transrate.
