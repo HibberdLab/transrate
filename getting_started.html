@@ -45,7 +45,9 @@
 
 <div class="row">
   <div class="span14">
-    <h2 id="toc_0">Installing transrate</h2>
+    <p>This guide will take you through the basic ways of using Transrate. It&#39;s worth reading through once even if you&#39;re familiar with running command-line tools, as it provides guidance about proper selection of input data.</p>
+
+<h2 id="toc_0">Installing transrate</h2>
 
 <p>If you haven&#39;t already, follow the <a href="http://hibberdlab.com/transrate/#installation">installation instructions</a> on the home page.</p>
 
@@ -60,7 +62,7 @@
 
 <p>To understand what these metrics mean, read the <a href="metrics.html#contig-metrics">contig metrics documentation</a>.</p>
 
-<h2 id="toc_2">Using reads</h2>
+<h2 id="toc_2">Using read evidence</h2>
 
 <p>You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.</p>
 
@@ -90,7 +92,7 @@
 
 <p>If you performed coverage normalisation at the end of any read processing pipeline, it is up to you whether to use the normalised reads or the processed reads prior to normalisation. We recommend using normalised reads because it makes the analysis much faster and in our experience the results are extremely similar except for the time taken. Bear in mind that coverage will be capped if you use normalised reads, so the mean coverage statistic will be lower. All other statistics should be unaffected.</p>
 
-<h2 id="toc_4">Using a reference</h2>
+<h2 id="toc_4">Using reference proteins as evidence</h2>
 
 <p>You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.</p>
 
