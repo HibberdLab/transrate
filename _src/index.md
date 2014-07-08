@@ -94,6 +94,6 @@ We also welcome contributions to the code base - please see the [README in the G
 
 If you're having trouble with transrate, please first consult the documentation.
 
-If you can't find the answer to your question, you can search the [user forum](https://groups.google.com/forum/#!forum/transrate-users). If you still can't find the answer, please post details of your question to the user forum.
+If you can't find the answer to your question, you can search the [user forum](https://groups.google.com/forum/#!forum/transrate-users). If you still can't find the answer, please make a new post to the user forum describing the trouble you're having.
 
 If you're sure the problem you're encountering is a bug, please post it to the [issue tracker](https://github.com/Blahah/transrate/issues?state=open) and we'll fix it.
