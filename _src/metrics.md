@@ -51,8 +51,9 @@ linguistic complexity           0.1
 | largest | the size of the largest contig |
 | n_bases | the number of bases included in the assembly |
 | mean_len | the mean length of the contigs |
-| n > 1k | the number of contigs greater than 1,000 bases long |
-| n > 10k | the number of contigs greater than 10,000 bases long |
+| n under 200 | the number of contigs shorter than 200 bases |
+| n over 1k | the number of contigs greater than 1,000 bases long |
+| n over 10k | the number of contigs greater than 10,000 bases long |
 | n with orf | the number of contigs that had an open reading frame |
 | mean orf percent | the mean percent of the contig covered by an ORF |
 | NX (e.g. N50) | the largest contig size at which at least X% of bases are contained in contigs at least this length |
