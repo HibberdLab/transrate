@@ -28,7 +28,7 @@
           <a href="index.html" class="button"><strong>Home</strong></a>
          <a href="getting_started.html" class="button"><strong>Getting Started</strong></a>
           <a href="metrics.html" class="button"><strong>Metrics</strong></a>
-          <a href="options.html" class="button"><strong>Options</strong></a>
+          <!-- <a href="options.html" class="button"><strong>Options</strong></a> -->
         </div>
 
       </div><!-- end banner -->
@@ -67,10 +67,15 @@
 <p>You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.</p>
 
 <p>For example if you have the assembly in the file <code>assembly.fa</code> and the reads in <code>left.fq</code> and <code>right.fq</code>:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --left left.fq --right right.fq
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --left left.fq <span class="se">\</span>
+            --right right.fq
 </code></pre></div>
 <p>Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the <code>--threads</code> option. For example if you have 32 cores:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --left left.fq <span class="se">\</span>
+            --right right.fq <span class="se">\</span>
+            --threads 32
 </code></pre></div>
 <p>Learn about what the results mean by reading the <a href="http://hibberdlab.com/transrate/metrics.html#read-mapping-metrics">read mapping metrics  documentation</a>.</p>
 
@@ -112,11 +117,23 @@
 
 <h3 id="toc_6">Using the same species as a reference</h3>
 
-<p>It is sometimes useful to evaluate the quality of a de-novo transcriptome assembly even though a species has a well-annotated reference genome and transcriptome. To do this you can use the reference transcriptome as the reference in transrate. In this case you should <em>not</em> choose the &#39;single representative transcript per locus&#39; dataset, but should take the full set of transcripts. This allows you to evaluate true isoform reconstruction.</p>
+<p>It is sometimes useful to evaluate the quality of a de-novo transcriptome assembly even though a species has a well-annotated reference genome and transcriptome. To do this you can use the reference transcriptome as the reference in transrate. In this case you should <em>not</em> choose the &#39;single representative transcript per locus&#39; dataset, but should take the full set of transcripts. This allows you to evaluate how well isoforms are reconstructed.</p>
 
 <h2 id="toc_7">Comparing two or more assemblies</h2>
 
-<p>You can easily compare multiple assemblies using Transrate.</p>
+<p>You can easily compare multiple assemblies using Transrate. To do this you need each of the assemblies in a FASTA file, and then provide a comma-separated list with <strong>no spaces</strong> to the <code>--assembly</code> option.</p>
+
+<p>For example if you have two assemblies, <code>one.fa</code> and <code>two.fa</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly one.fa,two.fa
+</code></pre></div>
+<p>You can of course still perform all the more advanced analyses, e.g.:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly one.fa,two.fa <span class="se">\</span>
+            --reference ref.fa <span class="se">\</span>
+            --left left.fq
+            --right right.fq
+            --threads 32
+</code></pre></div>
+<p>Transrate will run all the specified analyses for each assembly and will write the results to a file called <code>transrate.csv</code> with one row per assembly and one column for each metric.</p>
 
   </div>
 </div>
