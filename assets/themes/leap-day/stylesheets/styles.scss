@@ -142,7 +142,7 @@ blockquote {
 
 pre {
   padding:8px 15px;
-  background: #333333;  
+  background: #333333;
   @include border-radius(3px);
   border:1px solid #c7c7c7;
   overflow: auto;
@@ -177,7 +177,7 @@ table {
   border-collapse:collapse;
 }
 
-th { 
+th {
   text-align:left;
   padding:5px 10px;
   border-bottom:1px solid #e5e5e5;
@@ -209,7 +209,7 @@ dt {
 }
 
 header {
-  padding: 25px 20px 40px 20px;
+  padding: 25px 0px 40px 0px;
   margin: 0;
   position: fixed;
   top: 0;
@@ -224,7 +224,7 @@ header {
   min-height: 76px;
 
   h1 {
-    font: 34px/48px 'Copse', "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    font: 34px/48px 'Copse', "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #f3f3f3;
     @include text-shadow(0px 2px 0px #235796);
     margin: 0px;
@@ -235,7 +235,7 @@ header {
     -ms-text-overflow: ellipsis;
   }
 
-  p {  
+  p {
     color: #d8d8d8;
     text-shadow:rgba(#000, 0.2) 0 1px 0;
     font-size: 18px;
@@ -245,7 +245,7 @@ header {
 
 #banner {
   z-index: 100;
-  left:0; 
+  left:0;
   right:50%;
   height: 50px;
   margin-right:-382px;
@@ -256,7 +256,7 @@ header {
   @include box-shadow(0px 1px 3px rgba(0,0,0,.25));
   @include border-radius(0px 2px 2px 0px);
   padding-right: 10px;
-  
+
   .button {
     border: 1px solid #dba500;
     @include background(linear_gradient(rgb(255, 231, 136), rgb(255, 206, 56)));
@@ -272,13 +272,13 @@ header {
     font-weight: bold;
     display:inline-block;
     text-align:center;
-  
+
     &:hover {
       @include background(linear_gradient(rgb(255, 231, 136), rgb(255, 231, 136)));
       background-color: #ffeca0;
     }
   }
-  
+
   .fork {
     position:fixed;
     left:50%;
@@ -293,7 +293,7 @@ header {
   .downloads {
     float: right;
     margin:0 45px 0 0;
-    
+
     span {
       float:left;
       line-height:52px;
@@ -306,15 +306,15 @@ header {
 
   ul {
     list-style:none;
-    height:40px; 
+    height:40px;
     padding:0;
     float: left;
     margin-left:10px;
-    
+
     li {
       display:inline;
-      
-      a.button {    
+
+      a.button {
         background-color: #FFE788;
       }
     }
@@ -340,7 +340,7 @@ section {
   background: #fbfbfb;
   @include border-radius(3px);
   border: 1px solid #cbcbcb;
-  @include box-shadow(0px 1px 2px rgba(0,0,0,.09), inset 0px 0px 2px 2px rgba(255,255,255,.5), inset 0 0 5px 5px rgba(255,255,255,.4));  
+  @include box-shadow(0px 1px 2px rgba(0,0,0,.09), inset 0px 0px 2px 2px rgba(255,255,255,.5), inset 0 0 5px 5px rgba(255,255,255,.4));
 }
 
 small {
@@ -377,7 +377,7 @@ nav {
         }
 
         + .tag-h2 {
-          
+
         }
       }
 
@@ -388,8 +388,8 @@ nav {
         }
       }
     }
-    
-    a { 
+
+    a {
       color: #666;
 
       &:hover { color: #999; }
@@ -397,7 +397,7 @@ nav {
 
     // .active {
     //   border-right:solid 4px #39C;
-    //   padding-right:13px;    
+    //   padding-right:13px;
     // }
   }
 }
@@ -413,12 +413,12 @@ footer {
 }
 
 @media print, screen and (max-width: 1060px) {
-  
+
   div.wrapper {
     width:auto;
     margin:0;
   }
-  
+
   nav{
     display: none;
   }
@@ -441,11 +441,11 @@ footer {
     .downloads {
         margin-right: 60px;
       }
-    
+
     .fork {
     }
-    
-    #logo { 
+
+    #logo {
       margin-right: 15px;
     }
   }
@@ -464,7 +464,7 @@ footer {
     position: relative;
     left:auto;
     bottom:auto;
-    width:auto;  
+    width:auto;
   }
 }
 
@@ -472,11 +472,11 @@ footer {
   body {
     word-wrap:break-word;
   }
-  
+
   header {
-    padding:20px 20px;
+    padding:20px 0px;
     margin: 0;
-    
+
     h1 {
       font-size: 32px;
       white-space: nowrap;
@@ -485,10 +485,10 @@ footer {
       -o-text-overflow: ellipsis;
       -ms-text-overflow: ellipsis;
     }
-    
+
     p { display: none;}
   }
-  
+
   #banner {
     top: 80px;
 
@@ -522,7 +522,7 @@ footer {
     padding: 5px 0px;
     min-height: 0px;
 
-    h1 { 
+    h1 {
       font-size: 24px;
       white-space: nowrap;
       overflow: hidden;
@@ -531,7 +531,7 @@ footer {
       -ms-text-overflow: ellipsis;
     }
   }
-  section { 
+  section {
     margin-top: 5px;
   }
 
@@ -550,7 +550,7 @@ footer {
 }
 
 @media print, screen and (max-height: 680px) {
-  
+
   footer {
     text-align: center;
     margin: 20px auto;
@@ -565,7 +565,7 @@ footer {
   nav {
     display: none;
   }
-  
+
   footer {
     text-align: center;
     margin: 20px auto;
