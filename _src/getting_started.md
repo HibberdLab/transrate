@@ -32,13 +32,18 @@ You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA
 For example if you have the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
 
 ```bash
-$ transrate --assembly assembly.fa --left left.fq --right right.fq
+$ transrate --assembly assembly.fa \
+            --left left.fq \
+            --right right.fq
 ```
 
 Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
 
 ```bash
-$ transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
+$ transrate --assembly assembly.fa \
+            --left left.fq \
+            --right right.fq \
+            --threads 32
 ```
 
 Learn about what the results mean by reading the [read mapping metrics  documentation](http://hibberdlab.com/transrate/metrics.html#read-mapping-metrics).
@@ -85,8 +90,26 @@ If your reference is from a species that is not very closely related, it is grea
 
 ### Using the same species as a reference
 
-It is sometimes useful to evaluate the quality of a de-novo transcriptome assembly even though a species has a well-annotated reference genome and transcriptome. To do this you can use the reference transcriptome as the reference in transrate. In this case you should *not* choose the 'single representative transcript per locus' dataset, but should take the full set of transcripts. This allows you to evaluate true isoform reconstruction.
+It is sometimes useful to evaluate the quality of a de-novo transcriptome assembly even though a species has a well-annotated reference genome and transcriptome. To do this you can use the reference transcriptome as the reference in transrate. In this case you should *not* choose the 'single representative transcript per locus' dataset, but should take the full set of transcripts. This allows you to evaluate how well isoforms are reconstructed.
 
 ## Comparing two or more assemblies
 
-You can easily compare multiple assemblies using Transrate.
+You can easily compare multiple assemblies using Transrate. To do this you need each of the assemblies in a FASTA file, and then provide a comma-separated list with **no spaces** to the `--assembly` option.
+
+For example if you have two assemblies, `one.fa` and `two.fa`:
+
+```bash
+$ transrate --assembly one.fa,two.fa
+```
+
+You can of course still perform all the more advanced analyses, e.g.:
+
+```bash
+$ transrate --assembly one.fa,two.fa \
+            --reference ref.fa \
+            --left left.fq
+            --right right.fq
+            --threads 32
+```
+
+Transrate will run all the specified analyses for each assembly and will write the results to a file called `transrate.csv` with one row per assembly and one column for each metric.
