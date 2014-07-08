@@ -95,3 +95,13 @@ If you're having trouble with transrate, please first consult the documentation.
 If you can't find the answer to your question, you can search the [user forum](https://groups.google.com/forum/#!forum/transrate-users). If you still can't find the answer, please make a new post to the user forum describing the trouble you're having.
 
 If you're sure the problem you're encountering is a bug, please post it to the [issue tracker](https://github.com/Blahah/transrate/issues?state=open) and we'll fix it.
+
+## Citation, License & Copyright
+
+Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please use the citation:
+
+> Transrate v0.2.0 (2014) RD Smith-Unna, C Boursnell, S Kelly and JM Hibberd.      http://hibberdlab.com/transrate. DOI: [10.5281/zenodo.10799](http://dx.doi.org/10.5281/zenodo.10799).
+
+Transrate is free open source software, released under the [MIT license](http://blahah.mit-license.org/).
+
+© Richard Smith-Unna 2014.

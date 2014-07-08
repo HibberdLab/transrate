@@ -103,11 +103,16 @@
 <p>You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.</p>
 
 <p>For example if you have the assembly in the file <code>assembly.fa</code> and the reference in the file <code>reference.fa</code>:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --reference reference.fa
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --reference reference.fa
 </code></pre></div>
 <p>This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa --reference reference.fa --threads 32
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --reference reference.fa <span class="se">\</span>
+            --threads 32
 </code></pre></div>
+<p>Learn about what the results mean by reading the <a href="http://hibberdlab.com/transrate/metrics.html#comparative-metrics">comparative metrics  documentation</a>.</p>
+
 <h3 id="toc_5">Choosing a reference</h3>
 
 <p>Which species you choose can strongly affect the results, and how you prepare the reference can make a big difference.</p>

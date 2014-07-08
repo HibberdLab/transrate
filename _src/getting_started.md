@@ -71,14 +71,19 @@ You can compare your assembly to a reference set of proteins from a related spec
 For example if you have the assembly in the file `assembly.fa` and the reference in the file `reference.fa`:
 
 ```bash
-$ transrate --assembly assembly.fa --reference reference.fa
+$ transrate --assembly assembly.fa \
+            --reference reference.fa
 ```
 
 This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:
 
 ```bash
-$ transrate --assembly assembly.fa --reference reference.fa --threads 32
+$ transrate --assembly assembly.fa \
+            --reference reference.fa \
+            --threads 32
 ```
+
+Learn about what the results mean by reading the [comparative metrics  documentation](http://hibberdlab.com/transrate/metrics.html#comparative-metrics).
 
 ### Choosing a reference
 
