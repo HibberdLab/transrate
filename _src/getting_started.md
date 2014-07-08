@@ -5,6 +5,8 @@ description: ""
 ---
 {% include JB/setup %}
 
+This guide will take you through the basic ways of using Transrate. It's worth reading through once even if you're familiar with running command-line tools, as it provides guidance about proper selection of input data.
+
 ## Installing transrate
 
 If you haven't already, follow the [installation instructions](http://hibberdlab.com/transrate/#installation) on the home page.
@@ -23,7 +25,7 @@ This analysis should run relatively fast (a few seconds to a few minutes dependi
 
 To understand what these metrics mean, read the [contig metrics documentation](metrics.html#contig-metrics).
 
-## Using reads
+## Using read evidence
 
 You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.
 
@@ -57,7 +59,7 @@ If you performed quality and/or adapter trimming and filtering and/or error corr
 
 If you performed coverage normalisation at the end of any read processing pipeline, it is up to you whether to use the normalised reads or the processed reads prior to normalisation. We recommend using normalised reads because it makes the analysis much faster and in our experience the results are extremely similar except for the time taken. Bear in mind that coverage will be capped if you use normalised reads, so the mean coverage statistic will be lower. All other statistics should be unaffected.
 
-## Using a reference
+## Using reference proteins as evidence
 
 You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.
 
