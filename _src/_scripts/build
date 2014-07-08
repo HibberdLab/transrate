@@ -1,0 +1,8 @@
+#! /bin/sh
+m -rf ../assets
+jekyll build
+cp _site/* ../
+cd ..
+git add .
+git commit -m 'rebuild'
+git push
