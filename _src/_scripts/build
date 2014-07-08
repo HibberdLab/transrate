@@ -1,5 +1,4 @@
 #! /bin/sh
-m -rf ../assets
 jekyll build
 cp -rf site/* ../
 cd ..
