@@ -4,3 +4,79 @@ title: "Getting Started"
 description: ""
 ---
 {% include JB/setup %}
+
+## Installing transrate
+
+If you haven't already, follow the [installation instructions](http://hibberdlab.com/transrate/#installation) on the home page.
+
+## Examining your contigs
+
+You can examine your contigs without using the reads or a reference. You only need the assembly in FASTA format. If the assembly is in the file `assembly.fa`:
+
+```
+$ transrate --assembly assembly.fa
+```
+
+This analysis should run relatively fast (a few seconds to a few minutes depending on the size of your assembly and the speed of your computer).
+
+To understand what these metrics mean, read [contig metrics](metrics.html#contig-metrics).
+
+## Using reads
+
+You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads. With the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
+
+```
+$ transrate --assembly assembly.fa --reference reference.faa
+```
+
+Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
+
+```
+$ transrate --assembly assembly.fa --left left.fq --right right.fq --threads 32
+```
+
+### Choosing the right reads
+
+It is important that you choose the right set of reads to use for analysis. Different sets of reads correspond to asking different question of the analysis.
+
+If you did any of the following you should think about which stage you want to use reads from:
+
+- quality and/or adapter trimming and filtering (e.g. with Trimmomatic)
+- error correction (e.g. with BayesHAMMER)
+- coverage normalisation (e.g. with khmer normalize-by-median.py)
+
+If you use the raw reads before any treatment you are likely to get an unclear answer, because low quality reads/bases and sequencing errors can be confused with poor assembly. We therefore do not recommend using raw reads.
+
+If you performed quality and/or adapter trimming and filtering and/or error correction you should use the final output from the entire process. For example if you ran Trimmomatic and then BayesHAMMER, use the output from BayesHAMMER as te input to Transrate. This is because these procedures are trying to reconstruct the true sequences of the reads, and should (theoretically) be producing a more accurate set of experimental evidence for the content of the transcriptome.
+
+If you performed coverage normalisation at the end of any read processing pipeline, it is up to you whether to use the normalised reads or the processed reads prior to normalisation. We recommend using normalised reads because it makes the analysis much faster and in our experience the results are extremely similar except for the time taken. Bear in mind that coverage will be capped if you use normalised reads, so the mean coverage statistic will be lower. All other statistics should be unaffected.
+
+## Using a reference
+
+You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format. With the assembly in the file `assembly.fa` and the reference in the file `reference.faa`:
+
+```
+$ transrate --assembly assembly.fa --reference reference.faa
+```
+
+This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:
+
+```
+$ transrate --assembly assembly.fa --reference reference.faa --threads 32
+```
+
+### Choosing a reference
+
+Which species you choose can strongly affect the results, and how you prepare the reference can make a big difference.
+
+The ideal reference is one from a very closely related species that has a well annotated genome. If a well annotated genome is not available from a closely related species, then a set of proteins from a distantly related but well annotated genome is preferable to a closely related but poorly annotated one.
+
+If your reference is from a species that is not very closely related, it is greatly preferable to use a set of proteins with only one protein per protein-coding gene. This is because most annotated genomes will have multiple isoforms for many genes, each producing a protein. The similar isoforms lead to confusing BLAST alignments and lower the quality of the results. For plant species, http://phytozome.net provides a 'single representative transcript per locus' set of proteins for every genome.
+
+### Using the same species as a reference
+
+It is sometimes useful to evaluate the quality of a de-novo transcriptome assembly even though a species has a well-annotated reference genome and transcriptome. To do this you can use the reference transcriptome as the reference in transrate. In this case you should *not* choose the 'single representative transcript per locus' dataset, but should take the full set of transcripts. This allows you to evaluate true isoform reconstruction.
+
+## Comparing two or more assemblies
+
+You can easily compare multiple assemblies using Tras
