@@ -139,7 +139,7 @@ Usually, the closer the reference species is to the species you've assembled, th
 
 Taken with the read mapping metrics, comparative metrics allow you to optimise the quality of your assembly.
 
-When you include the `--reference` option, Transrate will align each contig in your assembly to each protein in the reference using [Conditional Reciprocal Best BLAST](https://github.com/cboursnell/crb-blast) (CRBB). CRBB is a novel algorithm for finding homologous genes developed by [Steve Kelly](http://stevekellylab.com) and described in our paper on long-range comparative transcriptomics [(Aubry at el. 2014)](http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365). CRBB-hits are high-confidence predicted homologs.
+When you include the `--reference` option, Transrate will align each contig in your assembly to each protein in the reference using [Conditional Reciprocal Best BLAST](https://github.com/cboursnell/crb-blast) (CRBB). CRBB is a novel algorithm for finding homologous genes developed by [Steve Kelly](http://stevekellylab.com) and described in our paper on long-range comparative transcriptomics [(Aubry at el. 2014)](http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365). CRBB hits are high-confidence predicted homologs.
 
 CRB-BLAST starts out with bi-directional BLAST+ alignments:
 
