@@ -64,14 +64,17 @@
 
 <h2 id="toc_1">Installation</h2>
 
-<p>If you&#39;ve got Ruby v2.0.0 or later, simply install Transrate with the command:</p>
+<p>You'll need Ruby v2.0.0 or later installed first. You can check whether you have it by running:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>ruby --version</code></pre></div>
+
+<p>If you&#39;ve got <strong>Ruby v2.0.0 or later</strong>, simply install Transrate with the command:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gem install transrate
 </code></pre></div>
 <p>Transrate depends on some external tools that can&#39;t be installed by the transrate installer, including BLAST+ and Bowtie2. You can install these dependencies yourself, or you can let Transrate do it for you by running the command:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps
 </code></pre></div>
-<p>If you don&#39;t have at least v2 Ruby installed, you should install the latest version using the Ruby Version Manager: <a href="http://rvm.io">RVM.io</a>, then install transrate as above.</p>
-
+<p>If you don&#39;t have at least v2.0.0 Ruby installed, you should install the latest version. To install the latest Ruby and transrate, simply run:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>\curl -sSL https://get.rvm.io | bash -s stable --ruby --gems=transrate</code></pre></div>
 <h2 id="toc_2">The command-line interface</h2>
 
 <p>Running <code>transrate --help</code> will show you the command-line interface:</p>
