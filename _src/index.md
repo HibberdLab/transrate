@@ -27,7 +27,7 @@ If you've got Ruby v2.0.0 or later, simply install Transrate with the command:
 $ gem install transrate
 ```
 
-Transrate depends on some external tools that can't be installed by the transrate installer, including BLAST+ and Bowtie2. You can install these dependencies yourself, or you can let Transrate do it for you by running the command:
+Transrate depends on some external tools that can't be installed by the transrate installer, including BLAST+, SNAP and eXpress. You can install these dependencies yourself, or you can let Transrate do it for you by running the command:
 
 ```bash
 $ transrate --install-deps
@@ -40,7 +40,7 @@ If you don't have at least v2 Ruby installed, you should install the latest vers
 Running `transrate --help` will show you the command-line interface:
 
 ```
-Transrate v0.2.0 by Richard Smith-Unna <rds45@cam.ac.uk>
+Transrate v1.0.0alpha by Richard Smith-Unna <rds45@cam.ac.uk>
                 and Chris Boursnell.
 
 DESCRIPTION:
@@ -100,7 +100,7 @@ If you're sure the problem you're encountering is a bug, please post it to the [
 
 Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please use the citation:
 
-> Transrate v0.2.0 (2014) RD Smith-Unna, C Boursnell, S Kelly and JM Hibberd.      http://hibberdlab.com/transrate. DOI: [10.5281/zenodo.10799](http://dx.doi.org/10.5281/zenodo.10799).
+> Transrate v1.0.0alpha (2014) RD Smith-Unna, C Boursnell, S Kelly and JM Hibberd.      http://hibberdlab.com/transrate. DOI: [10.5281/zenodo.10799](http://dx.doi.org/10.5281/zenodo.10799).
 
 Transrate is free open source software, released under the [MIT license](http://blahah.mit-license.org/).
 
