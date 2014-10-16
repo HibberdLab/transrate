@@ -5,13 +5,47 @@ title: Metrics
 
 This page describes the ways Transrate measures an assembly.
 
+By far the most useful metric is the Transrate score. You should read about that first.
+
+## The Transrate score
+
+The Transrate score is an estimate of the probability that the assembly is correct. A score is produced for the whole assembly, and for each contig. The scoring process uses the reads that were used to generate the assembly as evidence - so if you want to get a Transrate score, you need to run transrate in read-metrics mode (by passing in the reads with `--left` and `--right`).
+
+### The assembly score
+
+The assembly score allows you to compare two or more assemblies made with the same reads. The score is designed so that an increased score is very likely to correspond to an assembly that is more biologically accurate.
+
+The score is calculated as the geometric mean of all contig scores multiplied by the proportion of input reads that provide positive support for the assembly.
+
+Thus, the score captures how confident you can be in what was assembled, as well as how complete the assembly is.
+
+## The contig score
+
+Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Examining the distribution of contig scores can also give more detailed insight into the differences between assemblies.
+
+Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as an estimate of the probability that the contig is an accurate, non-redundant representation of a transcript that was present in the sequenced sample
+
+There are five components to the contig score:
+
+1. The probability that each base has been called correctly (``). This is estimated using the mean per-base edit distance, i.e. how many changes would have to be made to a read covering a base before the sequence of the read and the covered region of the contig agreed perfectly.
+2. The probability that each base is truly part of the transcript. This is estimated by determining whether any reads provide agreeing coverage for a base.
+3. The probability that each base is not contained in another contig. This is estimated by considering the root-mean-squared MAPQ score of the reads covering each base.
+4. The probability that the contig is derived from a single transcript (rather than pieces of two or more transcripts). This is estimated by assuming that fragments from different transcripts are likely to be generated at different rates, and that this difference is detectable as a difference in coverage distribution. The probability is then calculated using a bayesian sequence segmentation algorithm which models the coverage distribution as a Dirichlet distribution over a reduced set of finite coverage states.
+5. The probability that the contig is structurally complete and correct. This is estimated as the proportion of mapped read pairs that agree with the structure and composition of the contig, which in turn is calculated by classifying the read pair alignments.
+
+The score is the product of the components.
+
+The score components are useful independently of the contig score, as they can identify contigs that can be treated in different ways to improve the quality of an assembly. See Read Metrics below for details.
+
+## Other metrics
+
 ## Contig metrics
 
 Contig metrics are measures based entirely on analysing the set of contigs themselves.
 
 These metrics are best used only as a quick, crude way of detecting major problems with the assembly.
 
-These are informative, but are only weakly useful for judging assembly quality. For most of these metrics, we don't know what the optimum is, although we can recognise extremely bad values. For example, an extremely small (\<10,000) or extremely large (\>100,000) number of contigs is biologically implausible for most organisms, and therefore might suggest a problem with the assembly.
+They are informative, but are only weakly useful for judging assembly quality. For most of these metrics, we don't know what the optimum is, although we can recognise extremely bad values. For example, an extremely small (\<10,000) or extremely large (\>100,000) number of contigs is biologically implausible for most organisms, and therefore might suggest a problem with the assembly.
 
 You will need to use your biological knowledge about the species you are investigating to decide what values are acceptable.
 
@@ -67,11 +101,17 @@ linguistic complexity           0.1
 
 ## Read mapping metrics
 
-Read mapping metrics are based on aligning the reads used in the assembly to the assembled contigs. These are a way of determining how well the assembly is supported by the original experimental evidence, and can be very useful overall quality metrics. However, they should not be considered alone, as read mapping metrics can be high for very fragmented assemblies.
+Read mapping metrics are based on aligning the reads used in the assembly to the assembled contigs.
 
-These metrics can be useful for optimising your assembly. In particular, we want to maximise the proportion of the read pairs that map to the contigs successfully and in a biologically plausible way.
+These are by far the most useful metrics - better even than comparison to a reference. This is because the reads contain a wealth of information that is specific to the organism you sequenced, and this information can be used to evaluate confidence in each base and contig in the assembly.
 
-When you include the `--left` and `--right` options, Transrate will map the provided reads to the assembly using Bowtie2 and inspect the results. It will output something like:
+If you want to optimise your assembly, we suggest using read-mapping metrics.
+
+When you include the `--left` and `--right` options, Transrate will do the following:
+
+1. map the provided reads to the assembly using [SNAP](snap.cs.berkeley.edu)
+2. infer the most likely contig of origin for any multi-mapping reads with [eXpress](bio.math.berkeley.edu/eXpress/)
+3. inspect the resulting alignments and use them to evaluate confidence each base and contig in the assembly
 
 ```
 Read mapping metrics:
