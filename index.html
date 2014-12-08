@@ -74,7 +74,8 @@
 <h2 id="toc_2">The command-line interface</h2>
 
 <p>Running <code>transrate --help</code> will show you the command-line interface:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  Transrate v1.0.0.alpha.2 by Richard Smith-Unna &lt;rds45@cam.ac.uk&gt;
+<div class="highlight"><pre><code class="text language-text" data-lang="text">  Transrate v1.0.0.beta1
+  by Richard Smith-Unna &lt;rds45@cam.ac.uk&gt; and Chris Boursnell
 
   DESCRIPTION:
   Analyse a de-novo transcriptome assembly using three kinds of metrics:
@@ -90,8 +91,10 @@
   transrate &lt;options&gt;
 
   EXAMPLES:
-  # just check dependencies and install any that are missing
+  # check dependencies and install any that are missing
   transrate --install-deps
+  # get the transrate score for the assembly and each contig
+  transrate --assembly contigs.fa --left left.fq --right right.fq
   # contig metrics only
   transrate --assembly contigs.fa
   # contig and reference-based metrics with 8 threads
@@ -110,7 +113,6 @@
    --loglevel, -g &lt;s&gt;:   the amount of information to print. one of [error,
                          info, warn, debug] (default: info)
    --install-deps, -n:   install any missing dependencies
-        --profile, -p:   debug option: profile the code as it runs
         --version, -v:   Print version and exit
            --help, -h:   Show this message
 </code></pre></div>
