@@ -1,0 +1,457 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Transrate</title>
+    <link rel="stylesheet" href="/assets/themes/leap-day/stylesheets/styles.css">
+    <link rel="stylesheet" href="/assets/themes/leap-day/stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/assets/themes/leap-day/javascripts/main.js"></script>
+    <script src="/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <img class="headlogo" src="/assets/themes/leap-day/images/mainlogo.png">
+      </header>
+
+      <div id="banner">
+        <div style="width: 650px; margin-left: auto; margin-right: auto;">
+          <a href="index.html" class="button"><strong>Home</strong></a>
+          <a href="installation.html" class="button"><strong>Installation</strong></a>
+          <a href="getting_started.html" class="button"><strong>Getting Started</strong></a>
+          <a href="metrics.html" class="button"><strong>Metrics</strong></a>
+          <a href="https://github.com/Blahah/transrate" class="button logo" style="float: right;"><strong>View on Github</strong></a>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        
+<div class="page-header">
+  <h1>Metrics <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span14">
+    <p>This page describes the ways Transrate measures an assembly.</p>
+
+<p>By far the most useful metric is the Transrate score. You should read about that first.</p>
+
+<h2 id="toc_0">The Transrate score</h2>
+
+<p>The Transrate score is an estimate of the probability that the assembly is correct. A score is produced for the whole assembly, and for each contig. The scoring process uses the reads that were used to generate the assembly as evidence - so if you want to get a Transrate score, you need to run transrate in read-metrics mode (by passing in the reads with <code>--left</code> and <code>--right</code>).</p>
+
+<h3 id="toc_1">The assembly score</h3>
+
+<p>The assembly score allows you to compare two or more assemblies made with the same reads. The score is designed so that an increased score is very likely to correspond to an assembly that is more biologically accurate.</p>
+
+<p>The score is calculated as the geometric mean of all contig scores multiplied by the proportion of input reads that provide positive support for the assembly.</p>
+
+<p>Thus, the score captures how confident you can be in what was assembled, as well as how complete the assembly is.</p>
+
+<p>The assembly score for each assembly is printed during a Transrate run, e.g.:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">TRANSRATE ASSEMBLY SCORE: 0.2871
+</code></pre></div>
+<p>It is also saved in the <code>*assemblies.csv</code> file.</p>
+
+<h3 id="toc_2">The contig score</h3>
+
+<p>Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Examining the distribution of contig scores can also give more detailed insight into the differences between assemblies.</p>
+
+<p>Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as an estimate of the probability that the contig is an accurate, non-redundant representation of a transcript that was present in the sequenced sample.</p>
+
+<p>There are four components to the contig score:</p>
+
+<ol>
+<li>The probability that each base has been called correctly. This is estimated using the mean per-base edit distance, i.e. how many changes would have to be made to a read covering a base before the sequence of the read and the covered region of the contig agreed perfectly.</li>
+<li>The probability that each base is truly part of the transcript. This is estimated by determining whether any reads provide agreeing coverage for a base.</li>
+<li>The probability that the contig is derived from a single transcript (rather than pieces of two or more transcripts). This is estimated by assuming that fragments from different transcripts are likely to be generated at different rates, and that this difference is detectable as a difference in coverage distribution. The probability is then calculated using a bayesian sequence segmentation algorithm which models the coverage distribution as a Dirichlet distribution over a reduced set of finite coverage states.</li>
+<li>The probability that the contig is structurally complete and correct. This is estimated as the proportion of mapped read pairs that agree with the structure and composition of the contig, which in turn is calculated by classifying the read pair alignments.</li>
+</ol>
+
+<p>The contig score is the product of the components.</p>
+
+<p>The score components are useful independently of the contig score, as they can identify contigs that can be treated in different ways to improve the quality of an assembly. See Read Metrics below for details.</p>
+
+<p>The contig scores and other metrics for each contig are saved in the <code>*contigs.csv</code> file for each assembly.</p>
+
+<h2 id="toc_3">Contig metrics</h2>
+
+<p>Contig metrics are measures based entirely on analysing the set of contigs themselves.</p>
+
+<p>These metrics are best used only as a quick, crude way of detecting major problems with the assembly.</p>
+
+<p>They are informative, but are only weakly useful for judging assembly quality. For most of these metrics, we don&#39;t know what the optimum is, although we can recognise extremely bad values. For example, an extremely small (&lt;5,000) or extremely large (&gt;100,000) number of contigs is biologically implausible for most organisms, and therefore might suggest a problem with the assembly.</p>
+
+<p>You will need to use your biological knowledge about the species you are investigating to decide what values are acceptable.</p>
+
+<p>Transrate outputs a set of contig metrics that looks like this:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Contig metrics:
+-----------------------------------
+n seqs                       147600
+smallest                         83
+largest                        8133
+n bases                    69200630
+mean len                     447.77
+n under 200                   23838
+n over 1k                     12804
+n over 10k                        0
+n with orf                    24771
+mean orf percent              64.33
+N90                             276
+N70                             441
+N50                             670
+N30                            1021
+N10                            1878
+gc                             0.44
+gc skew                        -0.0
+at skew                        0.01
+cpg ratio                      0.56
+bases n                      178748
+proportion n                    0.0
+linguistic complexity           0.1
+</code></pre></div>
+<table><thead>
+<tr>
+<th>name</th>
+<th align="left">explanation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>n_seqs</td>
+<td align="left">the number of contigs in the assembly</td>
+</tr>
+<tr>
+<td>smallest</td>
+<td align="left">the size of the smallest contig</td>
+</tr>
+<tr>
+<td>largest</td>
+<td align="left">the size of the largest contig</td>
+</tr>
+<tr>
+<td>n_bases</td>
+<td align="left">the number of bases included in the assembly</td>
+</tr>
+<tr>
+<td>mean_len</td>
+<td align="left">the mean length of the contigs</td>
+</tr>
+<tr>
+<td>n under 200</td>
+<td align="left">the number of contigs shorter than 200 bases</td>
+</tr>
+<tr>
+<td>n over 1k</td>
+<td align="left">the number of contigs greater than 1,000 bases long</td>
+</tr>
+<tr>
+<td>n over 10k</td>
+<td align="left">the number of contigs greater than 10,000 bases long</td>
+</tr>
+<tr>
+<td>n with orf</td>
+<td align="left">the number of contigs that had an open reading frame</td>
+</tr>
+<tr>
+<td>mean orf percent</td>
+<td align="left">for contigs with an ORF, the mean % of the contig covered by the ORF</td>
+</tr>
+<tr>
+<td>NX (e.g. N50)</td>
+<td align="left">the largest contig size at which at least X% of bases are contained in contigs at least this length</td>
+</tr>
+<tr>
+<td>gc</td>
+<td align="left">% of bases that are G or C</td>
+</tr>
+<tr>
+<td>gc skew</td>
+<td align="left"><a href="http://en.wikipedia.org/wiki/GC_skew">http://en.wikipedia.org/wiki/GC_skew</a></td>
+</tr>
+<tr>
+<td>at skew</td>
+<td align="left">see GC skew</td>
+</tr>
+<tr>
+<td>cpg ratio</td>
+<td align="left">count of CpG sites relative to expected number (only valid for stranded assemblies)</td>
+</tr>
+<tr>
+<td>bases n</td>
+<td align="left">the number of bases that are N</td>
+</tr>
+<tr>
+<td>proportion n</td>
+<td align="left">the proportion of bases that are N</td>
+</tr>
+<tr>
+<td>linguistic complexity</td>
+<td align="left">the total <a href="http://en.wikipedia.org/wiki/Linguistic_sequence_complexity">linguistic complexity</a> of the assembly</td>
+</tr>
+</tbody></table>
+
+<h2 id="toc_4">Read mapping metrics</h2>
+
+<p>Read mapping metrics are based on aligning the reads used in the assembly to the assembled contigs.</p>
+
+<p>These are by far the most useful metrics - better even than comparison to a reference. This is because the reads contain a wealth of information that is specific to the organism you sequenced, and this information can be used to evaluate confidence in each base and contig in the assembly.</p>
+
+<p>If you want to optimise your assembly, we suggest using read-mapping metrics, in particular the transrate score and contig scores.</p>
+
+<p>When you include the <code>--left</code> and <code>--right</code> options, Transrate will do the following:</p>
+
+<ol>
+<li>map the provided reads to the assembly using <a href="snap.cs.berkeley.edu">SNAP</a></li>
+<li>infer the most likely contig of origin for any multi-mapping reads with <a href="bio.math.berkeley.edu/eXpress/">eXpress</a></li>
+<li>inspect the resulting alignments with <a href="https://github.com/cboursnell/transrate-bam-read">transrate-tools</a> and use them to evaluate confidence each base and contig in the assembly</li>
+</ol>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Read mapping metrics:
+-----------------------------------
+fragments                    689080
+fragments mapped             463918
+p fragments mapped             0.67
+good mappings                335728
+p good mapping                 0.49
+bad mappings                 128190
+potential bridges               209
+bases uncovered                4888
+p bases uncovered               0.0
+contigs uncovbase               380
+p contigs uncovbase            0.36
+contigs uncovered                14
+p contigs uncovered            0.01
+contigs lowcovered              286
+p contigs lowcovered           0.27
+contigs segmented                51
+p contigs segmented            0.05
+contigs good                    828
+p contigs good                 0.78
+</code></pre></div>
+<table><thead>
+<tr>
+<th>name</th>
+<th align="left">explanation</th>
+<th align="left">optimum</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fragments</td>
+<td align="left">the number of read pairs provided</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td>fragments mapped</td>
+<td align="left">the total number of read pairs mapping</td>
+<td align="left">theoretically equal to <code>fragments</code> if all errors, adapters and contamination have been removed</td>
+</tr>
+<tr>
+<td>p fragments mapped</td>
+<td align="left">the proportion of the provided read pairs that mapped successfully</td>
+<td align="left">theoretically 1.0 (see above)</td>
+</tr>
+<tr>
+<td>good mappings</td>
+<td align="left">the number of read pairs mapping in a way indicative of good assembly</td>
+<td align="left">equal to <code>fragments</code></td>
+</tr>
+<tr>
+<td>p good mappings</td>
+<td align="left">the percentage of read pairs mapping in a way indicative of a good assembly</td>
+<td align="left">1.0</td>
+</tr>
+<tr>
+<td>bad mappings</td>
+<td align="left">the number and proportion of reads pairs mapping in a way indicative of bad assembly</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td>potential bridges</td>
+<td align="left">the number of potential links between contigs that are supported by the reads</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td>n bases uncovered</td>
+<td align="left">the number of bases that are not covered by any reads</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td>p bases uncovered</td>
+<td align="left">the proportion of bases that are not covered by any reads</td>
+<td align="left">0.0</td>
+</tr>
+<tr>
+<td>contigs uncovbase</td>
+<td align="left">the number of contigs that contain at least one base with no read coverage</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td>p contigs uncovbase</td>
+<td align="left">the proportion of contigs that contain at least one base with no read coverage</td>
+<td align="left">0.0</td>
+</tr>
+<tr>
+<td>contigs uncovered</td>
+<td align="left">the number of contigs that have a mean per-base read coverage of &lt; 1</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td>p contigs uncovered</td>
+<td align="left">the proportion of contigs that have a mean per-base read coverage of &lt; 1</td>
+<td align="left">0.0</td>
+</tr>
+<tr>
+<td>contigs lowcovered</td>
+<td align="left">the number of contigs that have a mean per-base read coverage of &lt; 10</td>
+<td align="left">no specific optimum</td>
+</tr>
+<tr>
+<td>p contigs lowcovered</td>
+<td align="left">the number of contigs that have a mean per-base read coverage of &lt; 10</td>
+<td align="left">no specific optimum</td>
+</tr>
+</tbody></table>
+
+<h3 id="toc_5">Good and bad mappings</h3>
+
+<p>&#39;Good&#39; mappings are those aligned in a biologically plausible way, i.e.:</p>
+
+<ul>
+<li>where both members of the pair are aligned</li>
+<li>in the correct orientation</li>
+<li>on the same contig</li>
+</ul>
+
+<p>Conversely, &#39;bad&#39; pairs are those where one of the conditions for being &#39;good&#39; are not met.</p>
+
+<h3 id="toc_6">Bridges</h3>
+
+<p>Transrate calculates whether the read mappings contain any evidence that different contigs originate from the same transcript. These theoretical links are called bridges, and the number of bridges is shown in the <strong>supported bridges</strong> metric. A low count of supported bridges could be good or bad depending on the context. If you have a fragmented assembly, a large number of supported bridges means that scaffolding could greatly improve it. On the other hand, a large number of supported bridges in an otherwise seemingly good assembly could be indicative of misassemblies.</p>
+
+<p>The list of supported bridges is output to a file, <code>supported_bridges.csv</code>, in case you want to make use of the information. At a later date, transrate will include the ability to scaffold the assembly using this and other information.</p>
+
+<h2 id="toc_7">Comparative metrics</h2>
+
+<p>Comparative metrics involve comparing the assembly to a related reference species. These metrics are powerful because they are an external validation of the experimental results.</p>
+
+<p>However, comparative metrics are <strong>not ideal for optimising assembly</strong>. This is because comparison to a reference will always penalise genuine biological novelty contained in the assembly. Read metrics are much better for assembly optimisation.</p>
+
+<p>Usually, the closer the reference species is to the species you&#39;ve assembled, the more resolution you will have in your comparative metrics. In other words, there are likely to be more genes shared between closely related species than between distantly related species. This means that you are more likely to be able to distinguish between two assemblies of similar quality by using a closely related reference.</p>
+
+<p>Taken with the read mapping metrics, comparative metrics allow you to optimise the quality of your assembly.</p>
+
+<p>When you include the <code>--reference</code> option, Transrate will align each contig in your assembly to each protein in the reference using <a href="https://github.com/cboursnell/crb-blast">Conditional Reciprocal Best BLAST</a> (CRBB). CRBB is a novel algorithm for finding homologous genes developed by <a href="http://stevekellylab.com">Steve Kelly</a> and described in our paper on long-range comparative transcriptomics <a href="http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365">(Aubry at el. 2014)</a>. CRBB hits are high-confidence predicted homologs.</p>
+
+<p>CRB-BLAST starts out with bi-directional BLAST+ alignments:</p>
+
+<ul>
+<li>assembly -&gt; reference (using blastx)</li>
+<li>reference -&gt; assembly (using tblastn)</li>
+</ul>
+
+<p>It then selects the reciprocal best hits: those where the top match in one direction is the same as the top match in the other direction. These are considered highest confidence predicted homologs, and are used to learn an appropriate e-value cutoff for each length of contig. Finally it selects all alignments with e-values below the cutoff for each length as high-confidence predicted homologs.</p>
+
+<p>Transrate analyses these alignments and produces output like:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Comparative metrics:
+------------------------------
+CRBB hits                 38678
+p contigs with CRBB        0.34
+n contigs with CRBB       38678
+p refs with CRBB           0.33
+n refs with CRBB          12874
+reference coverage        0.65
+collapse factor           9.73
+cov25                    11303
+cov50                     9336
+cov75                     6908
+cov85                     5357
+cov95                     2841
+p cov25                   0.29
+p cov50                   0.24
+p cov75                   0.18
+p cov85                   0.14
+p cov95                   0.07
+</code></pre></div>
+<table><thead>
+<tr>
+<th>name</th>
+<th align="left">explanation</th>
+<th align="left">optimum</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CRBB hits</td>
+<td align="left">the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled.</td>
+<td align="left">As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference.</td>
+</tr>
+<tr>
+<td>p contigs with CRBB</td>
+<td align="left">the proportion of contigs with a CRB-BLAST hit</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td>n contigs with CRBB</td>
+<td align="left">the number of contigs with a CRB-BLAST hit</td>
+<td align="left"><code>n seqs</code></td>
+</tr>
+<tr>
+<td>p contigs with CRBB</td>
+<td align="left">the proportion of contigs with a CRB-BLAST hit</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td>n contigs with CRBB</td>
+<td align="left">the number of contigs with a CRB-BLAST hit</td>
+<td align="left"><code>n seqs</code></td>
+</tr>
+<tr>
+<td>reference coverage</td>
+<td align="left">the proportion of reference bases covered by a CRB-BLAST hit</td>
+<td align="left">As high as possible (see above)</td>
+</tr>
+<tr>
+<td>collapse factor</td>
+<td align="left">the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families.</td>
+<td align="left">Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place.</td>
+</tr>
+<tr>
+<td>covX</td>
+<td align="left">number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit</td>
+<td align="left">All of them</td>
+</tr>
+<tr>
+<td>p covX</td>
+<td align="left">proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit</td>
+<td align="left">1</td>
+</tr>
+</tbody></table>
+
+  </div>
+</div>
+
+
+      </section>
+      <footer>
+        <p style="margin-bottom: 5px;">Install Transrate:</p><small><pre style="margin-top=-15px;">gem install transrate</pre></small>
+        <p>Current version:<br><a href="https://rubygems.org/gems/transrate"><img src="http://img.shields.io/gem/v/transrate.svg"></a></p>
+        <p>Test coverage:<br><a href="https://coveralls.io/r/Blahah/transrate"><img src="http://img.shields.io/coveralls/Blahah/transrate.svg"></a></p>
+        <p>Project maintained by<br><a href="mailto:rds45@cam.ac.uk">Richard Smith-Unna</a></p>
+        <p><small>Developed with ♥ and Ruby<br>in the <a href="http://hibberdlab.com">Hibberd Lab</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
+
