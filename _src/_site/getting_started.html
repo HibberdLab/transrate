@@ -71,7 +71,7 @@
             --left left.fq <span class="se">\</span>
             --right right.fq
 </code></pre></div>
-<p>Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the <code>--threads</code> option. For example if you have 32 cores:</p>
+<p>Transrate uses SNAP to align the reads. Although SNAP is extremely fast compared to other aligners, this can still take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the <code>--threads</code> option. For example if you have 32 cores:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
             --left left.fq <span class="se">\</span>
             --right right.fq <span class="se">\</span>
