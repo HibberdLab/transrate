@@ -69,14 +69,14 @@ OPTIONS:
 -t, --threads=<i>          number of threads to use (default: 8)
 -o, --outfile=<s>          prefix filename to use for CSV output (default:
   transrate)
-  -g, --loglevel=<s>         the amount of information to print. one of [error,
+-g, --loglevel=<s>         the amount of information to print. one of [error,
   info, warn, debug] (default: info)
-  -n, --install-deps         install any missing dependencies
-  -s, --install-read-deps    install missing dependencies for read metrics only
-  -e, --install-ref-deps     install missing dependencies for reference metrics
+-n, --install-deps         install any missing dependencies
+-s, --install-read-deps    install missing dependencies for read metrics only
+-e, --install-ref-deps     install missing dependencies for reference metrics
   only
-  -v, --version              Print version and exit
-  -h, --help                 Show this message
+-v, --version              Print version and exit
+-h, --help                 Show this message
 ```
 
 See the [getting started guide](getting_started.html) for more instructions.
