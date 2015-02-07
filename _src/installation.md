@@ -5,9 +5,7 @@ title: "Installation"
 
 {% include JB/setup %}
 
-## Installing transrate
-
-### Quick install
+## Quick install
 
 ```bash
 $ gem install transrate && transrate --install-deps
@@ -19,7 +17,7 @@ OR
 $ sudo gem install transrate && transrate --install-deps
 ```
 
-### Detailed instructions
+## Detailed instructions
 
 If you've got Ruby v2.0.0 or later, install Transrate with the command:
 
@@ -35,7 +33,7 @@ $ sudo gem install transrate
 
 Before you can run transrate, you will need to make sure you have all the dependencies installed.
 
-### Installing Ruby
+## Installing Ruby
 
 If you don't have at least v2 Ruby installed, you should install the latest version, then install transrate as above.
 
@@ -48,7 +46,7 @@ $ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 $ \curl -sSL https://get.rvm.io | bash -s stable --ruby --gems=transrate
 ```
 
-### Installing dependencies
+## Installing dependencies
 
 Transrate depends on several external pieces of software. Any missing dependencies can be installed automatically by running the command:
 
