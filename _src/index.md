@@ -103,7 +103,7 @@ If you're sure the problem you're encountering is a bug, please post it to the [
 
 Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please use the citation:
 
-> Transrate v1.0.0alpha (2014) RD Smith-Unna, C Boursnell, S Kelly and JM Hibberd.      http://hibberdlab.com/transrate. DOI: [10.5281/zenodo.10799](http://dx.doi.org/10.5281/zenodo.10799).
+> Transrate v1.0.0.beta2 (2014) RD Smith-Unna, C Boursnell, R Patro, JM Hibberd, and S Kelly. http://hibberdlab.com/transrate. DOI: [10.5281/zenodo14897](http://dx.doi.org/10.5281/zenodo14897).
 
 Transrate is free open source software, released under the [MIT license](http://blahah.mit-license.org/).
 
