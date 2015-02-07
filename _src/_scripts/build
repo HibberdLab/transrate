@@ -2,6 +2,6 @@
 jekyll build
 cp -rf _site/* ../
 cd ..
-git add .
+git add --all .
 git commit -m 'rebuild'
 git push
