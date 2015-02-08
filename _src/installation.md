@@ -8,13 +8,13 @@ title: "Installation"
 ## Quick install
 
 ```bash
-$ gem install transrate && transrate --install-deps
+$ gem install transrate --pre && transrate --install-deps
 ```
 
 OR
 
 ```bash
-$ sudo gem install transrate && transrate --install-deps
+$ sudo gem install transrate --pre && transrate --install-deps
 ```
 
 ## Detailed instructions
@@ -22,13 +22,13 @@ $ sudo gem install transrate && transrate --install-deps
 If you've got Ruby v2.0.0 or later, install Transrate with the command:
 
 ```bash
-$ gem install transrate
+$ gem install transrate --pre
 ```
 
 If your Ruby installation is system-wide you may need to add a `sudo` command for the install to work:
 
 ```bash
-$ sudo gem install transrate
+$ sudo gem install transrate --pre
 ```
 
 Before you can run transrate, you will need to make sure you have all the dependencies installed.
@@ -43,7 +43,7 @@ To install Ruby and transrate, you can use the command:
 
 ```bash
 $ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
-$ \curl -sSL https://get.rvm.io | bash -s stable --ruby --gems=transrate
+$ \curl -sSL https://get.rvm.io | bash -s stable --ruby --gems=transrate:1.0.0.beta2
 ```
 
 ## Installing dependencies
