@@ -5,13 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Transrate</title>
-    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/styles.css">
-    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/pygment_trac.css">
-    <link href="/transrate/favico.png" rel="shortcut icon" type="image/x-icon">
-
+    <link rel="stylesheet" href="/assets/themes/leap-day/stylesheets/styles.css">
+    <link rel="stylesheet" href="/assets/themes/leap-day/stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="/transrate/assets/themes/leap-day/javascripts/main.js"></script>
-    <script src="/transrate/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
+    <script src="/assets/themes/leap-day/javascripts/main.js"></script>
+    <script src="/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -21,7 +19,7 @@
   <body>
 
       <header>
-        <img class="headlogo" src="/transrate/assets/themes/leap-day/images/mainlogo.png">
+        <img class="headlogo" src="/assets/themes/leap-day/images/mainlogo.png">
       </header>
 
       <div id="banner">
@@ -47,12 +45,10 @@
 
 <div class="row">
   <div class="span14">
-    <p>Transcriptome assembly is hard. The algorithms are complex, the data are messy, and it&#39;s often not clear how to determine whether an assembly is suitable for answering a biological question.</p>
-
-<p>Transrate helps by examining your assembly in detail and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, and helps you decide when to stop trying to improve the assembly.</p>
+    <p>Transrate is software for deep inspection and quality analysis of <em>de-novo</em> transcriptome assemblies. It works by examining your assembly in detail, comparing it to experimental evidence such as the sequencing reads, and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, filter out the bad contigs from an assemply, and help decide when to stop trying to improve the assembly.</p>
 
 <blockquote>
-<p>NOTE: this is the documentation for transrate v1.0.0 beta2</p>
+<p>NOTE: this is the documentation for transrate v1.0.0 beta3</p>
 </blockquote>
 
 <h2 id="toc_0">Overview</h2>
@@ -60,9 +56,9 @@
 <p>Transrate analyses a transcriptome assembly in three key ways:</p>
 
 <ol>
-<li>by inspecting the contigs themselves</li>
+<li>by inspecting the contig sequences</li>
 <li>by mapping reads to the contigs and inspecting the alignments</li>
-<li>by aligning the contigs against proteins from a related species and inspecting the alignments</li>
+<li>by aligning the contigs against proteins or transcripts from a related species and inspecting the alignments</li>
 </ol>
 
 <p><strong>By far</strong> the most useful metrics are those based on read mapping, in particular you should pay attention to the <em>Transrate score</em> and the individual <em>contig scores</em>.</p>
@@ -76,66 +72,64 @@
 <h2 id="toc_2">The command-line interface</h2>
 
 <p>Running <code>transrate --help</code> will show you the command-line interface:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Transrate v1.0.0.beta2
-by Richard Smith-Unna &lt;rds45@cam.ac.uk&gt;, Chris Boursnell
-   Julian Hibberd & Steve Kelly
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Transrate v1.0.0.beta3
+ by Richard Smith-Unna, Chris Boursnell, Rob Patro,
+    Julian Hibberd, and Steve Kelly
 
-DESCRIPTION:
-Analyse a de-novo transcriptome assembly using three kinds of metrics:
+ DESCRIPTION:
+ Analyse a de-novo transcriptome assembly using three kinds of metrics:
 
-1. sequence-based (basic)
-2. read-mapping-based (if --left and --right are provided)
-3. reference-based (if --reference is provided)
+ 1. sequence-based (basic)
+ 2. read-mapping-based (if --left and --right are provided)
+ 3. reference-based (if --reference is provided)
 
-Bug reports and feature requests at:
-http://github.com/blahah/transrate
+ Bug reports and feature requests at:
+ http://github.com/blahah/transrate
 
-USAGE:
-transrate &lt;options&gt;
+ USAGE:
+ transrate &lt;options&gt;
 
-EXAMPLES:
-# check dependencies and install any that are missing
-transrate --install-deps
-# get the transrate score for the assembly and each contig
-transrate --assembly contigs.fa --left left.fq --right right.fq
-# basic assembly metrics only
-transrate --assembly contigs.fa
-# basic and reference-based metrics with 8 threads
-transrate --assembly contigs.fa --reference Athaliana_transcripts.fa
---threads 8
-# contig and read-based metrics for two assemblies with 32 threads
-transrate --assembly one.fa,two.fa --left l.fq --right r.fq --threads 32
+ EXAMPLES:
+ # check dependencies and install any that are missing
+ transrate --install-deps
+ # get the transrate score for the assembly and each contig
+ transrate --assembly contigs.fa --left left.fq --right right.fq
+ # basic assembly metrics only
+ transrate --assembly contigs.fa
+ # basic and reference-based metrics with 8 threads
+ transrate --assembly contigs.fa --reference Athaliana_transcripts.fa
+ --threads 8
+ # contig and read-based metrics for two assemblies with 32 threads
+ transrate --assembly one.fa,two.fa --left l.fq --right r.fq --threads 32
 
-OPTIONS:
--a, --assembly=&lt;s&gt;         assembly file(s) in FASTA format, comma-separated
--r, --reference=&lt;s&gt;        reference proteome file in FASTA format
--l, --left=&lt;s&gt;             left reads file in FASTQ format
--i, --right=&lt;s&gt;            right reads file in FASTQ format
--t, --threads=&lt;i&gt;          number of threads to use (default: 8)
--o, --outfile=&lt;s&gt;          prefix filename to use for CSV output (default:
-  transrate)
--g, --loglevel=&lt;s&gt;         the amount of information to print. one of [error,
-  info, warn, debug] (default: info)
--n, --install-deps         install any missing dependencies
--s, --install-read-deps    install missing dependencies for read metrics only
--e, --install-ref-deps     install missing dependencies for reference metrics
-  only
--v, --version              Print version and exit
--h, --help                 Show this message
+ OPTIONS:
+ -a, --assembly=&lt;s&gt;            Assembly file(s) in FASTA format,
+ comma-separated
+ -r, --reference=&lt;s&gt;           Reference proteome file in FASTA format
+ -l, --left=&lt;s&gt;                Left reads file in FASTQ format
+ -i, --right=&lt;s&gt;               Right reads file in FASTQ format
+ -t, --threads=&lt;i&gt;             Number of threads to use (default: 8)
+ -m, --merge-assemblies=&lt;s&gt;    Merge multiple assemblies into file
+ -o, --outfile=&lt;s&gt;             Prefix filename to use for CSV output (default:
+   transrate)
+   -g, --loglevel=&lt;s&gt;            The amount of information to print. One of
+   [error, info, warn, debug] (default: info)
+   -n, --install-deps=&lt;s&gt;        Install any missing dependencies. One of [all,
+   read, ref]
+   -v, --version                 Print version and exit
+   -h, --help                    Show this message
 </code></pre></div>
 <p>See the <a href="getting_started.html">getting started guide</a> for more instructions.</p>
 
 <h2 id="toc_3">Authors and Contributors</h2>
 
-<p>Transrate was developed by Richard Smith-Unna, Chris Boursnell, <a href="http://www.stevekellylab.com/">Steve Kelly</a> and <a href="http://hibberdlab.com"></a>Julian Hibberd</a>, with significant contributions from <a href="http://www.robpatro.com/redesign/">Rob Patro</a>. <a href="http://genomebio.org/">Matt MacManes</a> (University of New Hampshire) provided valuable discussion and testing.</p>
+<p>Transrate was a collabortation between the <a href="http://hibberdlab.com">Hibberd lab</a> (Cambridge) and the <a href="http://stevekellylab.com">Kelly lab</a> (Oxford). It was developed by Richard Smith-Unna, Chris Boursnell, Steve Kelly and Julian Hibberd, with significant contributions from. Matt MacManes and the Transrate user community provided valuable feedback and testing.</p>
 
-<p>We welcome collaboration - if you&#39;d like help with your transcriptome project please send an email to <a href="mailto:rds45@cam.ac.uk">rds45@cam.ac.uk</a>.</p>
-
-<p>We also welcome contributions to the code base - please see the <a href="https://github.com/Blahah/transrate">README in the Github repo</a>.</p>
+<p>We welcome contributions - please see the <a href="https://github.com/Blahah/transrate">README in the Github repo</a>.</p>
 
 <h2 id="toc_4">Get Support or Contact</h2>
 
-<p>If you&#39;re having trouble with transrate, please first consult the documentation on this site.</p>
+<p>If you&#39;re having trouble with Transrate, please first consult the documentation on this site.</p>
 
 <p>If you can&#39;t find the answer to your question, you can search the <a href="https://groups.google.com/forum/#!forum/transrate-users">user forum</a>. If you still can&#39;t find the answer, please make a new post to the user forum describing the trouble you&#39;re having.</p>
 
@@ -148,7 +142,7 @@ OPTIONS:
 <p>Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please use the citation:</p>
 
 <blockquote>
-<p>Transrate v1.0.0.beta2 (2014) RD Smith-Unna, C Boursnell, R Patro, JM Hibberd, and S Kelly. <a href="http://hibberdlab.com/transrate">http://hibberdlab.com/transrate</a>. DOI: <a href="http://dx.doi.org/10.5281/zenodo14897">10.5281/zenodo14897</a>.</p>
+<p>Transrate v1.0.0beta3 (2015) RD Smith-Unna, C Boursnell, R Patro, JM Hibberd and S Kelly. <a href="http://hibberdlab.com/transrate">http://hibberdlab.com/transrate</a>. DOI: <a href="http://dx.doi.org/10.5281/zenodo.15601">10.5281/zenodo.15601</a>.</p>
 </blockquote>
 
 <p>Transrate is free open source software, released under the <a href="http://blahah.mit-license.org/">MIT license</a>.</p>
@@ -161,6 +155,9 @@ OPTIONS:
 
       </section>
       <footer>
+        <p style="margin-bottom: 5px;">Install Transrate:</p><small><pre style="margin-top=-15px;">gem install transrate</pre></small>
+        <p>Current version:<br><a href="https://rubygems.org/gems/transrate"><img src="http://img.shields.io/gem/v/transrate.svg"></a></p>
+        <p>Test coverage:<br><a href="https://coveralls.io/r/Blahah/transrate"><img src="http://img.shields.io/coveralls/Blahah/transrate.svg"></a></p>
         <p>Project maintained by<br><a href="mailto:rds45@cam.ac.uk">Richard Smith-Unna</a></p>
         <p><small>Developed with ♥ and Ruby<br>in the <a href="http://hibberdlab.com">Hibberd Lab</a></small></p>
       </footer>

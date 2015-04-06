@@ -53,7 +53,7 @@
 
 <h2 id="toc_0">The Transrate score</h2>
 
-<p>The Transrate score is an estimate of the probability that the assembly is correct. A score is produced for the whole assembly, and for each contig. The scoring process uses the reads that were used to generate the assembly as evidence - so if you want to get a Transrate score, you need to run transrate in read-metrics mode (by passing in the reads with <code>--left</code> and <code>--right</code>).</p>
+<p>The Transrate scores measure quality of the assembly without using a reference. A score is produced for the whole assembly, and for each contig. The scoring process uses the reads that were used to generate the assembly as evidence - so if you want to get a Transrate score, you need to run transrate in read-metrics mode (by passing in the paired-end reads with <code>--left</code> and <code>--right</code>).</p>
 
 <h3 id="toc_1">The assembly score</h3>
 
@@ -63,6 +63,8 @@
 
 <p>Thus, the score captures how confident you can be in what was assembled, as well as how complete the assembly is.</p>
 
+<p>0 is the minimum possible score, while 1.0 is the maximum.</p>
+
 <p>The assembly score for each assembly is printed during a Transrate run, e.g.:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash">TRANSRATE ASSEMBLY SCORE: 0.2871
 </code></pre></div>
@@ -70,17 +72,15 @@
 
 <h3 id="toc_2">The contig score</h3>
 
-<p>Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Examining the distribution of contig scores can also give more detailed insight into the differences between assemblies.</p>
-
-<p>Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as an estimate of the probability that the contig is an accurate, non-redundant representation of a transcript that was present in the sequenced sample.</p>
+<p>Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as measure of whether the contig is an accurate, complete, non-redundant representation of a transcript that was present in the sequenced sample.</p>
 
 <p>There are four components to the contig score:</p>
 
 <ol>
-<li>The probability that each base has been called correctly. This is estimated using the mean per-base edit distance, i.e. how many changes would have to be made to a read covering a base before the sequence of the read and the covered region of the contig agreed perfectly.</li>
-<li>The probability that each base is truly part of the transcript. This is estimated by determining whether any reads provide agreeing coverage for a base.</li>
-<li>The probability that the contig is derived from a single transcript (rather than pieces of two or more transcripts). This is estimated by assuming that fragments from different transcripts are likely to be generated at different rates, and that this difference is detectable as a difference in coverage distribution. The probability is then calculated using a bayesian sequence segmentation algorithm which models the coverage distribution as a Dirichlet distribution over a reduced set of finite coverage states.</li>
-<li>The probability that the contig is structurally complete and correct. This is estimated as the proportion of mapped read pairs that agree with the structure and composition of the contig, which in turn is calculated by classifying the read pair alignments.</li>
+<li>A measure of whether each base has been called correctly. This is estimated using the mean per-base edit distance, i.e. how many changes would have to be made to a read covering a base before the sequence of the read and the covered region of the contig agreed perfectly.</li>
+<li>A measure of whether each base is truly part of the transcript. This is estimated by determining whether any reads provide agreeing coverage for a base.</li>
+<li>The probability that the contig is derived from a single transcript (rather than pieces of two or more transcripts). This is measured as the probability that the read coverage is best modelled by a single Dirichlet distribution, rather than two or more distributions.</li>
+<li>The probability that the contig is structurally complete and correct. This is estimated as the proportion of assigned read pairs that agree with the structure and composition of the contig, which in turn is calculated by classifying the read pair alignments.</li>
 </ol>
 
 <p>The contig score is the product of the components.</p>
@@ -89,7 +89,11 @@
 
 <p>The contig scores and other metrics for each contig are saved in the <code>*contigs.csv</code> file for each assembly.</p>
 
-<h2 id="toc_3">Contig metrics</h2>
+<h2 id="toc_3">The optimal assembly score</h2>
+
+<p>Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Transrate does this automatically, by learning the contig score cutoff that maximises the assembly score. The score is reported at the command line and in the <code>*assembliles.csv</code> file. The &#39;good&#39; contigs as determined by the cutoff optimisation procedure are output to the file <code>good.*.fa</code>.</p>
+
+<h2 id="toc_4">Contig metrics</h2>
 
 <p>Contig metrics are measures based entirely on analysing the set of contigs themselves.</p>
 
@@ -205,7 +209,7 @@ linguistic complexity           0.1
 </tr>
 </tbody></table>
 
-<h2 id="toc_4">Read mapping metrics</h2>
+<h2 id="toc_5">Read mapping metrics</h2>
 
 <p>Read mapping metrics are based on aligning the reads used in the assembly to the assembled contigs.</p>
 
@@ -326,7 +330,7 @@ p contigs good                 0.78
 </tr>
 </tbody></table>
 
-<h3 id="toc_5">Good and bad mappings</h3>
+<h3 id="toc_6">Good and bad mappings</h3>
 
 <p>&#39;Good&#39; mappings are those aligned in a biologically plausible way, i.e.:</p>
 
@@ -338,13 +342,13 @@ p contigs good                 0.78
 
 <p>Conversely, &#39;bad&#39; pairs are those where one of the conditions for being &#39;good&#39; are not met.</p>
 
-<h3 id="toc_6">Bridges</h3>
+<h3 id="toc_7">Bridges</h3>
 
 <p>Transrate calculates whether the read mappings contain any evidence that different contigs originate from the same transcript. These theoretical links are called bridges, and the number of bridges is shown in the <strong>supported bridges</strong> metric. A low count of supported bridges could be good or bad depending on the context. If you have a fragmented assembly, a large number of supported bridges means that scaffolding could greatly improve it. On the other hand, a large number of supported bridges in an otherwise seemingly good assembly could be indicative of misassemblies.</p>
 
-<p>The list of supported bridges is output to a file, <code>supported_bridges.csv</code>, in case you want to make use of the information. At a later date, transrate will include the ability to scaffold the assembly using this and other information.</p>
+<p>The list of supported bridges is output to a file, <code>supported_bridges.csv</code>.</p>
 
-<h2 id="toc_7">Comparative metrics</h2>
+<h2 id="toc_8">Comparative metrics</h2>
 
 <p>Comparative metrics involve comparing the assembly to a related reference species. These metrics are powerful because they are an external validation of the experimental results.</p>
 

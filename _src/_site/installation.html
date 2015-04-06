@@ -5,13 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Transrate</title>
-    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/styles.css">
-    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/pygment_trac.css">
-    <link href="/transrate/favico.png" rel="shortcut icon" type="image/x-icon">
-
+    <link rel="stylesheet" href="/assets/themes/leap-day/stylesheets/styles.css">
+    <link rel="stylesheet" href="/assets/themes/leap-day/stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="/transrate/assets/themes/leap-day/javascripts/main.js"></script>
-    <script src="/transrate/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
+    <script src="/assets/themes/leap-day/javascripts/main.js"></script>
+    <script src="/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -21,7 +19,7 @@
   <body>
 
       <header>
-        <img class="headlogo" src="/transrate/assets/themes/leap-day/images/mainlogo.png">
+        <img class="headlogo" src="/assets/themes/leap-day/images/mainlogo.png">
       </header>
 
       <div id="banner">
@@ -47,13 +45,19 @@
 
 <div class="row">
   <div class="span14">
-    <h2 id="toc_0">Quick install</h2>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gem install transrate --pre <span class="o">&amp;&amp;</span> transrate --install-deps
-</code></pre></div>
-<p>OR</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>sudo gem install transrate --pre <span class="o">&amp;&amp;</span> transrate --install-deps
-</code></pre></div>
-<h2 id="toc_1">Detailed instructions</h2>
+    <h2 id="toc_0">Installing transrate</h2>
+
+<p>Transrate is avaiable for Mac OSX and Linux, and can be downloaded by clicking the button below.</p>
+
+<p><a href="https://bintray.com/blahah/generic/transrate/_latestVersion"><img src="https://api.bintray.com/packages/blahah/generic/transrate/images/download.svg" alt="Download"> </a></p>
+
+<p>You can get older versions from <a href="https://bintray.com/blahah/generic/transrate">BinTray</a>.</p>
+
+<p>To install, download the package for your operating system, unpack it, and add the unpacked directory to your <code>PATH</code>. Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact. Note that Transrate does not include BLAST+. If you want to use the reference-based metrics, you&#39;ll need to install BLAST+ yourself.</p>
+
+<h2 id="toc_1">Advanced installation</h2>
+
+<p>Transrate is also available as a Ruby gem. This has some advantages, such as easy checking for updates, and the ability to use Transrate as a Ruby library. However, the setup is more complex - if you just want to run Transrate, you should use the binary install above.</p>
 
 <p>If you&#39;ve got Ruby v2.0.0 or later, install Transrate with the command:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gem install transrate --pre
@@ -61,66 +65,31 @@
 <p>If your Ruby installation is system-wide you may need to add a <code>sudo</code> command for the install to work:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>sudo gem install transrate --pre
 </code></pre></div>
-<p>Before you can run transrate, you will need to make sure you have all the dependencies installed.</p>
+<p>Before you can run Transrate, you will need to make sure you have all the dependencies installed.</p>
 
-<h2 id="toc_2">Installing Ruby</h2>
+<h3 id="toc_2">Installing Ruby</h3>
 
-<p>If you don&#39;t have at least v2 Ruby installed, you should install the latest version, then install transrate as above.</p>
+<p>If you don&#39;t have at least v2 Ruby installed, you should install the latest version, then install Transrate as above.</p>
 
 <p>We recommend using the Ruby Version Manager to install and manage Ruby: <a href="http://rvm.io">RVM.io</a> - there are instructions for setting up RVM for single users and on multi-user environments such as clusters and HPC setups.</p>
 
-<p>To install Ruby and transrate, you can use the command:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
-<span class="nv">$ </span><span class="se">\c</span>url -sSL https://get.rvm.io <span class="p">|</span> bash -s stable --ruby --gems<span class="o">=</span>transrate:1.0.0.beta2
-</code></pre></div>
-<h2 id="toc_3">Installing dependencies</h2>
+<h3 id="toc_3">Installing dependencies</h3>
 
-<p>Transrate depends on several external pieces of software. Any missing dependencies can be installed automatically by running the command:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps
-</code></pre></div>
-<p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by installing them to the Ruby gem directory (for a user-space install of ruby), or to <code>~/.local/</code> (for a system-wide install of Ruby).</p>
-
-<p>If you only want to run the read metrics, you can use the <code>--install-read-deps</code> command to install only the dependencies required for that analysis. Similarly, if you only want to run the reference metrics, you can use <code>--install-ref-deps</code>.</p>
-
-<p>If you prefer, you can install the dependencies yourself, or ask your system administrator to install them for you. Just make sure all the binaries end up in the system PATH. The full list of dependencies for transrate v1.0.0.beta2 is:</p>
+<p>Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:</p>
 
 <ul>
-<li><a href="http://snap.cs.berkeley.edu/">SNAP</a> <code>v1.0.0dev67.trfix1</code></li>
-<li><a href="https://github.com/kingsfordgroup/sailfish/releases/tag/v0.2.7">Salmon</a> <code>v0.2.7</code></li>
-<li><a href="https://github.com/Blahah/transrate-tools/releases/tag/v1.0.0.beta3">transrate-tools</a> <code>v1.0.0.beta3</code></li>
-<li><a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download">BLAST+</a> <code>v2.2.X</code> (only required for reference-based analysis)</li>
+<li>SNAP <code>v1.0.0dev67.trfix1</code> [download: <a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz">mac</a>]</li>
+<li>Salmon <code>v0.3</code> [download: <a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_squeeze.tar.gz">linux</a> | <a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_MacOSX-10.10.2.tar.gz">mac</a>]</li>
+<li><a href="https://github.com/cboursnell/transrate-tools">bam-read</a> <code>v1.0.0</code> [download: <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_osx.tar.gz">mac</a>]</li>
+<li><a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download">BLAST+</a> <code>v2.2.29</code></li>
 </ul>
 
-<p>We provide links to the linux and macosx binaries for these dependencies below:</p>
+<p>Transrate can install any missing dependencies for you. This is done by running the command:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps
+</code></pre></div>
+<p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory, or if it doesn&#39;t have the permissions to do that, in <code>~/.local</code>.</p>
 
-<table><thead>
-<tr>
-<th></th>
-<th>linux</th>
-<th align="right">macosx</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>SNAP</td>
-<td><a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz">v1.0.dev67.trfix1</a></td>
-<td align="right"><a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz">v1.0dev.67.trfix1</a></td>
-</tr>
-<tr>
-<td>Salmon</td>
-<td><a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.2.7/Salmon-v0.2.7_Ubuntu-12.04.tar.gz">v0.2.7</a></td>
-<td align="right"><a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.2.7/Salmon-v0.2.7_MacOSX-10.10.1.tar.gz">v0.2.7</a></td>
-</tr>
-<tr>
-<td>transrate-tools</td>
-<td><a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta3/bam-read_1.0.0.beta3_linux.tar.gz">v1.0.0.beta3</a></td>
-<td align="right"><a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta3/bam-read_1.0.0.beta3_macosx.tar.gz">v1.0.0.beta3</a></td>
-</tr>
-<tr>
-<td>BLAST+</td>
-<td><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.29/ncbi-blast-2.2.29+-x64-linux.tar.gz">v2.2.29</a></td>
-<td align="right"><a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.29/ncbi-blast-2.2.29+-universal-macosx.tar.gz">v2.2.29</a></td>
-</tr>
-</tbody></table>
+<p>If you prefer, you can install the dependencies yourself, or ask your system administrator to install them for you. Just make sure all the binaries end up in the system PATH. You can see the list of required binaries for each dependency in <a href="https://github.com/Blahah/transrate/blob/master/deps/deps.yaml">the transrate code on Github</a>.</p>
 
   </div>
 </div>
@@ -128,6 +97,9 @@
 
       </section>
       <footer>
+        <p style="margin-bottom: 5px;">Install Transrate:</p><small><pre style="margin-top=-15px;">gem install transrate</pre></small>
+        <p>Current version:<br><a href="https://rubygems.org/gems/transrate"><img src="http://img.shields.io/gem/v/transrate.svg"></a></p>
+        <p>Test coverage:<br><a href="https://coveralls.io/r/Blahah/transrate"><img src="http://img.shields.io/coveralls/Blahah/transrate.svg"></a></p>
         <p>Project maintained by<br><a href="mailto:rds45@cam.ac.uk">Richard Smith-Unna</a></p>
         <p><small>Developed with ♥ and Ruby<br>in the <a href="http://hibberdlab.com">Hibberd Lab</a></small></p>
       </footer>
