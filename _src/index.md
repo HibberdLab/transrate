@@ -69,13 +69,13 @@ Running `transrate --help` will show you the command-line interface:
  -t, --threads=<i>             Number of threads to use (default: 8)
  -m, --merge-assemblies=<s>    Merge multiple assemblies into file
  -o, --outfile=<s>             Prefix filename to use for CSV output (default:
-   transrate)
-   -g, --loglevel=<s>            The amount of information to print. One of
-   [error, info, warn, debug] (default: info)
-   -n, --install-deps=<s>        Install any missing dependencies. One of [all,
-   read, ref]
-   -v, --version                 Print version and exit
-   -h, --help                    Show this message
+ transrate)
+ -g, --loglevel=<s>            The amount of information to print. One of
+ [error, info, warn, debug] (default: info)
+ -n, --install-deps=<s>        Install any missing dependencies. One of [all,
+ read, ref]
+ -v, --version                 Print version and exit
+ -h, --help                    Show this message
 ```
 
 See the [getting started guide](getting_started.html) for more instructions.
