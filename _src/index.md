@@ -104,4 +104,4 @@ Transrate is research software. We therefore require that users cite Transrate i
 
 Transrate is free open source software, released under the [MIT license](http://blahah.mit-license.org/).
 
-© Richard Smith-Unna 2014. All site content is released under CC-BY v3.0 [![CC-BY icon](http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png)](https://creativecommons.org/licenses/by/3.0/).
+© Richard Smith-Unna 2014. All site content is released under CC-BY v3.0 [![CC-BY icon](https://licensebuttons.net/l/by/3.0/80x15.png)](https://creativecommons.org/licenses/by/3.0/).
