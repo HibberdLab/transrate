@@ -7,34 +7,45 @@ title: "Installation"
 
 ## Installing transrate
 
+Transrate is avaiable for Mac OSX and Linux, and can be downloaded by clicking the button below.
+
+[![Download](https://api.bintray.com/packages/blahah/generic/transrate/images/download.svg) ](https://bintray.com/blahah/generic/transrate/_latestVersion)
+
+You can get older versions from [BinTray](https://bintray.com/blahah/generic/transrate).
+
+To install, download the package for your operating system, unpack it, and add the unpacked directory to your `PATH`. Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact. Note that Transrate does not include BLAST+. If you want to use the reference-based metrics, you'll need to install BLAST+ yourself.
+
+## Advanced installation
+
+Transrate is also available as a Ruby gem. This has some advantages, such as easy checking for updates, and the ability to use Transrate as a Ruby library. However, the setup is more complex - if you just want to run Transrate, you should use the binary install above.
+
 If you've got Ruby v2.0.0 or later, install Transrate with the command:
 
 ```bash
-$ gem install transrate
+$ gem install transrate --pre
 ```
 
 If your Ruby installation is system-wide you may need to add a `sudo` command for the install to work:
 
 ```bash
-$ sudo gem install transrate
+$ sudo gem install transrate --pre
 ```
 
-Before you can run transrate, you will need to make sure you have all the dependencies installed.
+Before you can run Transrate, you will need to make sure you have all the dependencies installed.
 
-## Installing Ruby
+### Installing Ruby
 
-If you don't have at least v2 Ruby installed, you should install the latest version, then install transrate as above.
+If you don't have at least v2 Ruby installed, you should install the latest version, then install Transrate as above.
 
 We recommend using the Ruby Version Manager to install and manage Ruby: [RVM.io](http://rvm.io) - there are instructions for setting up RVM for single users and on multi-user environments such as clusters and HPC setups.
 
-## Installing dependencies
+### Installing dependencies
 
 Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:
 
-- [SNAP](http://snap.cs.berkeley.edu/) `v1.0.0dev63` or later
-- [eXpress](http://bio.math.berkeley.edu/eXpress/) `v1.5.1`
-- [transrate-tools](https://github.com/cboursnell/transrate-bam-read) `v1.0.0`
-- [Samtools](http://samtools.sourceforge.net/) `v0.1.19`
+- SNAP `v1.0.0dev67.trfix1` [download: [linux](https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz) | [mac](https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz)]
+- Salmon `v0.3` [download: [linux](https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_squeeze.tar.gz) | [mac](https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_MacOSX-10.10.2.tar.gz)]
+- [bam-read](https://github.com/cboursnell/transrate-tools) `v1.0.0` [download: [linux](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_linux.tar.gz) | [mac](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_osx.tar.gz)]
 - [BLAST+](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) `v2.2.29`
 
 Transrate can install any missing dependencies for you. This is done by running the command:
@@ -43,10 +54,6 @@ Transrate can install any missing dependencies for you. This is done by running 
 $ transrate --install-deps
 ```
 
-The `--install-deps` command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory. If your Ruby installation is system-wide you'll need to add a `sudo` to the command:
-
-```bash
-$ sudo transrate --install-deps
-```
+The `--install-deps` command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory, or if it doesn't have the permissions to do that, in `~/.local`.
 
 If you prefer, you can install the dependencies yourself, or ask your system administrator to install them for you. Just make sure all the binaries end up in the system PATH. You can see the list of required binaries for each dependency in [the transrate code on Github](https://github.com/Blahah/transrate/blob/master/deps/deps.yaml).

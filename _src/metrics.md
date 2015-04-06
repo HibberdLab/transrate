@@ -9,7 +9,7 @@ By far the most useful metric is the Transrate score. You should read about that
 
 ## The Transrate score
 
-The Transrate score is an estimate of the probability that the assembly is correct. A score is produced for the whole assembly, and for each contig. The scoring process uses the reads that were used to generate the assembly as evidence - so if you want to get a Transrate score, you need to run transrate in read-metrics mode (by passing in the reads with `--left` and `--right`).
+The Transrate scores measure quality of the assembly without using a reference. A score is produced for the whole assembly, and for each contig. The scoring process uses the reads that were used to generate the assembly as evidence - so if you want to get a Transrate score, you need to run transrate in read-metrics mode (by passing in the paired-end reads with `--left` and `--right`).
 
 ### The assembly score
 
@@ -18,6 +18,8 @@ The assembly score allows you to compare two or more assemblies made with the sa
 The score is calculated as the geometric mean of all contig scores multiplied by the proportion of input reads that provide positive support for the assembly.
 
 Thus, the score captures how confident you can be in what was assembled, as well as how complete the assembly is.
+
+0 is the minimum possible score, while 1.0 is the maximum.
 
 The assembly score for each assembly is printed during a Transrate run, e.g.:
 
@@ -29,22 +31,24 @@ It is also saved in the `*assemblies.csv` file.
 
 ### The contig score
 
-Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Examining the distribution of contig scores can also give more detailed insight into the differences between assemblies.
-
-Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as an estimate of the probability that the contig is an accurate, non-redundant representation of a transcript that was present in the sequenced sample.
+Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as measure of whether the contig is an accurate, complete, non-redundant representation of a transcript that was present in the sequenced sample.
 
 There are four components to the contig score:
 
-1. The probability that each base has been called correctly. This is estimated using the mean per-base edit distance, i.e. how many changes would have to be made to a read covering a base before the sequence of the read and the covered region of the contig agreed perfectly.
-2. The probability that each base is truly part of the transcript. This is estimated by determining whether any reads provide agreeing coverage for a base.
-3. The probability that the contig is derived from a single transcript (rather than pieces of two or more transcripts). This is estimated by assuming that fragments from different transcripts are likely to be generated at different rates, and that this difference is detectable as a difference in coverage distribution. The probability is then calculated using a bayesian sequence segmentation algorithm which models the coverage distribution as a Dirichlet distribution over a reduced set of finite coverage states.
-4. The probability that the contig is structurally complete and correct. This is estimated as the proportion of mapped read pairs that agree with the structure and composition of the contig, which in turn is calculated by classifying the read pair alignments.
+1. A measure of whether each base has been called correctly. This is estimated using the mean per-base edit distance, i.e. how many changes would have to be made to a read covering a base before the sequence of the read and the covered region of the contig agreed perfectly.
+2. A measure of whether each base is truly part of the transcript. This is estimated by determining whether any reads provide agreeing coverage for a base.
+3. The probability that the contig is derived from a single transcript (rather than pieces of two or more transcripts). This is measured as the probability that the read coverage is best modelled by a single Dirichlet distribution, rather than two or more distributions.
+4. The probability that the contig is structurally complete and correct. This is estimated as the proportion of assigned read pairs that agree with the structure and composition of the contig, which in turn is calculated by classifying the read pair alignments.
 
 The contig score is the product of the components.
 
 The score components are useful independently of the contig score, as they can identify contigs that can be treated in different ways to improve the quality of an assembly. See Read Metrics below for details.
 
 The contig scores and other metrics for each contig are saved in the `*contigs.csv` file for each assembly.
+
+## The optimal assembly score
+
+Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Transrate does this automatically, by learning the contig score cutoff that maximises the assembly score. The score is reported at the command line and in the `*assembliles.csv` file. The 'good' contigs as determined by the cutoff optimisation procedure are output to the file `good.*.fa`.
 
 ## Contig metrics
 
@@ -177,7 +181,7 @@ Conversely, 'bad' pairs are those where one of the conditions for being 'good' a
 
 Transrate calculates whether the read mappings contain any evidence that different contigs originate from the same transcript. These theoretical links are called bridges, and the number of bridges is shown in the **supported bridges** metric. A low count of supported bridges could be good or bad depending on the context. If you have a fragmented assembly, a large number of supported bridges means that scaffolding could greatly improve it. On the other hand, a large number of supported bridges in an otherwise seemingly good assembly could be indicative of misassemblies.
 
-The list of supported bridges is output to a file, `supported_bridges.csv`, in case you want to make use of the information. At a later date, transrate will include the ability to scaffold the assembly using this and other information.
+The list of supported bridges is output to a file, `supported_bridges.csv`.
 
 ## Comparative metrics
 
