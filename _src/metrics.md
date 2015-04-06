@@ -48,7 +48,7 @@ The contig scores and other metrics for each contig are saved in the `*contigs.c
 
 ## The optimal assembly score
 
-Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Transrate does this automatically, by learning the contig score cutoff that maximises the assembly score. The score is reported at the command line and in the `*assembliles.csv` file. The 'good' contigs as determined by the cutoff optimisation procedure are output to the file `good.*.fa`.
+Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Transrate does this automatically, by learning the contig score cutoff that maximises the assembly score. The assembly score of the subset of contigs scoring above the cutoff (the optimal assembly score) is reported at the command line and in the `*assembliles.csv` file. The 'good' contigs as determined by the cutoff optimisation procedure are output to the file `good.*.fa`.
 
 ## Contig metrics
 
