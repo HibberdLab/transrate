@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Transrate</title>
+    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/styles.css">
+    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/pygment_trac.css">
+    <link href="/transrate/favico.png" rel="shortcut icon" type="image/x-icon">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/transrate/assets/themes/leap-day/javascripts/main.js"></script>
+    <script src="/transrate/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <img class="headlogo" src="/transrate/assets/themes/leap-day/images/mainlogo.png">
+      </header>
+
+      <div id="banner">
+        <div style="width: 650px; margin-left: auto; margin-right: auto;">
+          <a href="index.html" class="button"><strong>Home</strong></a>
+          <a href="installation.html" class="button"><strong>Installation</strong></a>
+          <a href="getting_started.html" class="button"><strong>Getting Started</strong></a>
+          <a href="metrics.html" class="button"><strong>Metrics</strong></a>
+          <a href="https://github.com/Blahah/transrate" class="button logo" style="float: right;"><strong>View on Github</strong></a>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        
+<div class="page-header">
+  <h1>Installation <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span14">
+    <p>Transrate is avaiable for Mac OSX and Linux, and can be downloaded by clicking the button below.</p>
+
+<p><a href="https://bintray.com/blahah/generic/transrate/_latestVersion"><img src="https://api.bintray.com/packages/blahah/generic/transrate/images/download.svg" alt="Download"> </a></p>
+
+<p>You can get older versions from <a href="https://bintray.com/blahah/generic/transrate">BinTray</a>.</p>
+
+<p>To install, download the package for your operating system, unpack it, and add the unpacked directory to your <code>PATH</code>.</p>
+
+<p><strong>Notes:</strong>
+1. Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact.
+2. Transrate does not include BLAST+. If you want to use the reference-based metrics, you&#39;ll need to install BLAST+ yourself.</p>
+
+<h2 id="toc_0">Advanced installation</h2>
+
+<p>Transrate is also available as a Ruby gem. This has some advantages, such as easy checking for updates, and the ability to use Transrate as a Ruby library. However, the setup is more complex - if you just want to run Transrate, you should use the binary install above.</p>
+
+<p>If you&#39;ve got Ruby v2.0.0 or later, install Transrate with the command:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gem install transrate --pre
+</code></pre></div>
+<p>If your Ruby installation is system-wide you may need to add a <code>sudo</code> command for the install to work:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>sudo gem install transrate --pre
+</code></pre></div>
+<p>Before you can run Transrate, you will need to make sure you have all the dependencies installed.</p>
+
+<h3 id="toc_1">Installing Ruby</h3>
+
+<p>If you don&#39;t have at least v2 Ruby installed, you should install the latest version, then install Transrate as above.</p>
+
+<p>We recommend using the Ruby Version Manager to install and manage Ruby: <a href="http://rvm.io">RVM.io</a> - there are instructions for setting up RVM for single users and on multi-user environments such as clusters and HPC setups.</p>
+
+<h3 id="toc_2">Installing dependencies</h3>
+
+<p>Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:</p>
+
+<ul>
+<li>SNAP <code>v1.0.0dev67.trfix1</code> [download: <a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz">mac</a>]</li>
+<li>Salmon <code>v0.3</code> [download: <a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_squeeze.tar.gz">linux</a> | <a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_MacOSX-10.10.2.tar.gz">mac</a>]</li>
+<li><a href="https://github.com/cboursnell/transrate-tools">bam-read</a> <code>v1.0.0</code> [download: <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_osx.tar.gz">mac</a>]</li>
+<li><a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download">BLAST+</a> <code>v2.2.29</code></li>
+</ul>
+
+<p>Transrate can install any missing dependencies for you. This is done by running the command:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps
+</code></pre></div>
+<p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory, or if it doesn&#39;t have the permissions to do that, in <code>~/.local</code>.</p>
+
+<p>If you prefer, you can install the dependencies yourself, or ask your system administrator to install them for you. Just make sure all the binaries end up in the system PATH. You can see the list of required binaries for each dependency in <a href="https://github.com/Blahah/transrate/blob/master/deps/deps.yaml">the transrate code on Github</a>.</p>
+
+  </div>
+</div>
+
+
+      </section>
+      <footer>
+        <p>Project maintained by<br><a href="mailto:rds45@cam.ac.uk">Richard Smith-Unna</a></p>
+        <p><small>Developed with ♥ and Ruby<br>in the <a href="http://hibberdlab.com">Hibberd Lab</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
+

@@ -1,0 +1,158 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Transrate</title>
+    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/styles.css">
+    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/pygment_trac.css">
+    <link href="/transrate/favico.png" rel="shortcut icon" type="image/x-icon">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/transrate/assets/themes/leap-day/javascripts/main.js"></script>
+    <script src="/transrate/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <img class="headlogo" src="/transrate/assets/themes/leap-day/images/mainlogo.png">
+      </header>
+
+      <div id="banner">
+        <div style="width: 650px; margin-left: auto; margin-right: auto;">
+          <a href="index.html" class="button"><strong>Home</strong></a>
+          <a href="installation.html" class="button"><strong>Installation</strong></a>
+          <a href="getting_started.html" class="button"><strong>Getting Started</strong></a>
+          <a href="metrics.html" class="button"><strong>Metrics</strong></a>
+          <a href="https://github.com/Blahah/transrate" class="button logo" style="float: right;"><strong>View on Github</strong></a>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        
+<div class="page-header">
+  <h1>Getting Started <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span14">
+    <p>This guide will take you through the basic ways of using Transrate. It&#39;s worth reading through once even if you&#39;re familiar with running command-line tools, as it provides guidance about proper selection of input data.</p>
+
+<h2 id="toc_0">Installing transrate</h2>
+
+<p>If you haven&#39;t already, follow the <a href="http://hibberdlab.com/transrate/#installation">installation instructions</a> on the home page.</p>
+
+<h2 id="toc_1">Examining your contigs</h2>
+
+<p>You can examine your contigs without using the reads or a reference. All you need is the assembly in FASTA format.</p>
+
+<p>For example if you have the assembly in the file <code>assembly.fa</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa
+</code></pre></div>
+<p>This analysis should run relatively fast (a few seconds to a few minutes depending on the size of your assembly and the speed of your computer).</p>
+
+<p>To understand what these metrics mean, read the <a href="metrics.html#contig-metrics">contig metrics documentation</a>.</p>
+
+<h2 id="toc_2">Using read evidence</h2>
+
+<p>You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.</p>
+
+<p>For example if you have the assembly in the file <code>assembly.fa</code> and the reads in <code>left.fq</code> and <code>right.fq</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --left left.fq <span class="se">\</span>
+            --right right.fq
+</code></pre></div>
+<p>Transrate uses SNAP to align the reads. Although SNAP is extremely fast compared to other aligners, this can still take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the <code>--threads</code> option. For example if you have 32 cores:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --left left.fq <span class="se">\</span>
+            --right right.fq <span class="se">\</span>
+            --threads 32
+</code></pre></div>
+<p>Learn about what the results mean by reading the <a href="http://hibberdlab.com/transrate/metrics.html#read-mapping-metrics">read mapping metrics  documentation</a>.</p>
+
+<h3 id="toc_3">Choosing the right reads</h3>
+
+<p>It is important that you choose the right set of reads to use for analysis. Different sets of reads correspond to asking different question of the analysis.</p>
+
+<p>If you did any of the following you should think about which stage you want to use reads from:</p>
+
+<ul>
+<li>quality and/or adapter trimming and filtering (e.g. with Trimmomatic)</li>
+<li>error correction (e.g. with BayesHAMMER)</li>
+<li>coverage normalisation (e.g. with khmer normalize-by-median.py)</li>
+</ul>
+
+<p>If you use the raw reads before any treatment you are likely to get an unclear answer, because low quality reads/bases and sequencing errors can be confused with poor assembly. We therefore do not recommend using raw reads.</p>
+
+<p>If you performed quality and/or adapter trimming and filtering and/or error correction you should use the final output from this entire process. For example if you ran Trimmomatic and then BayesHAMMER, use the output from BayesHAMMER as the input to Transrate. This is because these procedures are trying to reconstruct the true sequences of the reads, and should (theoretically) be producing a more accurate set of experimental evidence for the content of the transcriptome.</p>
+
+<p>If you performed coverage normalisation at the end of any read processing pipeline, it is up to you whether to use the normalised reads or the processed reads prior to normalisation. We recommend using normalised reads because it makes the analysis much faster and in our experience the results are extremely similar except for the time taken. Bear in mind that coverage will be capped if you use normalised reads, so the mean coverage statistic will be lower. All other statistics should be unaffected.</p>
+
+<h2 id="toc_4">Using reference proteins as evidence</h2>
+
+<p>You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.</p>
+
+<p>For example if you have the assembly in the file <code>assembly.fa</code> and the reference in the file <code>reference.fa</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --reference reference.fa
+</code></pre></div>
+<p>This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+            --reference reference.fa <span class="se">\</span>
+            --threads 32
+</code></pre></div>
+<p>Learn about what the results mean by reading the <a href="http://hibberdlab.com/transrate/metrics.html#comparative-metrics">comparative metrics  documentation</a>.</p>
+
+<h3 id="toc_5">Choosing a reference</h3>
+
+<p>Which species you choose can strongly affect the results, and how you prepare the reference can make a big difference.</p>
+
+<p>The ideal reference is one from a very closely related species that has a well annotated genome. If a well annotated genome is not available from a closely related species, then a set of proteins from a distantly related but well annotated genome is preferable to a closely related but poorly annotated one.</p>
+
+<p>If your reference is from a species that is not very closely related, it is greatly preferable to use a set of proteins with only one protein per protein-coding gene. This is because most annotated genomes will have multiple isoforms for many genes, each producing a protein. The similar isoforms lead to confusing BLAST alignments and lower the quality of the results. For plant species, <a href="http://phytozome.net">http://phytozome.net</a> provides a &#39;single representative transcript per locus&#39; set of proteins for every genome.</p>
+
+<h3 id="toc_6">Using the same species as a reference</h3>
+
+<p>It is sometimes useful to evaluate the quality of a de-novo transcriptome assembly even though a species has a well-annotated reference genome and transcriptome. To do this you can use the reference transcriptome as the reference in transrate. In this case you should <em>not</em> choose the &#39;single representative transcript per locus&#39; dataset, but should take the full set of transcripts. This allows you to evaluate how well isoforms are reconstructed.</p>
+
+<h2 id="toc_7">Comparing two or more assemblies</h2>
+
+<p>You can easily compare multiple assemblies using Transrate. To do this you need each of the assemblies in a FASTA file, and then provide a comma-separated list with <strong>no spaces</strong> to the <code>--assembly</code> option.</p>
+
+<p>For example if you have two assemblies, <code>one.fa</code> and <code>two.fa</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly one.fa,two.fa
+</code></pre></div>
+<p>You can of course still perform all the more advanced analyses, e.g.:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly one.fa,two.fa <span class="se">\</span>
+            --reference ref.fa <span class="se">\</span>
+            --left left.fq
+            --right right.fq
+            --threads 32
+</code></pre></div>
+<p>Transrate will run all the specified analyses for each assembly and will write the results to a file called <code>transrate.csv</code> with one row per assembly and one column for each metric.</p>
+
+  </div>
+</div>
+
+
+      </section>
+      <footer>
+        <p>Project maintained by<br><a href="mailto:rds45@cam.ac.uk">Richard Smith-Unna</a></p>
+        <p><small>Developed with ♥ and Ruby<br>in the <a href="http://hibberdlab.com">Hibberd Lab</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
+

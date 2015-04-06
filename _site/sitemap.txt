@@ -1,0 +1,8 @@
+
+http://hibberdlab.com/transrate//getting_started.html
+http://hibberdlab.com/transrate//index.html
+http://hibberdlab.com/transrate//installation.html
+http://hibberdlab.com/transrate//metrics.html
+http://hibberdlab.com/transrate//options.html
+http://hibberdlab.com/transrate//sitemap.txt
+
