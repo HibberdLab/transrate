@@ -82,11 +82,11 @@ See the [getting started guide](getting_started.html) for more instructions.
 
 ## Authors and Contributors
 
-Transrate was a collabortation between the [Hibberd lab](http://hibberdlab.com) (Cambridge) and the [Kelly lab](http://stevekellylab.com) (Oxford). It was developed by Richard Smith-Unna, Chris Boursnell, Steve Kelly and Julian Hibberd, with significant contributions from. Matt MacManes and the Transrate user community provided valuable feedback and testing.
+Transrate was a collabortation between the [Hibberd lab](http://hibberdlab.com) (Cambridge) and the [Kelly lab](http://stevekellylab.com) (Oxford). It was developed by Richard Smith-Unna, Chris Boursnell, Steve Kelly and Julian Hibberd, with significant contributions from Rob Patro (Stony Brook University). Matt MacManes and the Transrate user community provided valuable feedback and testing.
 
 We welcome contributions - please see the [README in the Github repo](https://github.com/Blahah/transrate).
 
-## Get Support or Contact
+## Get Support
 
 If you're having trouble with Transrate, please first consult the documentation on this site.
 
@@ -104,4 +104,4 @@ Transrate is research software. We therefore require that users cite Transrate i
 
 Transrate is free open source software, released under the [MIT license](http://blahah.mit-license.org/).
 
-© Richard Smith-Unna 2014.
+© Richard Smith-Unna 2014. All site content is released under CC-BY v3.0 [![CC-BY icon](http://mirrors.creativecommons.org/presskit/buttons/80x15/png/by.png)](https://creativecommons.org/licenses/by/3.0/).
