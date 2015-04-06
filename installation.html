@@ -47,38 +47,48 @@
   <div class="span14">
     <h2 id="toc_0">Installing transrate</h2>
 
+<p>Transrate is avaiable for Mac OSX and Linux, and can be downloaded by clicking the button below.</p>
+
+<p><a href="https://bintray.com/blahah/generic/transrate/_latestVersion"><img src="https://api.bintray.com/packages/blahah/generic/transrate/images/download.svg" alt="Download"> </a></p>
+
+<p>You can get older versions from <a href="https://bintray.com/blahah/generic/transrate">BinTray</a>.</p>
+
+<p>To install, download the package for your operating system, unpack it, and add the unpacked directory to your <code>PATH</code>. Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact. Note that Transrate does not include BLAST+. If you want to use the reference-based metrics, you&#39;ll need to install BLAST+ yourself.</p>
+
+<h2 id="toc_1">Advanced installation</h2>
+
+<p>Transrate is also available as a Ruby gem. This has some advantages, such as easy checking for updates, and the ability to use Transrate as a Ruby library. However, the setup is more complex - if you just want to run Transrate, you should use the binary install above.</p>
+
 <p>If you&#39;ve got Ruby v2.0.0 or later, install Transrate with the command:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gem install transrate
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>gem install transrate --pre
 </code></pre></div>
 <p>If your Ruby installation is system-wide you may need to add a <code>sudo</code> command for the install to work:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>sudo gem install transrate
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>sudo gem install transrate --pre
 </code></pre></div>
-<p>Before you can run transrate, you will need to make sure you have all the dependencies installed.</p>
+<p>Before you can run Transrate, you will need to make sure you have all the dependencies installed.</p>
 
-<h2 id="toc_1">Installing Ruby</h2>
+<h3 id="toc_2">Installing Ruby</h3>
 
-<p>If you don&#39;t have at least v2 Ruby installed, you should install the latest version, then install transrate as above.</p>
+<p>If you don&#39;t have at least v2 Ruby installed, you should install the latest version, then install Transrate as above.</p>
 
 <p>We recommend using the Ruby Version Manager to install and manage Ruby: <a href="http://rvm.io">RVM.io</a> - there are instructions for setting up RVM for single users and on multi-user environments such as clusters and HPC setups.</p>
 
-<h2 id="toc_2">Installing dependencies</h2>
+<h3 id="toc_3">Installing dependencies</h3>
 
 <p>Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:</p>
 
 <ul>
-<li><a href="http://snap.cs.berkeley.edu/">SNAP</a> <code>v1.0.0dev61</code> or later</li>
-<li><a href="http://bio.math.berkeley.edu/eXpress/">eXpress</a> <code>v1.5.1</code></li>
-<li><a href="https://github.com/cboursnell/transrate-bam-read">transrate-tools</a> <code>v1.0.0</code></li>
-<li><a href="http://samtools.sourceforge.net/">Samtools</a> <code>v0.1.19</code></li>
+<li>SNAP <code>v1.0.0dev67.trfix1</code> [download: <a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz">mac</a>]</li>
+<li>Salmon <code>v0.3</code> [download: <a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_squeeze.tar.gz">linux</a> | <a href="https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_MacOSX-10.10.2.tar.gz">mac</a>]</li>
+<li><a href="https://github.com/cboursnell/transrate-tools">bam-read</a> <code>v1.0.0</code> [download: <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_osx.tar.gz">mac</a>]</li>
 <li><a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download">BLAST+</a> <code>v2.2.29</code></li>
 </ul>
 
 <p>Transrate can install any missing dependencies for you. This is done by running the command:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps
 </code></pre></div>
-<p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory. If your Ruby installation is system-wide you&#39;ll need to add a <code>sudo</code> to the command:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>sudo transrate --install-deps
-</code></pre></div>
+<p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory, or if it doesn&#39;t have the permissions to do that, in <code>~/.local</code>.</p>
+
 <p>If you prefer, you can install the dependencies yourself, or ask your system administrator to install them for you. Just make sure all the binaries end up in the system PATH. You can see the list of required binaries for each dependency in <a href="https://github.com/Blahah/transrate/blob/master/deps/deps.yaml">the transrate code on Github</a>.</p>
 
   </div>
