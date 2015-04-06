@@ -5,8 +5,6 @@ title: "Installation"
 
 {% include JB/setup %}
 
-## Installing transrate
-
 Transrate is avaiable for Mac OSX and Linux, and can be downloaded by clicking the button below.
 
 [![Download](https://api.bintray.com/packages/blahah/generic/transrate/images/download.svg) ](https://bintray.com/blahah/generic/transrate/_latestVersion)
