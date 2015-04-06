@@ -1,16 +1,15 @@
+
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ ASSET_PATH }}/stylesheets/styles.css">
-    <link rel="stylesheet" href="{{ ASSET_PATH }}/stylesheets/pygment_trac.css">
-    <link href="/transrate/favico.png" rel="shortcut icon" type="image/x-icon">
-
+    <title>Transrate</title>
+    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/styles.css">
+    <link rel="stylesheet" href="/transrate/assets/themes/leap-day/stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="{{ ASSET_PATH }}/javascripts/main.js"></script>
-    <script src="{{ ASSET_PATH }}/javascripts/ggl-analytics.js"></script>
+    <script src="/transrate/assets/themes/leap-day/javascripts/main.js"></script>
+    <script src="/transrate/assets/themes/leap-day/javascripts/ggl-analytics.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -20,7 +19,7 @@
   <body>
 
       <header>
-        <img class="headlogo" src="{{ ASSET_PATH }}/images/mainlogo.png">
+        <img class="headlogo" src="/transrate/assets/themes/leap-day/images/mainlogo.png">
       </header>
 
       <div id="banner">
@@ -39,13 +38,28 @@
         <ul></ul>
       </nav>
       <section>
-        {{ content }}
+        
+<div class="page-header">
+  <h1>Options <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span14">
+    
+  </div>
+</div>
+
+
       </section>
       <footer>
-        <p>Project maintained by<br><a href="mailto:{{site.author.email}}">{{ site.author.name }}</a></p>
+        <p style="margin-bottom: 5px;">Install Transrate:</p><small><pre style="margin-top=-15px;">gem install transrate</pre></small>
+        <p>Current version:<br><a href="https://rubygems.org/gems/transrate"><img src="http://img.shields.io/gem/v/transrate.svg"></a></p>
+        <p>Test coverage:<br><a href="https://coveralls.io/r/Blahah/transrate"><img src="http://img.shields.io/coveralls/Blahah/transrate.svg"></a></p>
+        <p>Project maintained by<br><a href="mailto:rds45@cam.ac.uk">Richard Smith-Unna</a></p>
         <p><small>Developed with ♥ and Ruby<br>in the <a href="http://hibberdlab.com">Hibberd Lab</a></small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
   </body>
 </html>
+

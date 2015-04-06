@@ -37,7 +37,7 @@ $ transrate --assembly assembly.fa \
             --right right.fq
 ```
 
-Transrate uses Bowtie2 to align the reads, which can take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
+Transrate uses SNAP to align the reads. Although SNAP is extremely fast compared to other aligners, this can still take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
 
 ```bash
 $ transrate --assembly assembly.fa \
