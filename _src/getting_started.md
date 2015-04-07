@@ -9,7 +9,7 @@ This guide will take you through the basic ways of using Transrate. It's worth r
 
 ## Installing transrate
 
-If you haven't already, follow the [installation instructions](http://hibberdlab.com/transrate/#installation) on the home page.
+If you haven't already, follow the [installation instructions](installation.html) on the home page.
 
 ## Examining your contigs
 
@@ -46,7 +46,7 @@ $ transrate --assembly assembly.fa \
             --threads 32
 ```
 
-Learn about what the results mean by reading the [read mapping metrics  documentation](http://hibberdlab.com/transrate/metrics.html#read-mapping-metrics).
+Learn about what the results mean by reading the [read mapping metrics  documentation](metrics.html#read-mapping-metrics).
 
 ### Choosing the right reads
 
@@ -83,7 +83,7 @@ $ transrate --assembly assembly.fa \
             --threads 32
 ```
 
-Learn about what the results mean by reading the [comparative metrics  documentation](http://hibberdlab.com/transrate/metrics.html#comparative-metrics).
+Learn about what the results mean by reading the [comparative metrics  documentation](metrics.html#comparative-metrics).
 
 ### Choosing a reference
 
