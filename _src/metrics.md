@@ -121,8 +121,8 @@ If you want to optimise your assembly, we suggest using read-mapping metrics, in
 When you include the `--left` and `--right` options, Transrate will do the following:
 
 1. map the provided reads to the assembly using [SNAP](snap.cs.berkeley.edu)
-2. infer the most likely contig of origin for any multi-mapping reads with [eXpress](bio.math.berkeley.edu/eXpress/)
-3. inspect the resulting alignments with [transrate-tools](https://github.com/cboursnell/transrate-bam-read) and use them to evaluate confidence each base and contig in the assembly
+2. infer the most likely contig of origin for any multi-mapping reads with [Salmon](https://github.com/kingsfordgroup/sailfish/releases/tag/v0.3.0)
+3. inspect the resulting alignments with [transrate-tools](https://github.com/cboursnell/transrate-tools) and use them to evaluate each contig in the assembly
 
 ```
 Read mapping metrics:
