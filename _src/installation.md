@@ -5,7 +5,10 @@ title: "Installation"
 
 {% include JB/setup %}
 
-Transrate is avaiable for Mac OSX and Linux, and can be downloaded by clicking the button below.
+Transrate is avaiable for Mac OSX and Linux. Download the binaries below:
+
+- [Linux 64bit v1.0.0.beta3](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0.beta3-linux-x86_64.tar.gz)
+- [OSX v1.0.0.beta3](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0.beta3-osx.tar.gz)
 
 [![Download](https://api.bintray.com/packages/blahah/generic/transrate/images/download.svg) ](https://bintray.com/blahah/generic/transrate/_latestVersion)
 
