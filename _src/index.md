@@ -19,7 +19,7 @@ Transrate analyses a transcriptome assembly in three key ways:
 
 **By far** the most useful metrics are those based on read mapping, in particular you should pay attention to the *[Transrate assembly score](metrics.html#the-transrate-score)*, the *[optimised assembly score](metrics.html#the-optimised-asssembly-score)* and the individual *[contig scores](metrics.html#the-contig-score)*.
 
-You can read about these in detail on the [transcriptome assembly metrics](metrics.html) page.
+You can read about all the [metrics in detail](metrics.html).
 
 ## Installation
 
