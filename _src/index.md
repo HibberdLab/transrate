@@ -82,7 +82,7 @@ See the [getting started guide](getting_started.html) for more instructions.
 
 ## Authors and Contributors
 
-Transrate was a collabortation between the [Hibberd lab](http://hibberdlab.com) (Cambridge) and the [Kelly lab](http://stevekellylab.com) (Oxford). It was developed by Richard Smith-Unna, Chris Boursnell, Steve Kelly and Julian Hibberd, with significant contributions from Rob Patro (Stony Brook University). Matt MacManes and the Transrate user community provided valuable feedback and testing.
+Transrate is a collabortation between the [Hibberd lab](http://hibberdlab.com) (Cambridge) and the [Kelly lab](http://stevekellylab.com) (Oxford). It was developed by Richard Smith-Unna, Chris Boursnell, Steve Kelly and Julian Hibberd, with significant contributions from Rob Patro (Stony Brook University). Matt MacManes and the Transrate user community provided valuable feedback and testing.
 
 We welcome contributions - please see the [README in the Github repo](https://github.com/Blahah/transrate).
 
