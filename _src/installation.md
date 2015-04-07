@@ -14,6 +14,7 @@ You can get older versions from [BinTray](https://bintray.com/blahah/generic/tra
 To install, download the package for your operating system, unpack it, and add the unpacked directory to your `PATH`.
 
 **Notes:**
+
 1. Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact.
 2. Transrate does not include BLAST+. If you want to use the reference-based metrics, you'll need to install BLAST+ yourself.
 
