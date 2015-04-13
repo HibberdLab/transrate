@@ -154,7 +154,7 @@ p contigs good                 0.78
 | fragments mapped | the total number of read pairs mapping | theoretically equal to `fragments` if all errors, adapters and contamination have been removed |
 | p fragments mapped | the proportion of the provided read pairs that mapped successfully | theoretically 1.0 (see above) |
 | good mappings | the number of read pairs mapping in a way indicative of good assembly | equal to `fragments` |
-| p good mappings | the percentage of read pairs mapping in a way indicative of a good assembly | 1.0 |
+| p good mappings | the proportion of read pairs mapping in a way indicative of a good assembly | 1.0 |
 | bad mappings | the number and proportion of reads pairs mapping in a way indicative of bad assembly | 0 |
 | potential bridges | the number of potential links between contigs that are supported by the reads | 0 |
 | n bases uncovered | the number of bases that are not covered by any reads | 0 |
@@ -164,16 +164,17 @@ p contigs good                 0.78
 | contigs uncovered | the number of contigs that have a mean per-base read coverage of < 1 | 0 |
 | p contigs uncovered | the proportion of contigs that have a mean per-base read coverage of < 1 | 0.0 |
 | contigs lowcovered | the number of contigs that have a mean per-base read coverage of < 10 | no specific optimum |
-| p contigs lowcovered | the number of contigs that have a mean per-base read coverage of < 10 | no specific optimum |
+| p contigs lowcovered | the proportion of contigs that have a mean per-base read coverage of < 10 | no specific optimum |
 
 
 ### Good and bad mappings
 
-'Good' mappings are those aligned in a biologically plausible way, i.e.:
+'Good' mappings are those aligned in a way that is consistent with the contig being perfectly assembled, i.e.:
 
 - where both members of the pair are aligned
 - in the correct orientation
 - on the same contig
+- without overlapping either end of the contig
 
 Conversely, 'bad' pairs are those where one of the conditions for being 'good' are not met.
 
@@ -193,7 +194,7 @@ Usually, the closer the reference species is to the species you've assembled, th
 
 Taken with the read mapping metrics, comparative metrics allow you to optimise the quality of your assembly.
 
-When you include the `--reference` option, Transrate will align each contig in your assembly to each protein in the reference using [Conditional Reciprocal Best BLAST](https://github.com/cboursnell/crb-blast) (CRBB). CRBB is a novel algorithm for finding homologous genes developed by [Steve Kelly](http://stevekellylab.com) and described in our paper on long-range comparative transcriptomics [(Aubry at el. 2014)](http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365). CRBB hits are high-confidence predicted homologs.
+When you include the `--reference` option, Transrate will align each contig in your assembly to each protein or transcript in the reference using [Conditional Reciprocal Best BLAST](https://github.com/cboursnell/crb-blast) (CRBB). CRBB is a novel algorithm for finding homologous genes developed by [Steve Kelly](http://stevekellylab.com) and described in our paper on long-range comparative transcriptomics [(Aubry at el. 2014)](http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365). CRBB hits are high-confidence predicted homologs.
 
 CRB-BLAST starts out with bi-directional BLAST+ alignments:
 
@@ -233,7 +234,7 @@ p cov95                   0.07
 | n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
 | p contigs with CRBB | the proportion of contigs with a CRB-BLAST hit | 1 |
 | n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
-| reference coverage | the proportion of reference bases covered by a CRB-BLAST hit | As high as possible (see above) |
+| reference coverage | the proportion of reference bases/amino acids covered by a CRB-BLAST hit | As high as possible (see above) |
 | collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
 | covX | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | All of them |
 | p covX | proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | 1 |

@@ -275,7 +275,7 @@ p contigs good                 0.78
 </tr>
 <tr>
 <td>p good mappings</td>
-<td align="left">the percentage of read pairs mapping in a way indicative of a good assembly</td>
+<td align="left">the proportion of read pairs mapping in a way indicative of a good assembly</td>
 <td align="left">1.0</td>
 </tr>
 <tr>
@@ -325,19 +325,20 @@ p contigs good                 0.78
 </tr>
 <tr>
 <td>p contigs lowcovered</td>
-<td align="left">the number of contigs that have a mean per-base read coverage of &lt; 10</td>
+<td align="left">the proportion of contigs that have a mean per-base read coverage of &lt; 10</td>
 <td align="left">no specific optimum</td>
 </tr>
 </tbody></table>
 
 <h3 id="toc_6">Good and bad mappings</h3>
 
-<p>&#39;Good&#39; mappings are those aligned in a biologically plausible way, i.e.:</p>
+<p>&#39;Good&#39; mappings are those aligned in a way that is consistent with the contig being perfectly assembled, i.e.:</p>
 
 <ul>
 <li>where both members of the pair are aligned</li>
 <li>in the correct orientation</li>
 <li>on the same contig</li>
+<li>without overlapping either end of the contig</li>
 </ul>
 
 <p>Conversely, &#39;bad&#39; pairs are those where one of the conditions for being &#39;good&#39; are not met.</p>
@@ -358,7 +359,7 @@ p contigs good                 0.78
 
 <p>Taken with the read mapping metrics, comparative metrics allow you to optimise the quality of your assembly.</p>
 
-<p>When you include the <code>--reference</code> option, Transrate will align each contig in your assembly to each protein in the reference using <a href="https://github.com/cboursnell/crb-blast">Conditional Reciprocal Best BLAST</a> (CRBB). CRBB is a novel algorithm for finding homologous genes developed by <a href="http://stevekellylab.com">Steve Kelly</a> and described in our paper on long-range comparative transcriptomics <a href="http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365">(Aubry at el. 2014)</a>. CRBB hits are high-confidence predicted homologs.</p>
+<p>When you include the <code>--reference</code> option, Transrate will align each contig in your assembly to each protein or transcript in the reference using <a href="https://github.com/cboursnell/crb-blast">Conditional Reciprocal Best BLAST</a> (CRBB). CRBB is a novel algorithm for finding homologous genes developed by <a href="http://stevekellylab.com">Steve Kelly</a> and described in our paper on long-range comparative transcriptomics <a href="http://www.plosgenetics.org/article/info%3Adoi%2F10.1371%2Fjournal.pgen.1004365">(Aubry at el. 2014)</a>. CRBB hits are high-confidence predicted homologs.</p>
 
 <p>CRB-BLAST starts out with bi-directional BLAST+ alignments:</p>
 
@@ -424,7 +425,7 @@ p cov95                   0.07
 </tr>
 <tr>
 <td>reference coverage</td>
-<td align="left">the proportion of reference bases covered by a CRB-BLAST hit</td>
+<td align="left">the proportion of reference bases/amino acids covered by a CRB-BLAST hit</td>
 <td align="left">As high as possible (see above)</td>
 </tr>
 <tr>
