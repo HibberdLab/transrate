@@ -12,7 +12,7 @@ redcarpet:
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : Transrate
+title : Transrate - transcriptome assembly quality analysis
 tagline: Understand your transcriptome assembly
 author :
   name : Richard Smith-Unna
