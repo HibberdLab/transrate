@@ -232,8 +232,8 @@ p cov95                   0.07
 | CRBB hits | the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled. | As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference. |
 | p contigs with CRBB | the proportion of contigs with a CRB-BLAST hit | 1 |
 | n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
-| p contigs with CRBB | the proportion of contigs with a CRB-BLAST hit | 1 |
-| n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
+| p references with CRBB | the proportion of references with a CRB-BLAST hit | 1 |
+| n references with CRBB | the number of references with a CRB-BLAST hit | `n seqs` |
 | reference coverage | the proportion of reference bases/amino acids covered by a CRB-BLAST hit | As high as possible (see above) |
 | collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
 | covX | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | All of them |
