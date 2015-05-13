@@ -5,7 +5,7 @@ title: "Transrate"
 
 {% include JB/setup %}
 
-Transrate is software for deep inspection and quality analysis of *de-novo* transcriptome assemblies. It works by examining your assembly in detail, comparing it to experimental evidence such as the sequencing reads, and providing insight about its quality and usefulness in various situations. This can allow you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.
+Transrate is software for *de-novo* transcriptome assembly quality analysis. It examines your assembly in detail and compares it to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies. This allows you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.
 
 > NOTE: this is the documentation for transrate v1.0.0 beta3
 
