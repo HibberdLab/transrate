@@ -7,8 +7,8 @@ title: "Installation"
 
 Transrate is avaiable for Mac OSX and Linux. Download the binaries below:
 
-- [Linux 64bit v1.0.0.beta3](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0.beta3-linux-x86_64.tar.gz)
-- [OSX v1.0.0.beta3](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0.beta3-osx.tar.gz)
+- [Linux 64bit v1.0.0.beta4](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0.beta4-linux-x86_64.tar.gz)
+- [OSX v1.0.0.beta4](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0.beta4-osx.tar.gz)
 
 You can get older versions from [BinTray](https://bintray.com/blahah/generic/transrate).
 
@@ -48,7 +48,7 @@ We recommend using the Ruby Version Manager to install and manage Ruby: [RVM.io]
 Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:
 
 - SNAP `v1.0.0dev67.trfix1` [download: [linux](https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz) | [mac](https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz)]
-- Salmon `v0.3` [download: [linux](https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_squeeze.tar.gz) | [mac](https://github.com/kingsfordgroup/sailfish/releases/download/v0.3.0/SalmonBeta-v0.3.0_MacOSX-10.10.2.tar.gz)]
+- Salmon `v0.4.0` [download: [linux](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.0/SalmonBeta-0.4.0_DebianSqueeze.tar.gz) | [mac](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.0/SalmonBeta-0.4.0_OSX-10.10.tar.gz)]
 - [bam-read](https://github.com/cboursnell/transrate-tools) `v1.0.0` [download: [linux](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_linux.tar.gz) | [mac](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_osx.tar.gz)]
 - [BLAST+](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) `v2.2.29`
 

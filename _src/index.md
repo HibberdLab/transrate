@@ -7,7 +7,7 @@ title: "Transrate"
 
 Transrate is software for *de-novo* transcriptome assembly quality analysis. It examines your assembly in detail and compares it to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies. This allows you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.
 
-> NOTE: this is the documentation for transrate v1.0.0 beta3
+> NOTE: this is the documentation for transrate v1.0.0 beta4
 
 ## Overview
 
@@ -30,52 +30,52 @@ See [the installation guide](installation.html).
 Running `transrate --help` will show you the command-line interface:
 
 ```
- Transrate v1.0.0.beta3
- by Richard Smith-Unna, Chris Boursnell, Rob Patro,
-    Julian Hibberd, and Steve Kelly
+  Transrate v1.0.0.beta4
+  by Richard Smith-Unna, Chris Boursnell, Rob Patro,
+     Julian Hibberd, and Steve Kelly
 
- DESCRIPTION:
- Analyse a de-novo transcriptome assembly using three kinds of metrics:
+  DESCRIPTION:
+  Analyse a de-novo transcriptome assembly using three kinds of metrics:
 
- 1. sequence-based (basic)
- 2. read-mapping-based (if --left and --right are provided)
- 3. reference-based (if --reference is provided)
+  1. sequence-based (basic)
+  2. read-mapping-based (if --left and --right are provided)
+  3. reference-based (if --reference is provided)
 
- Bug reports and feature requests at:
- http://github.com/blahah/transrate
+  Bug reports and feature requests at:
+  http://github.com/blahah/transrate
 
- USAGE:
- transrate <options>
+  USAGE:
+  transrate <options>
 
- EXAMPLES:
- # check dependencies and install any that are missing
- transrate --install-deps
- # get the transrate score for the assembly and each contig
- transrate --assembly contigs.fa --left left.fq --right right.fq
- # basic assembly metrics only
- transrate --assembly contigs.fa
- # basic and reference-based metrics with 8 threads
- transrate --assembly contigs.fa --reference Athaliana_transcripts.fa
- --threads 8
- # contig and read-based metrics for two assemblies with 32 threads
- transrate --assembly one.fa,two.fa --left l.fq --right r.fq --threads 32
+  EXAMPLES:
+  # check dependencies and install any that are missing
+  transrate --install-deps
+  # get the transrate score for the assembly and each contig
+  transrate --assembly contigs.fa --left left.fq --right right.fq
+  # basic assembly metrics only
+  transrate --assembly contigs.fa
+  # basic and reference-based metrics with 8 threads
+  transrate --assembly contigs.fa --reference Athaliana_transcripts.fa
+  --threads 8
+  # contig and read-based metrics for two assemblies with 32 threads
+  transrate --assembly one.fa,two.fa --left l.fq --right r.fq --threads 32
 
- OPTIONS:
- -a, --assembly=<s>            Assembly file(s) in FASTA format,
- comma-separated
- -r, --reference=<s>           Reference proteome file in FASTA format
- -l, --left=<s>                Left reads file in FASTQ format
- -i, --right=<s>               Right reads file in FASTQ format
- -t, --threads=<i>             Number of threads to use (default: 8)
- -m, --merge-assemblies=<s>    Merge multiple assemblies into file
- -o, --outfile=<s>             Prefix filename to use for CSV output (default:
- transrate)
- -g, --loglevel=<s>            The amount of information to print. One of
- [error, info, warn, debug] (default: info)
- -n, --install-deps=<s>        Install any missing dependencies. One of [all,
- read, ref]
- -v, --version                 Print version and exit
- -h, --help                    Show this message
+  OPTIONS:
+  -a, --assembly=<s>            Assembly file(s) in FASTA format,
+                                comma-separated
+  -l, --left=<s>                Left reads file in FASTQ format
+  -r, --right=<s>               Right reads file in FASTQ format
+  -e, --reference=<s>           Reference proteome file in FASTA format
+  -t, --threads=<i>             Number of threads to use (default: 8)
+  -m, --merge-assemblies=<s>    Merge multiple assemblies into file
+  -o, --outfile=<s>             Prefix filename to use for CSV output (default:
+                                transrate)
+  -g, --loglevel=<s>            The amount of information to print. One of
+                                [error, info, warn, debug] (default: info)
+  -i, --install-deps=<s>        Install any missing dependencies. One of [all,
+                                read, ref]
+  -v, --version                 Print version and exit
+  -h, --help                    Show this message
 ```
 
 See the [getting started guide](getting_started.html) for more instructions.
