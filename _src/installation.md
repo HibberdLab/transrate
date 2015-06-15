@@ -49,7 +49,7 @@ We recommend using the Ruby Version Manager to install and manage Ruby: [RVM.io]
 
 Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:
 
-- SNAP `v1.0beta.18` [download: [linux](https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_linux.tar.gz) | [mac](https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_osx.tar.gz)]
+- snap-aligner `v1.0beta.18` [download: [linux](https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_linux.tar.gz) | [mac](https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_osx.tar.gz)]
 - Salmon `v0.4.2` [download: [linux](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.2/SalmonBeta-0.4.2_DebianSqueeze.tar.gz) | [mac](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.2/SalmonBeta-0.4.2_OSX-10.10.tar.gz)]
 - [bam-read](https://github.com/cboursnell/transrate-tools) `v1.0.0` [download: [linux](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0/bam-read_v1.0.0_linux.tar.gz) | [mac](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0/bam-read_v1.0.0_osx.tar.gz)]
 - [BLAST+](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) `v2.2.29`
