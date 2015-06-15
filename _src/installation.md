@@ -14,6 +14,8 @@ You can get older versions from [BinTray](https://bintray.com/blahah/generic/tra
 
 To install, download the package for your operating system, unpack it, and add the unpacked directory to your `PATH`.
 
+We do our best to make transrate 'just work'. If it doesn't work for you, *please* let us know on the [mailing list](https://groups.google.com/forum/#!forum/transrate-users), our [issue tracker](https://github.com/Blahah/transrate/issues), or the [live chat](https://gitter.im/Blahah/transrate).
+
 **Notes:**
 
 1. Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact.
@@ -26,13 +28,13 @@ Transrate is also available as a Ruby gem. This has some advantages, such as eas
 If you've got Ruby v2.0.0 or later, install Transrate with the command:
 
 ```bash
-$ gem install transrate --pre
+$ gem install transrate
 ```
 
 If your Ruby installation is system-wide you may need to add a `sudo` command for the install to work:
 
 ```bash
-$ sudo gem install transrate --pre
+$ sudo gem install transrate
 ```
 
 Before you can run Transrate, you will need to make sure you have all the dependencies installed.
@@ -47,9 +49,9 @@ We recommend using the Ruby Version Manager to install and manage Ruby: [RVM.io]
 
 Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:
 
-- SNAP `v1.0.0dev67.trfix1` [download: [linux](https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_linux.tar.gz) | [mac](https://github.com/Blahah/snap/releases/download/v1.0dev.67.trfix1/snap_v1.0dev.67.trfix1_macosx.tar.gz)]
-- Salmon `v0.4.0` [download: [linux](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.0/SalmonBeta-0.4.0_DebianSqueeze.tar.gz) | [mac](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.0/SalmonBeta-0.4.0_OSX-10.10.tar.gz)]
-- [bam-read](https://github.com/cboursnell/transrate-tools) `v1.0.0` [download: [linux](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_linux.tar.gz) | [mac](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0.beta4/bam-read_v1.0.0.beta4_osx.tar.gz)]
+- SNAP `v1.0beta.18` [download: [linux](https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_linux.tar.gz) | [mac](https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_osx.tar.gz)]
+- Salmon `v0.4.2` [download: [linux](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.2/SalmonBeta-0.4.2_DebianSqueeze.tar.gz) | [mac](https://github.com/COMBINE-lab/salmon/releases/download/v0.4.2/SalmonBeta-0.4.2_OSX-10.10.tar.gz)]
+- [bam-read](https://github.com/cboursnell/transrate-tools) `v1.0.0` [download: [linux](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0/bam-read_v1.0.0_linux.tar.gz) | [mac](https://github.com/Blahah/transrate-tools/releases/download/v1.0.0/bam-read_v1.0.0_osx.tar.gz)]
 - [BLAST+](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) `v2.2.29`
 
 Transrate can install any missing dependencies for you. This is done by running the command:

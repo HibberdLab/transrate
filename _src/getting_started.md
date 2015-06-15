@@ -11,6 +11,18 @@ This guide will take you through the basic ways of using Transrate. It's worth r
 
 If you haven't already, follow the [installation instructions](installation.html) on the home page.
 
+## Get some data
+
+If you don't have your own data, you can use our small example dataset to try out the contig and read-based metrics:
+
+- [example_data.tar.gz](https://bintray.com/artifact/download/blahah/generic/example_data.tar.gz)
+
+Unpack the data before using it:
+
+```
+$ tar xf example_data.tar.gz
+```
+
 ## Examining your contigs
 
 You can examine your contigs without using the reads or a reference. All you need is the assembly in FASTA format.
@@ -18,7 +30,7 @@ You can examine your contigs without using the reads or a reference. All you nee
 For example if you have the assembly in the file `assembly.fa`:
 
 ```bash
-$ transrate --assembly assembly.fa
+$ transrate --assembly transcripts.fa
 ```
 
 This analysis should run relatively fast (a few seconds to a few minutes depending on the size of your assembly and the speed of your computer).
@@ -32,7 +44,7 @@ You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA
 For example if you have the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
 
 ```bash
-$ transrate --assembly assembly.fa \
+$ transrate --assembly transcripts.fa \
             --left left.fq \
             --right right.fq
 ```
@@ -40,7 +52,7 @@ $ transrate --assembly assembly.fa \
 Transrate uses SNAP to align the reads. Although SNAP is extremely fast compared to other aligners, this can still take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
 
 ```bash
-$ transrate --assembly assembly.fa \
+$ transrate --assembly transcripts.fa \
             --left left.fq \
             --right right.fq \
             --threads 32
