@@ -30,11 +30,6 @@ See [the installation guide](installation.html).
 Running `transrate --help` will show you the command-line interface:
 
 ```
-          _                                        _
-         | |_  _ __  __ _  _ __   ___  _ __  __ _ | |_  ___
-░▓▓▓^▓▓▓░ | __|| '__|/ _` || '_ \ / __|| '__|/ _` || __|/ _ \ ░▓▓▓^▓▓▓░
-░▓▓▓^▓▓▓░ | |_ | |  | (_| || | | |\__ \| |  | (_| || |_|  __/ ░▓▓▓^▓▓▓░
-░▓▓▓^▓▓▓░  \__||_|   \__,_||_| |_||___/|_|   \__,_| \__|\___| ░▓▓▓^▓▓▓░
 
 Transrate v1.0.0
 by Richard Smith-Unna, Chris Boursnell, Rob Patro,
@@ -65,6 +60,7 @@ OPTIONS:
 -x, --examples                Show some example commands with explanations
 -v, --version                 Print version and exit
 -h, --help                    Show this message
+
 ```
 
 See the [getting started guide](getting_started.html) for more instructions.
