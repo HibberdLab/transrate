@@ -49,7 +49,7 @@ $ transrate --assembly transcripts.fa \
             --right right.fq
 ```
 
-Transrate uses SNAP to align the reads. Although SNAP is extremely fast compared to other aligners, this can still take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
+Transrate uses SNAP to align the reads and Salmon to assign multi-mapping reads probabilistically. Although both SNAP and Salmon are extremely fast compared to other tools, this can still take a long time if you have a lot of reads. If you have multiple processors or cores, you can use them to speed up the analysis by specifying the `--threads` option. For example if you have 32 cores:
 
 ```bash
 $ transrate --assembly transcripts.fa \
@@ -58,7 +58,7 @@ $ transrate --assembly transcripts.fa \
             --threads 32
 ```
 
-Learn about what the results mean by reading the [read mapping metrics  documentation](metrics.html#read-mapping-metrics).
+Learn about what the results mean by reading the [read mapping metrics documentation](metrics.html#read-mapping-metrics).
 
 ### Choosing the right reads
 
@@ -78,7 +78,7 @@ If you performed coverage normalisation at the end of any read processing pipeli
 
 ## Using reference proteins as evidence
 
-You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.
+You can compare your assembly to a reference set of proteins or transcripts from a related species. You need your assembly and the reference sequences in FASTA format.
 
 For example if you have the assembly in the file `transcripts.fa` and the reference in the file `reference.fa`:
 
@@ -101,7 +101,7 @@ Learn about what the results mean by reading the [comparative metrics  documenta
 
 Which species you choose can strongly affect the results, and how you prepare the reference can make a big difference.
 
-The ideal reference is one from a very closely related species that has a well annotated genome. If a well annotated genome is not available from a closely related species, then a set of proteins from a distantly related but well annotated genome is preferable to a closely related but poorly annotated one.
+The ideal reference is one from a very closely related species that has a well annotated genome. If a well annotated genome is not available from a closely related species, then a set of proteins from a distantly related but well annotated genome is often preferable to a closely related but poorly annotated one.
 
 If your reference is from a species that is not very closely related, it is greatly preferable to use a set of proteins with only one protein per protein-coding gene. This is because most annotated genomes will have multiple isoforms for many genes, each producing a protein. The similar isoforms lead to confusing BLAST alignments and lower the quality of the results. For plant species, http://phytozome.net provides a 'single representative transcript per locus' set of proteins for every genome.
 
