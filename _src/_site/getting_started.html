@@ -68,7 +68,7 @@
 
 <p>You can examine your contigs without using the reads or a reference. All you need is the assembly in FASTA format.</p>
 
-<p>For example if you have the assembly in the file <code>assembly.fa</code>:</p>
+<p>For example if you have the assembly in the file <code>transcripts.fa</code>:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly transcripts.fa
 </code></pre></div>
 <p>This analysis should run relatively fast (a few seconds to a few minutes depending on the size of your assembly and the speed of your computer).</p>
@@ -79,7 +79,7 @@
 
 <p>You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.</p>
 
-<p>For example if you have the assembly in the file <code>assembly.fa</code> and the reads in <code>left.fq</code> and <code>right.fq</code>:</p>
+<p>For example if you have the assembly in the file <code>transcripts.fa</code> and the reads in <code>left.fq</code> and <code>right.fq</code>:</p>
 <div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly transcripts.fa <span class="se">\</span>
             --left left.fq <span class="se">\</span>
             --right right.fq
@@ -114,12 +114,12 @@
 
 <p>You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.</p>
 
-<p>For example if you have the assembly in the file <code>assembly.fa</code> and the reference in the file <code>reference.fa</code>:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+<p>For example if you have the assembly in the file <code>transcripts.fa</code> and the reference in the file <code>reference.fa</code>:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly transcripts.fa <span class="se">\</span>
             --reference reference.fa
 </code></pre></div>
 <p>This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly assembly.fa <span class="se">\</span>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --assembly transcripts.fa <span class="se">\</span>
             --reference reference.fa <span class="se">\</span>
             --threads 32
 </code></pre></div>
