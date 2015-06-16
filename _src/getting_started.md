@@ -27,7 +27,7 @@ $ tar xf example_data.tar.gz
 
 You can examine your contigs without using the reads or a reference. All you need is the assembly in FASTA format.
 
-For example if you have the assembly in the file `assembly.fa`:
+For example if you have the assembly in the file `transcripts.fa`:
 
 ```bash
 $ transrate --assembly transcripts.fa
@@ -41,7 +41,7 @@ To understand what these metrics mean, read the [contig metrics documentation](m
 
 You can evaluate an assembly using RNAseq reads. You need your assembly in FASTA format and paired reads in separate FASTQ files for the left and right reads.
 
-For example if you have the assembly in the file `assembly.fa` and the reads in `left.fq` and `right.fq`:
+For example if you have the assembly in the file `transcripts.fa` and the reads in `left.fq` and `right.fq`:
 
 ```bash
 $ transrate --assembly transcripts.fa \
@@ -80,17 +80,17 @@ If you performed coverage normalisation at the end of any read processing pipeli
 
 You can compare your assembly to a reference set of proteins from a related species. You need your assembly in FASTA format and the reference proteins in FASTA amino acid format.
 
-For example if you have the assembly in the file `assembly.fa` and the reference in the file `reference.fa`:
+For example if you have the assembly in the file `transcripts.fa` and the reference in the file `reference.fa`:
 
 ```bash
-$ transrate --assembly assembly.fa \
+$ transrate --assembly transcripts.fa \
             --reference reference.fa
 ```
 
 This analysis can take a long while to run because of the BLAST alignments. As with read analysis, you might want to use multiple threads:
 
 ```bash
-$ transrate --assembly assembly.fa \
+$ transrate --assembly transcripts.fa \
             --reference reference.fa \
             --threads 32
 ```
