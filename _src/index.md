@@ -83,9 +83,9 @@ If you're sure the problem you're encountering is a bug, please post it to the [
 
 ## Citation, License & Copyright
 
-Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please use the citation:
+Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please cite the pre-print:
 
-> Transrate v1.0.0 (2015) RD Smith-Unna, C Boursnell, R Patro, JM Hibberd and S Kelly. http://hibberdlab.com/transrate. DOI:  [10.5281/zenodo.18325](http://dx.doi.org/10.5281/zenodo.18325)
+> TransRate: reference free quality assessment of de-novo transcriptome assemblies. Richard D Smith-Unna, Chris Boursnell, Rob Patro, Julian M Hibberd, Steven Kelly. bioRxiv doi: [http://dx.doi.org/10.1101/021626](http://dx.doi.org/10.1101/021626)
 
 Transrate is free open source software, released under the [MIT license](http://transrate.mit-license.org).
 
