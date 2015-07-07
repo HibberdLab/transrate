@@ -7,8 +7,8 @@ title: "Installation"
 
 Transrate is avaiable for Mac OSX and Linux. Download the binaries below:
 
-- [Linux 64bit v1.0.0](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0-linux-x86_64.tar.gz)
-- [OSX v1.0.0](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.0-osx.tar.gz)
+- [Linux 64bit v1.0.1](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.1-linux-x86_64.tar.gz)
+- [OSX v1.0.1](https://bintray.com/artifact/download/blahah/generic/transrate-1.0.1-osx.tar.gz)
 
 You can get older versions from [BinTray](https://bintray.com/blahah/generic/transrate).
 
