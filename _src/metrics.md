@@ -208,13 +208,13 @@ Transrate analyses these alignments and produces output like:
 ```
 Comparative metrics:
 ------------------------------
-CRBB hits                 38678
-p contigs with CRBB        0.34
-n contigs with CRBB       38678
-p refs with CRBB           0.33
-n refs with CRBB          12874
+CRBB hits                38678
+p contigs with CRBB       0.34
+n contigs with CRBB      38678
+p refs with CRBB          0.33
+n refs with CRBB         12874
 reference coverage        0.65
-collapse factor           9.73
+rbh per reference         0.71
 cov25                    11303
 cov50                     9336
 cov75                     6908
@@ -235,6 +235,6 @@ p cov95                   0.07
 | p references with CRBB | the proportion of references with a CRB-BLAST hit | 1 |
 | n references with CRBB | the number of references with a CRB-BLAST hit | `n seqs` |
 | reference coverage | the proportion of reference bases/amino acids covered by a CRB-BLAST hit | As high as possible (see above) |
-| collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
+| rbh per reference | the mean number of conditional reciprocal best hits per reference transcript |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
 | covX | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | All of them |
 | p covX | proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | 1 |
