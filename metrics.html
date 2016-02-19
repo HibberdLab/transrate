@@ -131,80 +131,80 @@ linguistic complexity           0.1
 </code></pre></div>
 <table><thead>
 <tr>
-<th>name</th>
+<th align="left">name</th>
 <th align="left">explanation</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>n_seqs</td>
+<td align="left">n_seqs</td>
 <td align="left">the number of contigs in the assembly</td>
 </tr>
 <tr>
-<td>smallest</td>
+<td align="left">smallest</td>
 <td align="left">the size of the smallest contig</td>
 </tr>
 <tr>
-<td>largest</td>
+<td align="left">largest</td>
 <td align="left">the size of the largest contig</td>
 </tr>
 <tr>
-<td>n_bases</td>
+<td align="left">n_bases</td>
 <td align="left">the number of bases included in the assembly</td>
 </tr>
 <tr>
-<td>mean_len</td>
+<td align="left">mean_len</td>
 <td align="left">the mean length of the contigs</td>
 </tr>
 <tr>
-<td>n under 200</td>
+<td align="left">n under 200</td>
 <td align="left">the number of contigs shorter than 200 bases</td>
 </tr>
 <tr>
-<td>n over 1k</td>
+<td align="left">n over 1k</td>
 <td align="left">the number of contigs greater than 1,000 bases long</td>
 </tr>
 <tr>
-<td>n over 10k</td>
+<td align="left">n over 10k</td>
 <td align="left">the number of contigs greater than 10,000 bases long</td>
 </tr>
 <tr>
-<td>n with orf</td>
+<td align="left">n with orf</td>
 <td align="left">the number of contigs that had an open reading frame</td>
 </tr>
 <tr>
-<td>mean orf percent</td>
+<td align="left">mean orf percent</td>
 <td align="left">for contigs with an ORF, the mean % of the contig covered by the ORF</td>
 </tr>
 <tr>
-<td>NX (e.g. N50)</td>
+<td align="left">NX (e.g. N50)</td>
 <td align="left">the largest contig size at which at least X% of bases are contained in contigs at least this length</td>
 </tr>
 <tr>
-<td>gc</td>
+<td align="left">gc</td>
 <td align="left">% of bases that are G or C</td>
 </tr>
 <tr>
-<td>gc skew</td>
+<td align="left">gc skew</td>
 <td align="left"><a href="http://en.wikipedia.org/wiki/GC_skew">http://en.wikipedia.org/wiki/GC_skew</a></td>
 </tr>
 <tr>
-<td>at skew</td>
+<td align="left">at skew</td>
 <td align="left">see GC skew</td>
 </tr>
 <tr>
-<td>cpg ratio</td>
+<td align="left">cpg ratio</td>
 <td align="left">count of CpG sites relative to expected number (only valid for stranded assemblies)</td>
 </tr>
 <tr>
-<td>bases n</td>
+<td align="left">bases n</td>
 <td align="left">the number of bases that are N</td>
 </tr>
 <tr>
-<td>proportion n</td>
+<td align="left">proportion n</td>
 <td align="left">the proportion of bases that are N</td>
 </tr>
 <tr>
-<td>linguistic complexity</td>
+<td align="left">linguistic complexity</td>
 <td align="left">the total <a href="http://en.wikipedia.org/wiki/Linguistic_sequence_complexity">linguistic complexity</a> of the assembly</td>
 </tr>
 </tbody></table>
@@ -220,7 +220,7 @@ linguistic complexity           0.1
 <p>When you include the <code>--left</code> and <code>--right</code> options, Transrate will do the following:</p>
 
 <ol>
-<li>map the provided reads to the assembly using <a href="snap.cs.berkeley.edu">SNAP</a></li>
+<li>map the provided reads to the assembly using <a href="http://snap.cs.berkeley.edu">SNAP</a></li>
 <li>infer the most likely contig of origin for any multi-mapping reads with <a href="https://github.com/kingsfordgroup/sailfish/releases/tag/v0.3.0">Salmon</a></li>
 <li>inspect the resulting alignments with <a href="https://github.com/cboursnell/transrate-tools">transrate-tools</a> and use them to evaluate each contig in the assembly</li>
 </ol>
@@ -248,85 +248,95 @@ p contigs good                 0.78
 </code></pre></div>
 <table><thead>
 <tr>
-<th>name</th>
+<th align="left">name</th>
 <th align="left">explanation</th>
 <th align="left">optimum</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>fragments</td>
+<td align="left">fragments</td>
 <td align="left">the number of read pairs provided</td>
 <td align="left">NA</td>
 </tr>
 <tr>
-<td>fragments mapped</td>
+<td align="left">fragments mapped</td>
 <td align="left">the total number of read pairs mapping</td>
 <td align="left">theoretically equal to <code>fragments</code> if all errors, adapters and contamination have been removed</td>
 </tr>
 <tr>
-<td>p fragments mapped</td>
+<td align="left">p fragments mapped</td>
 <td align="left">the proportion of the provided read pairs that mapped successfully</td>
 <td align="left">theoretically 1.0 (see above)</td>
 </tr>
 <tr>
-<td>good mappings</td>
+<td align="left">good mappings</td>
 <td align="left">the number of read pairs mapping in a way indicative of good assembly</td>
 <td align="left">equal to <code>fragments</code></td>
 </tr>
 <tr>
-<td>p good mappings</td>
+<td align="left">p good mappings</td>
 <td align="left">the proportion of read pairs mapping in a way indicative of a good assembly</td>
 <td align="left">1.0</td>
 </tr>
 <tr>
-<td>bad mappings</td>
+<td align="left">bad mappings</td>
 <td align="left">the number and proportion of reads pairs mapping in a way indicative of bad assembly</td>
 <td align="left">0</td>
 </tr>
 <tr>
-<td>potential bridges</td>
+<td align="left">potential bridges</td>
 <td align="left">the number of potential links between contigs that are supported by the reads</td>
 <td align="left">0</td>
 </tr>
 <tr>
-<td>n bases uncovered</td>
+<td align="left">n bases uncovered</td>
 <td align="left">the number of bases that are not covered by any reads</td>
 <td align="left">0</td>
 </tr>
 <tr>
-<td>p bases uncovered</td>
+<td align="left">p bases uncovered</td>
 <td align="left">the proportion of bases that are not covered by any reads</td>
 <td align="left">0.0</td>
 </tr>
 <tr>
-<td>contigs uncovbase</td>
+<td align="left">contigs uncovbase</td>
 <td align="left">the number of contigs that contain at least one base with no read coverage</td>
 <td align="left">0</td>
 </tr>
 <tr>
-<td>p contigs uncovbase</td>
+<td align="left">p contigs uncovbase</td>
 <td align="left">the proportion of contigs that contain at least one base with no read coverage</td>
 <td align="left">0.0</td>
 </tr>
 <tr>
-<td>contigs uncovered</td>
+<td align="left">contigs uncovered</td>
 <td align="left">the number of contigs that have a mean per-base read coverage of &lt; 1</td>
 <td align="left">0</td>
 </tr>
 <tr>
-<td>p contigs uncovered</td>
+<td align="left">p contigs uncovered</td>
 <td align="left">the proportion of contigs that have a mean per-base read coverage of &lt; 1</td>
 <td align="left">0.0</td>
 </tr>
 <tr>
-<td>contigs lowcovered</td>
+<td align="left">contigs lowcovered</td>
 <td align="left">the number of contigs that have a mean per-base read coverage of &lt; 10</td>
 <td align="left">no specific optimum</td>
 </tr>
 <tr>
-<td>p contigs lowcovered</td>
+<td align="left">p contigs lowcovered</td>
 <td align="left">the proportion of contigs that have a mean per-base read coverage of &lt; 10</td>
 <td align="left">no specific optimum</td>
+</tr>
+<tr>
+<td align="left">contigs segmented</td>
+<td align="left">the number of contigs that have &gt;=50% estimated chance of being segmented</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">p contigs segmented</td>
+<td align="left">the proportion of contigs that have &gt;=50% estimated chance of being segmented</td>
+<td align="left">0.0</td>
 </tr>
 </tbody></table>
 
@@ -373,13 +383,13 @@ p contigs good                 0.78
 <p>Transrate analyses these alignments and produces output like:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">Comparative metrics:
 ------------------------------
-CRBB hits                 38678
-p contigs with CRBB        0.34
-n contigs with CRBB       38678
-p refs with CRBB           0.33
-n refs with CRBB          12874
+CRBB hits                38678
+p contigs with CRBB       0.34
+n contigs with CRBB      38678
+p refs with CRBB          0.33
+n refs with CRBB         12874
 reference coverage        0.65
-collapse factor           9.73
+rbh per reference         0.71
 cov25                    11303
 cov50                     9336
 cov75                     6908
@@ -393,53 +403,53 @@ p cov95                   0.07
 </code></pre></div>
 <table><thead>
 <tr>
-<th>name</th>
+<th align="left">name</th>
 <th align="left">explanation</th>
 <th align="left">optimum</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>CRBB hits</td>
+<td align="left">CRBB hits</td>
 <td align="left">the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled.</td>
 <td align="left">As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference.</td>
 </tr>
 <tr>
-<td>p contigs with CRBB</td>
+<td align="left">p contigs with CRBB</td>
 <td align="left">the proportion of contigs with a CRB-BLAST hit</td>
 <td align="left">1</td>
 </tr>
 <tr>
-<td>n contigs with CRBB</td>
+<td align="left">n contigs with CRBB</td>
 <td align="left">the number of contigs with a CRB-BLAST hit</td>
 <td align="left"><code>n seqs</code></td>
 </tr>
 <tr>
-<td>p references with CRBB</td>
+<td align="left">p references with CRBB</td>
 <td align="left">the proportion of references with a CRB-BLAST hit</td>
 <td align="left">1</td>
 </tr>
 <tr>
-<td>n references with CRBB</td>
+<td align="left">n references with CRBB</td>
 <td align="left">the number of references with a CRB-BLAST hit</td>
 <td align="left"><code>n seqs</code></td>
 </tr>
 <tr>
-<td>reference coverage</td>
+<td align="left">reference coverage</td>
 <td align="left">the proportion of reference bases/amino acids covered by a CRB-BLAST hit</td>
 <td align="left">As high as possible (see above)</td>
 </tr>
 <tr>
-<td>collapse factor</td>
+<td align="left">collapse factor</td>
 <td align="left">the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families.</td>
 <td align="left">Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place.</td>
 </tr>
 <tr>
-<td>covX</td>
+<td align="left">covX</td>
 <td align="left">number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit</td>
 <td align="left">All of them</td>
 </tr>
 <tr>
-<td>p covX</td>
+<td align="left">p covX</td>
 <td align="left">proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit</td>
 <td align="left">1</td>
 </tr>

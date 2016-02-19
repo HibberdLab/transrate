@@ -97,8 +97,10 @@
 </ul>
 
 <p>Transrate can install any missing dependencies for you. This is done by running the command:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps <span class="nb">type</span>
 </code></pre></div>
+<p>The types of dependencies that can be installed are shown with <code>transrate --help</code>. If you install transrate as a Ruby gem you can use <code>read</code>, <code>ref</code> of <code>all</code> to install the read-based, reference-based or all the dependencies. If you install the binary version of transrate, it comes with the read-based dependencies already packaged, so you&#39;ll only have the option of <code>ref</code>.</p>
+
 <p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory, or if it doesn&#39;t have the permissions to do that, in <code>~/.local</code>.</p>
 
 <p>If you prefer, you can install the dependencies yourself, or ask your system administrator to install them for you. Just make sure all the binaries end up in the system PATH. You can see the list of required binaries for each dependency in <a href="https://github.com/Blahah/transrate/blob/master/deps/deps.yaml">the transrate code on Github</a>.</p>
