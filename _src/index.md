@@ -7,7 +7,7 @@ title: "Transrate"
 
 Transrate is software for *de-novo* transcriptome assembly quality analysis. It examines your assembly in detail and compares it to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies. This allows you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.
 
-> NOTE: this is the documentation for transrate v1.0.1
+> NOTE: this is the documentation for transrate v1.0.2
 
 ## Overview
 
@@ -30,8 +30,7 @@ See [the installation guide](installation.html).
 Running `transrate --help` will show you the command-line interface:
 
 ```
-
-Transrate v1.0.0
+Transrate v1.0.2
 by Richard Smith-Unna, Chris Boursnell, Rob Patro,
 Julian Hibberd, and Steve Kelly
 
@@ -48,19 +47,18 @@ USAGE:
 transrate <options>
 
 OPTIONS:
--a, --assembly=<s>            Assembly file(s) in FASTA format, comma-separated
--l, --left=<s>                Left reads file in FASTQ format
--r, --right=<s>               Right reads file in FASTQ format
--e, --reference=<s>           Reference proteome or transcriptome file in FASTA format
--t, --threads=<i>             Number of threads to use (default: 8)
--m, --merge-assemblies=<s>    Merge best contigs from multiple assemblies into file
--o, --outfile=<s>             Prefix filename to use for CSV output (default: transrate)
--g, --loglevel=<s>            Log level. One of [error, info, warn, debug] (default: info)
--i, --install-deps=<s>        Install any missing dependencies. One of [all, read, ref]
--x, --examples                Show some example commands with explanations
--v, --version                 Print version and exit
--h, --help                    Show this message
-
+--assembly=<s>          Assembly file(s) in FASTA format, comma-separated
+--left=<s>              Left reads file(s) in FASTQ format, comma-separated
+--right=<s>             Right reads file(s) in FASTQ format, comma-separated
+--reference=<s>         Reference proteome or transcriptome file in FASTA format
+--threads=<i>           Number of threads to use (default: 8)
+--merge-assemblies=<s>  Merge best contigs from multiple assemblies into file
+--output=<s>            Directory where results are output (will be created)
+                        (default: transrate_results)
+--loglevel=<s>          Log level. One of [error, info, warn, debug]
+                        (default: info)
+--install-deps=<s>      Install any missing dependencies. One of [ref]
+--examples              Show some example commands with explanations
 ```
 
 See the [getting started guide](getting_started.html) for more instructions.
