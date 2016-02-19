@@ -208,13 +208,13 @@ Transrate analyses these alignments and produces output like:
 ```
 Comparative metrics:
 ------------------------------
-CRBB hits                 38678
-p contigs with CRBB        0.34
-n contigs with CRBB       38678
-p refs with CRBB           0.33
-n refs with CRBB          12874
+CRBB hits                38678
+p contigs with CRBB       0.34
+n contigs with CRBB      38678
+p refs with CRBB          0.33
+n refs with CRBB         12874
 reference coverage        0.65
-collapse factor           9.73
+rbh per reference         0.71
 cov25                    11303
 cov50                     9336
 cov75                     6908
