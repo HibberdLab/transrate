@@ -50,7 +50,7 @@
     <p>Transrate is software for <em>de-novo</em> transcriptome assembly quality analysis. It examines your assembly in detail and compares it to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies. This allows you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.</p>
 
 <blockquote>
-<p>NOTE: this is the documentation for transrate v1.0.1</p>
+<p>NOTE: this is the documentation for transrate v1.0.2</p>
 </blockquote>
 
 <h2 id="toc_0">Overview</h2>
@@ -74,7 +74,7 @@
 <h2 id="toc_2">The command-line interface</h2>
 
 <p>Running <code>transrate --help</code> will show you the command-line interface:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Transrate v1.0.0
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Transrate v1.0.2
 by Richard Smith-Unna, Chris Boursnell, Rob Patro,
 Julian Hibberd, and Steve Kelly
 
@@ -91,18 +91,18 @@ USAGE:
 transrate &lt;options&gt;
 
 OPTIONS:
--a, --assembly=&lt;s&gt;            Assembly file(s) in FASTA format, comma-separated
--l, --left=&lt;s&gt;                Left reads file in FASTQ format
--r, --right=&lt;s&gt;               Right reads file in FASTQ format
--e, --reference=&lt;s&gt;           Reference proteome or transcriptome file in FASTA format
--t, --threads=&lt;i&gt;             Number of threads to use (default: 8)
--m, --merge-assemblies=&lt;s&gt;    Merge best contigs from multiple assemblies into file
--o, --outfile=&lt;s&gt;             Prefix filename to use for CSV output (default: transrate)
--g, --loglevel=&lt;s&gt;            Log level. One of [error, info, warn, debug] (default: info)
--i, --install-deps=&lt;s&gt;        Install any missing dependencies. One of [all, read, ref]
--x, --examples                Show some example commands with explanations
--v, --version                 Print version and exit
--h, --help                    Show this message
+--assembly=&lt;s&gt;          Assembly file(s) in FASTA format, comma-separated
+--left=&lt;s&gt;              Left reads file(s) in FASTQ format, comma-separated
+--right=&lt;s&gt;             Right reads file(s) in FASTQ format, comma-separated
+--reference=&lt;s&gt;         Reference proteome or transcriptome file in FASTA format
+--threads=&lt;i&gt;           Number of threads to use (default: 8)
+--merge-assemblies=&lt;s&gt;  Merge best contigs from multiple assemblies into file
+--output=&lt;s&gt;            Directory where results are output (will be created)
+                        (default: transrate_results)
+--loglevel=&lt;s&gt;          Log level. One of [error, info, warn, debug]
+                        (default: info)
+--install-deps=&lt;s&gt;      Install any missing dependencies. One of [ref]
+--examples              Show some example commands with explanations
 </code></pre></div>
 <p>See the <a href="getting_started.html">getting started guide</a> for more instructions.</p>
 

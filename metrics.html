@@ -70,6 +70,8 @@
 </code></pre></div>
 <p>It is also saved in the <code>*assemblies.csv</code> file.</p>
 
+<p>Transrate also calculates an expression-weighted assembly score in which the score for each contig is multiplied by its relative expression before being included in the assembly score. This score gives relatively little weight to poorly expressed contigs, and so will tend to be much more generous to assemblies with many low-expressed contigs that are badly assembled. For this reason, we only report this weighted score in the <code>*assemblies.csv</code> file, not in the terminal output.</p>
+
 <h3 id="toc_2">The contig score</h3>
 
 <p>Each contig is assigned a score by measuring how well it is supported by read evidence. The contig score can be thought of as measure of whether the contig is an accurate, complete, non-redundant representation of a transcript that was present in the sequenced sample.</p>
@@ -92,6 +94,8 @@
 <h2 id="toc_3">The optimised assembly score</h2>
 
 <p>Contig scores can be used to filter out bad contigs from an assembly, leaving you with only the well-assembled ones. Transrate does this automatically, by learning the contig score cutoff that maximises the assembly score. The assembly score of the subset of contigs scoring above the cutoff (the optimal assembly score) is reported at the command line and in the <code>*assembliles.csv</code> file. The &#39;good&#39; contigs as determined by the cutoff optimisation procedure are output to the file <code>good.*.fa</code>.</p>
+
+<p>Because contigs that are classified as &#39;bad&#39; may still be recoverable or useful for downstream analysis, Transrate classifies contigs that fail due to a single score component and outputs them to a separate FASTA file per component.</p>
 
 <h2 id="toc_4">Contig metrics</h2>
 
