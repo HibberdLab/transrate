@@ -89,25 +89,25 @@ proportion n                    0.0
 linguistic complexity           0.1
 ```
 
-| name          | explanation  |
-| ------------- |:-------------|
-| n_seqs | the number of contigs in the assembly |
-| smallest | the size of the smallest contig |
-| largest | the size of the largest contig |
-| n_bases | the number of bases included in the assembly |
-| mean_len | the mean length of the contigs |
-| n under 200 | the number of contigs shorter than 200 bases |
-| n over 1k | the number of contigs greater than 1,000 bases long |
-| n over 10k | the number of contigs greater than 10,000 bases long |
-| n with orf | the number of contigs that had an open reading frame |
-| mean orf percent | for contigs with an ORF, the mean % of the contig covered by the ORF |
-| NX (e.g. N50) | the largest contig size at which at least X% of bases are contained in contigs at least this length |
-| gc | % of bases that are G or C |
-| gc skew | http://en.wikipedia.org/wiki/GC_skew |
-| at skew | see GC skew |
-| cpg ratio | count of CpG sites relative to expected number (only valid for stranded assemblies) |
-| bases n | the number of bases that are N |
-| proportion n | the proportion of bases that are N |
+| name                  | explanation                                                                                                    |
+|:----------------------|:---------------------------------------------------------------------------------------------------------------|
+| n_seqs                | the number of contigs in the assembly                                                                          |
+| smallest              | the size of the smallest contig                                                                                |
+| largest               | the size of the largest contig                                                                                 |
+| n_bases               | the number of bases included in the assembly                                                                   |
+| mean_len              | the mean length of the contigs                                                                                 |
+| n under 200           | the number of contigs shorter than 200 bases                                                                   |
+| n over 1k             | the number of contigs greater than 1,000 bases long                                                            |
+| n over 10k            | the number of contigs greater than 10,000 bases long                                                           |
+| n with orf            | the number of contigs that had an open reading frame                                                           |
+| mean orf percent      | for contigs with an ORF, the mean % of the contig covered by the ORF                                           |
+| NX (e.g. N50)         | the largest contig size at which at least X% of bases are contained in contigs at least this length            |
+| gc                    | % of bases that are G or C                                                                                     |
+| gc skew               | http://en.wikipedia.org/wiki/GC_skew                                                                           |
+| at skew               | see GC skew                                                                                                    |
+| cpg ratio             | count of CpG sites relative to expected number (only valid for stranded assemblies)                            |
+| bases n               | the number of bases that are N                                                                                 |
+| proportion n          | the proportion of bases that are N                                                                             |
 | linguistic complexity | the total [linguistic complexity](http://en.wikipedia.org/wiki/Linguistic_sequence_complexity) of the assembly |
 
 ## Read mapping metrics
@@ -120,7 +120,7 @@ If you want to optimise your assembly, we suggest using read-mapping metrics, in
 
 When you include the `--left` and `--right` options, Transrate will do the following:
 
-1. map the provided reads to the assembly using [SNAP](snap.cs.berkeley.edu)
+1. map the provided reads to the assembly using [SNAP](http://snap.cs.berkeley.edu)
 2. infer the most likely contig of origin for any multi-mapping reads with [Salmon](https://github.com/kingsfordgroup/sailfish/releases/tag/v0.3.0)
 3. inspect the resulting alignments with [transrate-tools](https://github.com/cboursnell/transrate-tools) and use them to evaluate each contig in the assembly
 
@@ -148,23 +148,23 @@ contigs good                    828
 p contigs good                 0.78
 ```
 
-| name          | explanation  | optimum
-| ------------- |:-------------| :----
-| fragments | the number of read pairs provided | NA |
-| fragments mapped | the total number of read pairs mapping | theoretically equal to `fragments` if all errors, adapters and contamination have been removed |
-| p fragments mapped | the proportion of the provided read pairs that mapped successfully | theoretically 1.0 (see above) |
-| good mappings | the number of read pairs mapping in a way indicative of good assembly | equal to `fragments` |
-| p good mappings | the proportion of read pairs mapping in a way indicative of a good assembly | 1.0 |
-| bad mappings | the number and proportion of reads pairs mapping in a way indicative of bad assembly | 0 |
-| potential bridges | the number of potential links between contigs that are supported by the reads | 0 |
-| n bases uncovered | the number of bases that are not covered by any reads | 0 |
-| p bases uncovered | the proportion of bases that are not covered by any reads | 0.0 |
-| contigs uncovbase | the number of contigs that contain at least one base with no read coverage | 0 |
-| p contigs uncovbase | the proportion of contigs that contain at least one base with no read coverage | 0.0 |
-| contigs uncovered | the number of contigs that have a mean per-base read coverage of < 1 | 0 |
-| p contigs uncovered | the proportion of contigs that have a mean per-base read coverage of < 1 | 0.0 |
-| contigs lowcovered | the number of contigs that have a mean per-base read coverage of < 10 | no specific optimum |
-| p contigs lowcovered | the proportion of contigs that have a mean per-base read coverage of < 10 | no specific optimum |
+| name                 | explanation                                                                          | optimum                                                                                        |
+|:---------------------|:-------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
+| fragments            | the number of read pairs provided                                                    | NA                                                                                             |
+| fragments mapped     | the total number of read pairs mapping                                               | theoretically equal to `fragments` if all errors, adapters and contamination have been removed |
+| p fragments mapped   | the proportion of the provided read pairs that mapped successfully                   | theoretically 1.0 (see above)                                                                  |
+| good mappings        | the number of read pairs mapping in a way indicative of good assembly                | equal to `fragments`                                                                           |
+| p good mappings      | the proportion of read pairs mapping in a way indicative of a good assembly          | 1.0                                                                                            |
+| bad mappings         | the number and proportion of reads pairs mapping in a way indicative of bad assembly | 0                                                                                              |
+| potential bridges    | the number of potential links between contigs that are supported by the reads        | 0                                                                                              |
+| n bases uncovered    | the number of bases that are not covered by any reads                                | 0                                                                                              |
+| p bases uncovered    | the proportion of bases that are not covered by any reads                            | 0.0                                                                                            |
+| contigs uncovbase    | the number of contigs that contain at least one base with no read coverage           | 0                                                                                              |
+| p contigs uncovbase  | the proportion of contigs that contain at least one base with no read coverage       | 0.0                                                                                            |
+| contigs uncovered    | the number of contigs that have a mean per-base read coverage of < 1                 | 0                                                                                              |
+| p contigs uncovered  | the proportion of contigs that have a mean per-base read coverage of < 1             | 0.0                                                                                            |
+| contigs lowcovered   | the number of contigs that have a mean per-base read coverage of < 10                | no specific optimum                                                                            |
+| p contigs lowcovered | the proportion of contigs that have a mean per-base read coverage of < 10            | no specific optimum                                                                            |
 
 
 ### Good and bad mappings
@@ -227,14 +227,14 @@ p cov85                   0.14
 p cov95                   0.07
 ```
 
-| name          | explanation  | optimum
-| ------------- |:-------------|:----
-| CRBB hits | the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled. | As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference. |
-| p contigs with CRBB | the proportion of contigs with a CRB-BLAST hit | 1 |
-| n contigs with CRBB | the number of contigs with a CRB-BLAST hit | `n seqs` |
-| p references with CRBB | the proportion of references with a CRB-BLAST hit | 1 |
-| n references with CRBB | the number of references with a CRB-BLAST hit | `n seqs` |
-| reference coverage | the proportion of reference bases/amino acids covered by a CRB-BLAST hit | As high as possible (see above) |
-| collapse factor | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. |  Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place. |
-| covX | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | All of them |
-| p covX | proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit | 1 |
+| name                   | explanation                                                                                                                                                        | optimum                                                                                                                                                                                              |
+|:-----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CRBB hits              | the number of reciprocal best hits against the reference using CRB-BLAST. A high score indicates that a large number of real transcripts have been assembled.      | As high as possible. The theoretical maximum is the number of contigs (**n seqs**). In practise, the maximum depends on the evolutionary divergence between the assembled species and the reference. |
+| p contigs with CRBB    | the proportion of contigs with a CRB-BLAST hit                                                                                                                     | 1                                                                                                                                                                                                    |
+| n contigs with CRBB    | the number of contigs with a CRB-BLAST hit                                                                                                                         | `n seqs`                                                                                                                                                                                             |
+| p references with CRBB | the proportion of references with a CRB-BLAST hit                                                                                                                  | 1                                                                                                                                                                                                    |
+| n references with CRBB | the number of references with a CRB-BLAST hit                                                                                                                      | `n seqs`                                                                                                                                                                                             |
+| reference coverage     | the proportion of reference bases/amino acids covered by a CRB-BLAST hit                                                                                           | As high as possible (see above)                                                                                                                                                                      |
+| collapse factor        | the mean number of reference proteins mapping to each contig. A high score on this metric indicates the assembly contains chimeras or has collapsed gene families. | Dependent on the phylogenomic relationship between the organisms, e.g. whether a genome duplication has taken place.                                                                                 |
+| covX                   | number of reference proteins with at least X% of their bases covered by a CRB-BLAST hit                                                                            | All of them                                                                                                                                                                                          |
+| p covX                 | proportion of reference proteins with at least X% of their bases covered by a CRB-BLAST hit                                                                        | 1                                                                                                                                                                                                    |
