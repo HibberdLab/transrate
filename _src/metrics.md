@@ -165,7 +165,8 @@ p contigs good                 0.78
 | p contigs uncovered  | the proportion of contigs that have a mean per-base read coverage of < 1             | 0.0                                                                                            |
 | contigs lowcovered   | the number of contigs that have a mean per-base read coverage of < 10                | no specific optimum                                                                            |
 | p contigs lowcovered | the proportion of contigs that have a mean per-base read coverage of < 10            | no specific optimum                                                                            |
-
+| contigs segmented    | the number of contigs that have >=50% estimated chance of being segmented            | 0                                                                                              |
+| p contigs segmented  | the proportion of contigs that have >=50% estimated chance of being segmented        | 0.0                                                                                            |
 
 ### Good and bad mappings
 
