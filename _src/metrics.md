@@ -85,35 +85,26 @@ N50                             670
 N30                            1021
 N10                            1878
 gc                             0.44
-gc skew                        -0.0
-at skew                        0.01
-cpg ratio                      0.56
 bases n                      178748
 proportion n                    0.0
-linguistic complexity           0.1
 ```
 
-| name                  | explanation                                                                                                    |
-|:----------------------|:---------------------------------------------------------------------------------------------------------------|
-| n_seqs                | the number of contigs in the assembly                                                                          |
-| smallest              | the size of the smallest contig                                                                                |
-| largest               | the size of the largest contig                                                                                 |
-| n_bases               | the number of bases included in the assembly                                                                   |
-| mean_len              | the mean length of the contigs                                                                                 |
-| n under 200           | the number of contigs shorter than 200 bases                                                                   |
-| n over 1k             | the number of contigs greater than 1,000 bases long                                                            |
-| n over 10k            | the number of contigs greater than 10,000 bases long                                                           |
-| n with orf            | the number of contigs that had an open reading frame                                                           |
-| mean orf percent      | for contigs with an ORF, the mean % of the contig covered by the ORF                                           |
-| NX (e.g. N50)         | the largest contig size at which at least X% of bases are contained in contigs at least this length            |
-| gc                    | % of bases that are G or C                                                                                     |
-| gc skew               | http://en.wikipedia.org/wiki/GC_skew                                                                           |
-| at skew               | see GC skew                                                                                                    |
-| cpg ratio             | count of CpG sites relative to expected number (only valid for stranded assemblies)                            |
-| bases n               | the number of bases that are N                                                                                 |
-| proportion n          | the proportion of bases that are N                                                                             |
-| linguistic complexity | the total [linguistic complexity](http://en.wikipedia.org/wiki/Linguistic_sequence_complexity) of the assembly |
-
+| name             | explanation                                                                                         |
+|:-----------------|:----------------------------------------------------------------------------------------------------|
+| n_seqs           | the number of contigs in the assembly                                                               |
+| smallest         | the size of the smallest contig                                                                     |
+| largest          | the size of the largest contig                                                                      |
+| n_bases          | the number of bases included in the assembly                                                        |
+| mean_len         | the mean length of the contigs                                                                      |
+| n under 200      | the number of contigs shorter than 200 bases                                                        |
+| n over 1k        | the number of contigs greater than 1,000 bases long                                                 |
+| n over 10k       | the number of contigs greater than 10,000 bases long                                                |
+| n with orf       | the number of contigs that had an open reading frame                                                |
+| mean orf percent | for contigs with an ORF, the mean % of the contig covered by the ORF                                |
+| NX (e.g. N50)    | the largest contig size at which at least X% of bases are contained in contigs at least this length |
+| gc               | % of bases that are G or C                                                                          |
+| bases n          | the number of bases that are N                                                                      |
+| proportion n     | the proportion of bases that are N                                                                  |
 ## Read mapping metrics
 
 Read mapping metrics are based on aligning the reads used in the assembly to the assembled contigs.

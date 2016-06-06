@@ -7,7 +7,9 @@ title: "Transrate"
 
 Transrate is software for *de-novo* transcriptome assembly quality analysis. It examines your assembly in detail and compares it to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies. This allows you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.
 
-> NOTE: this is the documentation for transrate v1.0.2
+> NOTE: this is the documentation for transrate v1.0.3
+
+The transrate paper is [now published](http://genome.cshlp.org/content/early/2016/06/01/gr.196469.115)!
 
 ## Overview
 
@@ -30,9 +32,9 @@ See [the installation guide](installation.html).
 Running `transrate --help` will show you the command-line interface:
 
 ```
-Transrate v1.0.2
+Transrate v1.0.3
 by Richard Smith-Unna, Chris Boursnell, Rob Patro,
-Julian Hibberd, and Steve Kelly
+   Julian Hibberd, and Steve Kelly
 
 DESCRIPTION:
 Analyse a de-novo transcriptome assembly using three kinds of metrics:
@@ -47,18 +49,21 @@ USAGE:
 transrate <options>
 
 OPTIONS:
---assembly=<s>          Assembly file(s) in FASTA format, comma-separated
---left=<s>              Left reads file(s) in FASTQ format, comma-separated
---right=<s>             Right reads file(s) in FASTQ format, comma-separated
---reference=<s>         Reference proteome or transcriptome file in FASTA format
---threads=<i>           Number of threads to use (default: 8)
---merge-assemblies=<s>  Merge best contigs from multiple assemblies into file
---output=<s>            Directory where results are output (will be created)
-                        (default: transrate_results)
---loglevel=<s>          Log level. One of [error, info, warn, debug]
-                        (default: info)
---install-deps=<s>      Install any missing dependencies. One of [ref]
---examples              Show some example commands with explanations
+  --assembly=<s>            Assembly file(s) in FASTA format, comma-separated
+  --left=<s>                Left reads file(s) in FASTQ format, comma-separated
+  --right=<s>               Right reads file(s) in FASTQ format, comma-separated
+  --reference=<s>           Reference proteome or transcriptome file in FASTA
+                            format
+  --threads=<i>             Number of threads to use (default: 8)
+  --merge-assemblies=<s>    Merge best contigs from multiple assemblies into
+                            file
+  --output=<s>              Directory where results are output (will be created)
+                            (default: transrate_results)
+  --loglevel=<s>            Log level. One of [error, info, warn, debug]
+                            (default: info)
+  --install-deps=<s>        Install any missing dependencies. One of [read, ref,
+                            all]
+  --examples                Show some example commands with explanations
 ```
 
 See the [getting started guide](getting_started.html) for more instructions.
@@ -81,9 +86,10 @@ If you're sure the problem you're encountering is a bug, please post it to the [
 
 ## Citation, License & Copyright
 
-Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please cite the pre-print:
+Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please cite the paper:
 
-> TransRate: reference free quality assessment of de-novo transcriptome assemblies. Richard D Smith-Unna, Chris Boursnell, Rob Patro, Julian M Hibberd, Steven Kelly. bioRxiv doi: [http://dx.doi.org/10.1101/021626](http://dx.doi.org/10.1101/021626)
+> TransRate: reference free quality assessment of de-novo transcriptome assemblies (2016). Richard D Smith-Unna, Chris Boursnell, Rob Patro, Julian M Hibberd, Steven Kelly. Genome Research doi: [http://dx.doi.org/10.1101/gr.196469.115](http://dx.doi.org/10.1101/gr.196469.115)
+
 
 Transrate is free open source software, released under the [MIT license](http://transrate.mit-license.org).
 
