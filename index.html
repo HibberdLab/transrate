@@ -50,8 +50,10 @@
     <p>Transrate is software for <em>de-novo</em> transcriptome assembly quality analysis. It examines your assembly in detail and compares it to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies. This allows you to choose between assemblers and parameters, filter out the bad contigs from an assembly, and help decide when to stop trying to improve the assembly.</p>
 
 <blockquote>
-<p>NOTE: this is the documentation for transrate v1.0.2</p>
+<p>NOTE: this is the documentation for transrate v1.0.3</p>
 </blockquote>
+
+<p>The transrate paper is <a href="http://genome.cshlp.org/content/early/2016/06/01/gr.196469.115">now published</a>!</p>
 
 <h2 id="toc_0">Overview</h2>
 
@@ -74,9 +76,9 @@
 <h2 id="toc_2">The command-line interface</h2>
 
 <p>Running <code>transrate --help</code> will show you the command-line interface:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Transrate v1.0.2
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Transrate v1.0.3
 by Richard Smith-Unna, Chris Boursnell, Rob Patro,
-Julian Hibberd, and Steve Kelly
+   Julian Hibberd, and Steve Kelly
 
 DESCRIPTION:
 Analyse a de-novo transcriptome assembly using three kinds of metrics:
@@ -91,18 +93,21 @@ USAGE:
 transrate &lt;options&gt;
 
 OPTIONS:
---assembly=&lt;s&gt;          Assembly file(s) in FASTA format, comma-separated
---left=&lt;s&gt;              Left reads file(s) in FASTQ format, comma-separated
---right=&lt;s&gt;             Right reads file(s) in FASTQ format, comma-separated
---reference=&lt;s&gt;         Reference proteome or transcriptome file in FASTA format
---threads=&lt;i&gt;           Number of threads to use (default: 8)
---merge-assemblies=&lt;s&gt;  Merge best contigs from multiple assemblies into file
---output=&lt;s&gt;            Directory where results are output (will be created)
-                        (default: transrate_results)
---loglevel=&lt;s&gt;          Log level. One of [error, info, warn, debug]
-                        (default: info)
---install-deps=&lt;s&gt;      Install any missing dependencies. One of [ref]
---examples              Show some example commands with explanations
+  --assembly=&lt;s&gt;            Assembly file(s) in FASTA format, comma-separated
+  --left=&lt;s&gt;                Left reads file(s) in FASTQ format, comma-separated
+  --right=&lt;s&gt;               Right reads file(s) in FASTQ format, comma-separated
+  --reference=&lt;s&gt;           Reference proteome or transcriptome file in FASTA
+                            format
+  --threads=&lt;i&gt;             Number of threads to use (default: 8)
+  --merge-assemblies=&lt;s&gt;    Merge best contigs from multiple assemblies into
+                            file
+  --output=&lt;s&gt;              Directory where results are output (will be created)
+                            (default: transrate_results)
+  --loglevel=&lt;s&gt;            Log level. One of [error, info, warn, debug]
+                            (default: info)
+  --install-deps=&lt;s&gt;        Install any missing dependencies. One of [read, ref,
+                            all]
+  --examples                Show some example commands with explanations
 </code></pre></div>
 <p>See the <a href="getting_started.html">getting started guide</a> for more instructions.</p>
 
@@ -124,10 +129,10 @@ OPTIONS:
 
 <h2 id="toc_5">Citation, License &amp; Copyright</h2>
 
-<p>Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please cite the pre-print:</p>
+<p>Transrate is research software. We therefore require that users cite Transrate if they use it in a publication. Please cite the paper:</p>
 
 <blockquote>
-<p>TransRate: reference free quality assessment of de-novo transcriptome assemblies. Richard D Smith-Unna, Chris Boursnell, Rob Patro, Julian M Hibberd, Steven Kelly. bioRxiv doi: <a href="http://dx.doi.org/10.1101/021626">http://dx.doi.org/10.1101/021626</a></p>
+<p>TransRate: reference free quality assessment of de-novo transcriptome assemblies (2016). Richard D Smith-Unna, Chris Boursnell, Rob Patro, Julian M Hibberd, Steven Kelly. Genome Research doi: <a href="http://dx.doi.org/10.1101/gr.196469.115">http://dx.doi.org/10.1101/gr.196469.115</a></p>
 </blockquote>
 
 <p>Transrate is free open source software, released under the <a href="http://transrate.mit-license.org">MIT license</a>.</p>

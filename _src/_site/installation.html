@@ -50,8 +50,8 @@
     <p>Transrate is avaiable for Mac OSX and Linux. Download the binaries below:</p>
 
 <ul>
-<li><a href="https://bintray.com/artifact/download/blahah/generic/transrate-1.0.2-linux-x86_64.tar.gz">Linux 64bit v1.0.2</a></li>
-<li><a href="https://bintray.com/artifact/download/blahah/generic/transrate-1.0.2-osx.tar.gz">OSX v1.0.2</a></li>
+<li><a href="https://bintray.com/artifact/download/blahah/generic/transrate-1.0.3-linux-x86_64.tar.gz">Linux 64bit v1.0.3</a></li>
+<li><a href="https://bintray.com/artifact/download/blahah/generic/transrate-1.0.3-osx.tar.gz">OSX v1.0.3</a></li>
 </ul>
 
 <p>You can get older versions from <a href="https://bintray.com/blahah/generic/transrate">BinTray</a>.</p>
@@ -64,7 +64,7 @@
 
 <ol>
 <li>Because Transrate comes packaged with its binary dependencies, you must keep the directory structure of the package intact.</li>
-<li>Transrate does not include BLAST+. If you want to use the reference-based metrics, you&#39;ll need to install BLAST+ yourself.</li>
+<li>Transrate does not include BLAST+. If you want to use the reference-based metrics, you&#39;ll need to install BLAST+.</li>
 </ol>
 
 <h2 id="toc_0">Advanced installation</h2>
@@ -90,16 +90,24 @@
 <p>Transrate depends on several external pieces of software. The full list of dependencies for transrate v1.0.0 is:</p>
 
 <ul>
-<li>snap-aligner <code>v1.0beta.18</code> [download: <a href="https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/snap/releases/download/v1.0beta.18/snap_v1.0beta.18_osx.tar.gz">mac</a>]</li>
-<li>Salmon <code>v0.4.2</code> [download: <a href="https://github.com/COMBINE-lab/salmon/releases/download/v0.4.2/SalmonBeta-0.4.2_DebianSqueeze.tar.gz">linux</a> | <a href="https://github.com/COMBINE-lab/salmon/releases/download/v0.4.2/SalmonBeta-0.4.2_OSX-10.10.tar.gz">mac</a>]</li>
+<li>snap-aligner <code>v1.0dev.96</code> [download: <a href="https://github.com/blahah/snap/releases/download/1.0dev.96/snap_v1.0dev.96_linux.tar.gz">linux</a> | <a href="https://github.com/blahah/snap/releases/download/1.0dev.96/snap_v1.0dev.96_osx.tar.gz">mac</a>]</li>
+<li>Salmon <code>v0.6.0)</code> [download: <a href="https://github.com/COMBINE-lab/salmon/releases/download/v0.6.0/SalmonBeta-0.6.0_DebianSqueeze.tar.gz">linux</a> | <a href="https://github.com/COMBINE-lab/salmon/releases/download/v0.6.0/SalmonBeta-0.6.0_OSX_10.11.tar.gz">mac</a>]</li>
 <li><a href="https://github.com/cboursnell/transrate-tools">bam-read</a> <code>v1.0.0</code> [download: <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0/bam-read_v1.0.0_linux.tar.gz">linux</a> | <a href="https://github.com/Blahah/transrate-tools/releases/download/v1.0.0/bam-read_v1.0.0_osx.tar.gz">mac</a>]</li>
 <li><a href="http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download">BLAST+</a> <code>v2.2.29</code></li>
 </ul>
 
 <p>Transrate can install any missing dependencies for you. This is done by running the command:</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps <span class="nb">type</span>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">$ </span>transrate --install-deps &lt;<span class="nb">type</span>&gt;
 </code></pre></div>
-<p>The types of dependencies that can be installed are shown with <code>transrate --help</code>. If you install transrate as a Ruby gem you can use <code>read</code>, <code>ref</code> of <code>all</code> to install the read-based, reference-based or all the dependencies. If you install the binary version of transrate, it comes with the read-based dependencies already packaged, so you&#39;ll only have the option of <code>ref</code>.</p>
+<p>For example:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># install read-based mode dependencies</span>
+<span class="nv">$ </span>transrate --install-deps <span class="nb">read</span>
+<span class="c"># install reference-based mode dependencies</span>
+<span class="nv">$ </span>transrate --install-deps ref
+<span class="c"># install all dependencies</span>
+<span class="nv">$ </span>transrate --install-deps all
+</code></pre></div>
+<p>The types of dependencies that can be installed are shown with <code>transrate --help</code>. If you install transrate as a Ruby gem you can use <code>read</code>, <code>ref</code> or <code>all</code> to install the read-based, reference-based or all the dependencies. If you install the binary version of transrate, it comes with the read-based dependencies already packaged, so you&#39;ll only have the option of <code>ref</code>.</p>
 
 <p>The <code>--install-deps</code> command will make all the dependent binaries available in your system PATH by placing them in the Ruby gem binary directory, or if it doesn&#39;t have the permissions to do that, in <code>~/.local</code>.</p>
 
